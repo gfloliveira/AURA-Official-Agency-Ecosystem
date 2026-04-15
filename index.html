@@ -935,6 +935,8 @@
 </head>
 <body>
 
+<canvas id="neural-canvas" style="position:fixed; inset:0; z-index:0; pointer-events:none;"></canvas>
+
 <!-- ── Gradient blur effect (bottom of page) ── -->
 <div class="gradient-blur">
   <div></div><div></div><div></div>
@@ -993,7 +995,6 @@
 
   <!-- Animated background -->
   <div class="hero-bg" aria-hidden="true">
-    <canvas id="neural-canvas" style="position:absolute; inset:0; z-index:1; pointer-events:none;"></canvas>
     <div class="hero-bg-grid"></div>
     <div class="hero-bg-radial"></div>
     <div class="scan-line"></div>

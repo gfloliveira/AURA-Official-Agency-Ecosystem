@@ -956,11 +956,10 @@
 
     <!-- Desktop nav links -->
     <nav class="nav-links" aria-label="Navegação principal">
-      <a href="#ds-typography">Tipografia</a>
-      <a href="#ds-colors">Cores</a>
-      <a href="#ds-components">Componentes</a>
-      <a href="#ds-motion">Animações</a>
-      <a href="#ds-icons">Ícones</a>
+      <a href="#hero">Início</a>
+      <a href="#servicos">Expertise</a>
+      <a href="#portfolio">Trabalhos</a>
+      <a href="#sobre">Metodologia</a>
     </nav>
 
     <!-- Desktop CTA -->
@@ -980,12 +979,11 @@
 
 <!-- Mobile menu -->
 <nav id="mobile-menu" aria-label="Menu mobile">
-  <a href="#ds-typography">Tipografia</a>
-  <a href="#ds-colors">Cores &amp; Superfícies</a>
-  <a href="#ds-components">Componentes UI</a>
-  <a href="#ds-motion">Animações</a>
-  <a href="#ds-icons">Ícones</a>
-  <a class="mobile-cta" href="#ds-components">Ver Design System →</a>
+  <a href="#hero">Início</a>
+  <a href="#servicos">Expertise</a>
+  <a href="#portfolio">Trabalhos</a>
+  <a href="#sobre">Metodologia</a>
+  <a class="mobile-cta" href="#servicos">Ver Serviços →</a>
 </nav>
 
 <!-- ================================================================
@@ -1137,8 +1135,36 @@
       Nosso <span class="accent">Portfólio</span>
     </h2>
     
-    <div id="portfolio-grid-placeholder" style="height: 400px; border: 1px dashed rgba(168,85,247,0.3); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; margin-top: 3rem; background: rgba(255,255,255,0.02);">
-      <span style="font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--txt-muted);">[ Grid de Projetos: Preview de Sites e Sistemas ]</span>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 3rem;">
+
+      <div class="feature-card border-gradient" style="display: flex; flex-direction: column;">
+        <div class="card-icon" style="background: rgba(168,85,247,0.1); color: var(--neon-400);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        </div>
+        <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--txt-primary); margin-bottom: 0.5rem;">Ecossistema Digital Funerário</h3>
+        <p style="font-size: 0.95rem; color: var(--txt-secondary); line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1;">
+          Desenvolvimento completo de plataforma web de alta performance. Integração de design system premium e arquitetura de código otimizada.
+        </p>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <span class="badge badge-neon">Web Design</span>
+          <span class="badge badge-surface">Performance</span>
+        </div>
+      </div>
+
+      <div class="feature-card border-neon" style="display: flex; flex-direction: column;">
+        <div class="card-icon" style="background: rgba(255,0,229,0.1); color: var(--cyber-pink);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </div>
+        <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--txt-primary); margin-bottom: 0.5rem;">Sistemas de Automação IA</h3>
+        <p style="font-size: 0.95rem; color: var(--txt-secondary); line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1;">
+          Arquitetura de agentes autônomos para atendimento escalável. Triagem e qualificação de leads integradas nativamente ao fluxo do negócio.
+        </p>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <span class="badge badge-neon" style="color: var(--cyber-pink); border-color: rgba(255,0,229,0.3);">IA Generativa</span>
+          <span class="badge badge-surface">Automação (n8n/Make)</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

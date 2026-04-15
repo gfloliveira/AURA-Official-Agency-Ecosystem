@@ -1030,15 +1030,15 @@
     <!-- Headline -->
     <h1 class="hero-headline" style="perspective: 1200px;">
       <span class="reveal-line" style="--delay: 0.2s; opacity: 0;">Automatize.</span>
-      <span class="reveal-line line-neon" style="--delay: 0.5s; opacity: 0;">Escale.</span>
-      <span class="reveal-line" style="--delay: 0.8s; opacity: 0; color: rgba(245,243,255,0.9);">
+      <span class="reveal-line line-neon" style="--delay: 1.0s; opacity: 0;">Escale.</span>
+      <span class="reveal-line" style="--delay: 1.8s; opacity: 0; color: rgba(245,243,255,0.9);">
         Lidere com a<br>
         <span class="aura-text-fx">AURA.</span>
       </span>
     </h1>
 
     <!-- Subtitle -->
-    <p class="hero-subtitle" style="opacity: 0; animation: fadeSlideIn 1.2s ease 1.4s forwards; margin-top: 2rem;">
+    <p class="hero-subtitle" style="opacity: 0; animation: fadeSlideIn 1.2s ease 2.8s forwards; margin-top: 2rem;">
       Transformamos negócios com automações inteligentes, modelos de linguagem e IA generativa — do conceito à produção.
     </p>
 
@@ -1431,6 +1431,46 @@
     }, { threshold: 0.5 });
     typeWordsSections.forEach(function(el) { twObs.observe(el); });
   }
+
+  /* ── Premium Smooth Scroll (EaseOutExpo) ── */
+  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+    anchor.addEventListener('click', function (e) {
+      var targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+
+      var targetElement = document.querySelector(targetId);
+      if (!targetElement) return;
+
+      e.preventDefault();
+
+      var headerOffset = 70;
+      var elementPosition = targetElement.getBoundingClientRect().top;
+      var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      var startPosition = window.pageYOffset;
+      var distance = offsetPosition - startPosition;
+      var startTime = null;
+      var duration = 1200;
+
+      var easeOutExpo = function(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); };
+
+      function animateScroll(currentTime) {
+        if (startTime === null) startTime = currentTime;
+        var timeElapsed = currentTime - startTime;
+        var progress = Math.min(timeElapsed / duration, 1);
+        var ease = easeOutExpo(progress);
+
+        window.scrollTo(0, startPosition + distance * ease);
+
+        if (timeElapsed < duration) {
+          requestAnimationFrame(animateScroll);
+        } else {
+          window.history.pushState(null, null, targetId);
+        }
+      }
+      requestAnimationFrame(animateScroll);
+    });
+  });
 
 })();
 </script>

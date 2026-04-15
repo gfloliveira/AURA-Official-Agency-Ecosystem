@@ -905,6 +905,48 @@
     }
 
     /* =========================================================
+       TIMELINE (METODOLOGIA)
+    ========================================================= */
+    .timeline-wrap {
+      position: relative; max-width: 800px; margin: 4rem auto 0;
+    }
+    .timeline-wrap::before {
+      content: ""; position: absolute; top: 0; bottom: 0; left: 24px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--neon-500) 0%, var(--cyber-pink) 80%, transparent 100%);
+      opacity: 0.3;
+    }
+    .timeline-item {
+      position: relative; padding-left: 72px; margin-bottom: 3rem;
+      opacity: 0; transform: translateX(-20px);
+      animation: fadeSlideIn 0.8s forwards;
+    }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-node {
+      position: absolute; left: 16px; top: 4px;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: var(--clr-bg);
+      border: 3px solid var(--neon-400);
+      box-shadow: 0 0 12px var(--neon-500);
+      z-index: 2;
+    }
+    .timeline-content {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      transition: border-color 0.3s ease, transform 0.3s ease, background 0.3s ease;
+    }
+    .timeline-item:hover .timeline-content {
+      border-color: rgba(255,0,229,0.4);
+      background: rgba(168,85,247,0.05);
+      transform: translateX(4px);
+    }
+    .timeline-step { font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--neon-400); margin-bottom: 0.5rem; display: block; }
+    .timeline-title { font-size: 1.25rem; font-weight: 600; color: var(--txt-primary); margin-bottom: 0.5rem; }
+    .timeline-desc { font-size: 0.95rem; color: var(--txt-secondary); line-height: 1.6; }
+
+    /* =========================================================
        FOOTER
     ========================================================= */
     footer {
@@ -1156,8 +1198,44 @@
       A Metodologia <span class="accent">Aura</span>
     </h2>
     
-    <div id="sobre-placeholder" style="height: 250px; border: 1px dashed rgba(168,85,247,0.3); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; margin-top: 3rem; background: rgba(255,255,255,0.02);">
-      <span style="font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--txt-muted);">[ Timeline de Processos & Filosofia da Agência ]</span>
+    <div class="timeline-wrap">
+
+      <div class="timeline-item" style="animation-delay: 0.1s;">
+        <div class="timeline-node"></div>
+        <div class="timeline-content">
+          <span class="timeline-step">Fase 01</span>
+          <h3 class="timeline-title">Mapeamento &amp; Diagnóstico</h3>
+          <p class="timeline-desc">Mergulhamos na operação da sua empresa. Identificamos gargalos, processos manuais e onde a inteligência artificial pode gerar o maior retorno sobre investimento (ROI) imediato.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item" style="animation-delay: 0.3s;">
+        <div class="timeline-node" style="border-color: var(--cyber-pink); box-shadow: 0 0 12px var(--cyber-pink);"></div>
+        <div class="timeline-content">
+          <span class="timeline-step" style="color: var(--cyber-pink);">Fase 02</span>
+          <h3 class="timeline-title">Arquitetura da Solução</h3>
+          <p class="timeline-desc">Desenhamos a infraestrutura do sistema. Seja um agente de IA para WhatsApp, integrações via n8n, ou o desenvolvimento de um painel web exclusivo para controle operacional.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item" style="animation-delay: 0.5s;">
+        <div class="timeline-node"></div>
+        <div class="timeline-content">
+          <span class="timeline-step">Fase 03</span>
+          <h3 class="timeline-title">Deploy &amp; Integração</h3>
+          <p class="timeline-desc">Implementamos a automação no seu ambiente. Conectamos os sistemas (CRM, ERP, Redes Sociais) garantindo que a transição seja suave, segura e sem interrupções no seu fluxo de caixa.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item" style="animation-delay: 0.7s;">
+        <div class="timeline-node" style="border-color: var(--txt-primary); box-shadow: 0 0 12px rgba(255,255,255,0.3);"></div>
+        <div class="timeline-content">
+          <span class="timeline-step" style="color: var(--txt-primary);">Fase 04</span>
+          <h3 class="timeline-title">Escala Contínua</h3>
+          <p class="timeline-desc">A tecnologia evolui rápido, e nós também. Monitoramos os agentes, ajustamos os prompts dos LLMs e refinamos as automações para garantir que o sistema escale junto com o seu faturamento.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

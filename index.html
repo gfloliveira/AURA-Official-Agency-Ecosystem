@@ -397,7 +397,7 @@
     }
 
     /* =========================================================
-       BACKGROUND – Animated particles + grid
+       BACKGROUND – Grid + Neural Canvas
     ========================================================= */
     .hero-bg {
       position: absolute; inset: 0; z-index: 0;
@@ -415,103 +415,12 @@
       position: absolute; inset: 0;
       background: radial-gradient(ellipse 85% 55% at 50% 0%, rgba(168,85,247,0.15) 0%, rgba(255,0,229,0.05) 40%, transparent 70%);
     }
-    .hero-bg-glow-left {
-      position: absolute;
-      width: 600px; height: 600px;
-      left: -150px; top: 10%;
-      background: radial-gradient(circle, rgba(168,85,247,0.07) 0%, transparent 65%);
-      border-radius: 50%; filter: blur(1px);
-      animation: float-y 9s ease-in-out infinite;
-    }
-    .hero-bg-glow-right {
-      position: absolute;
-      width: 700px; height: 700px;
-      right: -200px; top: 5%;
-      background: radial-gradient(circle, rgba(180,120,10,0.06) 0%, transparent 65%);
-      border-radius: 50%; filter: blur(1px);
-      animation: float-y 12s ease-in-out 2s infinite reverse;
-    }
     /* Scan line effect */
     .scan-line {
       position: absolute; left: 0; right: 0; height: 2px;
       background: linear-gradient(90deg, transparent 0%, rgba(168,85,247,0.18) 50%, transparent 100%);
       animation: scan-line 6s linear 1.5s infinite;
       pointer-events: none;
-    }
-    /* Particles */
-    .particles { position: absolute; inset: 0; }
-    .particle {
-      position: absolute; border-radius: 50%;
-      background: var(--neon-400);
-      animation: particle-rise var(--dur, 5s) linear var(--del, 0s) infinite;
-    }
-
-    /* Orbit rings */
-    .orbit-wrapper {
-      position: absolute;
-      right: 0; top: 50%;
-      transform: translate(15%, -50%);
-      width: 580px; height: 580px;
-      pointer-events: none;
-    }
-    @media (max-width: 1200px) { .orbit-wrapper { display: none; } }
-    .orbit-ring {
-      position: absolute; inset: 0;
-      border-radius: 50%;
-      border: 1px solid rgba(168,85,247,0.12);
-    }
-    .orbit-ring-2 {
-      position: absolute;
-      inset: 60px;
-      border-radius: 50%;
-      border: 1px solid rgba(168,85,247,0.08);
-    }
-    .orbit-ring-3 {
-      position: absolute;
-      inset: 120px;
-      border-radius: 50%;
-      border: 1px solid rgba(168,85,247,0.14);
-    }
-    .orbit-dot {
-      position: absolute; top: 50%; left: 50%;
-      width: 10px; height: 10px; border-radius: 50%;
-      background: var(--neon-400);
-      box-shadow: 0 0 16px 4px rgba(168,85,247,0.5);
-      margin: -5px 0 0 -5px;
-      --r: 290px;
-      animation: orbit 12s linear infinite;
-    }
-    .orbit-dot-2 {
-      position: absolute; top: 50%; left: 50%;
-      width: 7px; height: 7px; border-radius: 50%;
-      background: rgba(168,85,247,0.6);
-      box-shadow: 0 0 10px 3px rgba(168,85,247,0.35);
-      margin: -3.5px 0 0 -3.5px;
-      --r: 220px;
-      animation: orbit 8s linear 2s infinite reverse;
-    }
-    .orbit-dot-3 {
-      position: absolute; top: 50%; left: 50%;
-      width: 5px; height: 5px; border-radius: 50%;
-      background: rgba(168,85,247,0.45);
-      box-shadow: 0 0 8px 2px rgba(168,85,247,0.25);
-      margin: -2.5px 0 0 -2.5px;
-      --r: 148px;
-      animation: orbit 5.5s linear 1s infinite;
-    }
-    .orbit-center {
-      position: absolute; top: 50%; left: 50%;
-      width: 100px; height: 100px;
-      margin: -50px 0 0 -50px;
-      border-radius: 50%;
-      background: radial-gradient(circle at center, rgba(168,85,247,0.25) 0%, rgba(168,85,247,0.06) 60%, transparent 100%);
-      border: 1px solid rgba(168,85,247,0.25);
-      display: flex; align-items: center; justify-content: center;
-      animation: float-y 4s ease-in-out infinite;
-    }
-    .orbit-center-icon {
-      font-size: 2.2rem;
-      animation: float-y 3.5s ease-in-out 0.3s infinite reverse;
     }
 
     /* =========================================================
@@ -1084,27 +993,10 @@
 
   <!-- Animated background -->
   <div class="hero-bg" aria-hidden="true">
+    <canvas id="neural-canvas" style="position:absolute; inset:0; z-index:1; pointer-events:none;"></canvas>
     <div class="hero-bg-grid"></div>
     <div class="hero-bg-radial"></div>
-    <div class="hero-bg-glow-left"></div>
-    <div class="hero-bg-glow-right"></div>
     <div class="scan-line"></div>
-
-    <!-- Floating particles -->
-    <div class="particles" id="particles-container"></div>
-  </div>
-
-  <!-- Orbiting rings (desktop only) -->
-  <div class="orbit-wrapper" aria-hidden="true">
-    <div class="orbit-ring"></div>
-    <div class="orbit-ring-2"></div>
-    <div class="orbit-ring-3"></div>
-    <div class="orbit-dot"></div>
-    <div class="orbit-dot-2"></div>
-    <div class="orbit-dot-3"></div>
-    <div class="orbit-center">
-      <span class="orbit-center-icon">⚡</span>
-    </div>
   </div>
 
   <!-- Content -->
@@ -1333,26 +1225,70 @@
     });
   }
 
-  /* ── Generate particles ── */
-  const particlesContainer = document.getElementById('particles-container');
-  if (particlesContainer) {
-    const count = 28;
-    for (let i = 0; i < count; i++) {
-      const p = document.createElement('div');
-      p.className = 'particle';
-      const size = Math.random() * 3 + 1.5;
-      p.style.cssText = [
-        'width:'  + size + 'px',
-        'height:' + size + 'px',
-        'left:'   + (Math.random() * 100) + '%',
-        'top:'    + (Math.random() * 100) + '%',
-        '--dur:'  + (Math.random() * 8 + 5) + 's',
-        '--del:'  + (Math.random() * 8) + 's',
-        '--tx:'   + ((Math.random() - 0.5) * 40) + 'px',
-        'opacity:' + (Math.random() * 0.5 + 0.2),
-      ].join(';');
-      particlesContainer.appendChild(p);
+  /* ── Neural Constellation ── */
+  const canvas = document.getElementById('neural-canvas');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let width, height, particles = [];
+    const mouse = { x: null, y: null, radius: 150 };
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
     }
+    window.addEventListener('resize', resize);
+    resize();
+
+    window.addEventListener('mousemove', function(e) { mouse.x = e.clientX; mouse.y = e.clientY; });
+    window.addEventListener('mouseout', function() { mouse.x = null; mouse.y = null; });
+
+    function Particle() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.vx = (Math.random() - 0.5) * 0.8;
+      this.vy = (Math.random() - 0.5) * 0.8;
+    }
+    Particle.prototype.update = function() {
+      this.x += this.vx; this.y += this.vy;
+      if (this.x > width || this.x < 0) this.vx *= -1;
+      if (this.y > height || this.y < 0) this.vy *= -1;
+    };
+
+    function init() {
+      particles = [];
+      for (var i = 0; i < 100; i++) particles.push(new Particle());
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      for (var i = 0; i < particles.length; i++) {
+        var p = particles[i];
+        p.update();
+        ctx.fillStyle = 'rgba(168, 85, 247, 0.5)';
+        ctx.beginPath(); ctx.arc(p.x, p.y, 1, 0, Math.PI * 2); ctx.fill();
+
+        for (var j = i + 1; j < particles.length; j++) {
+          var dx = p.x - particles[j].x, dy = p.y - particles[j].y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            ctx.strokeStyle = 'rgba(168, 85, 247, ' + (1 - dist / 120) + ')';
+            ctx.lineWidth = 0.5;
+            ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(particles[j].x, particles[j].y); ctx.stroke();
+          }
+        }
+        if (mouse.x !== null) {
+          var mdx = p.x - mouse.x, mdy = p.y - mouse.y;
+          var mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+          if (mdist < mouse.radius) {
+            ctx.strokeStyle = 'rgba(255, 0, 229, ' + (0.8 - mdist / mouse.radius) + ')';
+            ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+    init(); animate();
   }
 
   /* ── Neon Spotlight Tracking (Bento Cards) ── */

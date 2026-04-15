@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>AURAVOX — Agência de Inteligência Artificial</title>
-  <meta name="description" content="AURAVOX é uma agência de I.A premium especializada em automações inteligentes, soluções de IA generativa e transformação digital para empresas visionárias."/>
+  <title>AURA — Agência de Inteligência Artificial</title>
+  <meta name="description" content="AURA é uma agência de I.A premium especializada em automações inteligentes, soluções de IA generativa e transformação digital para empresas visionárias."/>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -18,26 +18,18 @@
       theme: {
         extend: {
           colors: {
-            gold: {
-              50:  '#fdf9ec',
-              100: '#faf0cc',
-              200: '#f5de99',
-              300: '#efc75f',
-              400: '#e8b134',
-              500: '#d4952a', // champagne gold
-              600: '#c47a1a',
-              700: '#a45e17',
-              800: '#864b1a',
-              900: '#703f1a',
+            neon: {
+              50:  '#faf5ff',
+              400: '#c084fc', // Light purple
+              500: '#a855f7', // Neon Purple (Primary)
+              600: '#9333ea',
             },
             obsidian: {
-              900: '#090909',
-              800: '#0d0d0d',
-              700: '#111111',
-              600: '#161616',
-              500: '#1a1a1a',
-              400: '#222222',
-            }
+              900: '#020204', // Black Absolute
+              800: '#080015', // Midnight Purple
+              700: '#120d1d',
+            },
+            cyber: '#ff00e5', // Cyber Pink (Secondary)
           },
           fontFamily: {
             sans:  ['Space Grotesk', 'Inter', 'ui-sans-serif', 'system-ui'],
@@ -56,27 +48,21 @@
 
     :root {
       /* ── Core palette ── */
-      --clr-bg:          #090909;
-      --clr-surface:     #111111;
-      --clr-surface-2:   #161616;
-      --clr-border:      rgba(255,255,255,0.07);
-      --clr-border-gold: rgba(212,149,42,0.35);
+      --clr-bg:          #020204;
+      --clr-surface:     #080015;
+      --clr-surface-2:   #120d1d;
+      --clr-border:      rgba(168, 85, 247, 0.15);
+      --clr-border-neon: rgba(168, 85, 247, 0.5);
 
-      /* Gold spectrum */
-      --gold-50:   #fdf9ec;
-      --gold-100:  #faf0cc;
-      --gold-200:  #f5de99;
-      --gold-300:  #efc75f;
-      --gold-400:  #e8b134;
-      --gold-500:  #d4952a;   /* primary accent */
-      --gold-600:  #c47a1a;
-      --gold-700:  #a45e17;
+      --neon-400:        #c084fc;
+      --neon-500:        #a855f7;
+      --cyber-pink:      #ff00e5;
 
       /* Text */
-      --txt-primary:   #f0ece4;
-      --txt-secondary: rgba(240,236,228,0.65);
-      --txt-muted:     rgba(240,236,228,0.38);
-      --txt-gold:      #e8b134;
+      --txt-primary:     #f5f3ff;
+      --txt-secondary:   rgba(245, 243, 255, 0.7);
+      --txt-muted:       rgba(245, 243, 255, 0.38);
+      --txt-neon:        #c084fc;
 
       /* Radii / shadows */
       --radius-sm:  6px;
@@ -124,13 +110,13 @@
     @keyframes shimmer-mask {
       to { -webkit-mask-position: 200% 0; mask-position: 200% 0; }
     }
-    @keyframes gold-pulse {
-      0%,100% { box-shadow: 0 0 0 0 rgba(212,149,42,0); }
-      50%     { box-shadow: 0 0 28px 6px rgba(212,149,42,0.28); }
+    @keyframes neon-pulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0); }
+      50%     { box-shadow: 0 0 28px 6px rgba(168, 85, 247, 0.4); }
     }
-    @keyframes gold-glow-text {
-      0%,100% { text-shadow: 0 0 0 rgba(232,177,52,0); }
-      60%     { text-shadow: 0 0 32px rgba(232,177,52,0.4); }
+    @keyframes neon-glow-text {
+      0%,100% { text-shadow: 0 0 0 rgba(168,85,247,0); }
+      60%     { text-shadow: 0 0 32px rgba(168,85,247,0.5); }
     }
     @keyframes orbit {
       from { transform: rotate(0deg) translateX(var(--r,110px)) rotate(0deg); }
@@ -210,24 +196,26 @@
       position: absolute; inset: 0;
       border-radius: inherit; padding: 1px;
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
-      background: linear-gradient(135deg, rgba(212,149,42,0.0) 0%, rgba(212,149,42,0.55) 50%, rgba(212,149,42,0.0) 100%);
+      background: linear-gradient(135deg, rgba(168,85,247,0.0) 0%, rgba(168,85,247,0.55) 50%, rgba(168,85,247,0.0) 100%);
       pointer-events: none;
     }
 
     /* Gold border gradient (stronger) */
-    .border-gold {
+    .border-neon {
       position: relative;
     }
-    .border-gold::before {
+    .border-neon::before {
       content: "";
       position: absolute; inset: 0;
       border-radius: inherit; padding: 1px;
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
-      background: linear-gradient(135deg, var(--gold-600) 0%, var(--gold-300) 50%, var(--gold-600) 100%);
+      background: linear-gradient(135deg, var(--neon-500) 0%, var(--cyber-pink) 50%, var(--neon-500) 100%);
       pointer-events: none;
     }
 
@@ -272,12 +260,12 @@
       display: flex; flex-direction: column; justify-content: space-between;
     }
     .bento-card:hover {
-      border-color: rgba(212,149,42,0.35);
+      border-color: rgba(168,85,247,0.35);
       transform: translateY(-4px);
     }
     .bento-card::before {
       content: ""; position: absolute; inset: 0;
-      background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(212, 149, 42, 0.06), transparent 40%);
+      background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(168, 85, 247, 0.06), transparent 40%);
       opacity: 0; transition: opacity 0.3s; pointer-events: none; z-index: 0;
     }
     .bento-card:hover::before { opacity: 1; }
@@ -286,11 +274,11 @@
       width: 56px; height: 56px; border-radius: var(--radius-lg);
       background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
       display: flex; align-items: center; justify-content: center;
-      color: var(--gold-400); margin-bottom: 2rem;
+      color: var(--neon-400); margin-bottom: 2rem;
       transition: transform 0.4s var(--ease-spring), background 0.4s ease;
     }
     .bento-card:hover .bento-icon {
-      transform: scale(1.1) rotate(-5deg); background: rgba(212,149,42,0.1); border-color: rgba(212,149,42,0.3);
+      transform: scale(1.1) rotate(-5deg); background: rgba(168,85,247,0.1); border-color: rgba(168,85,247,0.3);
     }
     @media (max-width: 992px) {
       .bento-card { grid-column: span 12 !important; }
@@ -322,9 +310,9 @@
     .nav-logo .logo-dot {
       display: inline-block;
       width: 8px; height: 8px; border-radius: 50%;
-      background: var(--gold-400);
-      box-shadow: 0 0 12px var(--gold-500);
-      animation: gold-pulse 2.2s ease-in-out infinite;
+      background: var(--neon-400);
+      box-shadow: 0 0 12px var(--neon-500);
+      animation: neon-pulse 2.2s ease-in-out infinite;
     }
     .nav-links {
       display: flex; align-items: center; gap: 2.25rem;
@@ -342,16 +330,16 @@
       font-size: 0.82rem; font-weight: 600;
       padding: 0.6rem 1.35rem;
       border-radius: var(--radius-pill);
-      background: var(--gold-500);
+      background: var(--neon-500);
       color: #080808;
       text-decoration: none;
       transition: background 0.22s ease, transform 0.2s ease, box-shadow 0.22s ease;
-      box-shadow: 0 0 0 1px rgba(212,149,42,0.4), 0 8px 24px rgba(212,149,42,0.22);
+      box-shadow: 0 0 0 1px rgba(168,85,247,0.4), 0 8px 24px rgba(168,85,247,0.22);
     }
     .nav-cta:hover {
-      background: var(--gold-400);
+      background: var(--neon-400);
       transform: translateY(-1px);
-      box-shadow: 0 0 0 1px rgba(232,177,52,0.6), 0 12px 36px rgba(212,149,42,0.35);
+      box-shadow: 0 0 0 1px rgba(192,132,252,0.6), 0 12px 36px rgba(168,85,247,0.35);
     }
     .nav-mobile-btn {
       display: none;
@@ -388,7 +376,7 @@
     #mobile-menu a:hover { color: var(--txt-primary); }
     #mobile-menu .mobile-cta {
       display: inline-flex; margin-top: 1.25rem;
-      background: var(--gold-500); color: #080808;
+      background: var(--neon-500); color: #080808;
       padding: 0.7rem 1.5rem;
       border-radius: var(--radius-pill);
       font-weight: 600; font-size: 0.9rem;
@@ -405,20 +393,20 @@
     .hero-bg-grid {
       position: absolute; inset: 0;
       background-image:
-        linear-gradient(rgba(212,149,42,0.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(212,149,42,0.045) 1px, transparent 1px);
+        linear-gradient(rgba(168,85,247,0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(168,85,247,0.045) 1px, transparent 1px);
       background-size: 56px 56px;
       animation: grid-fade-in 2s ease 0.5s both;
     }
     .hero-bg-radial {
       position: absolute; inset: 0;
-      background: radial-gradient(ellipse 85% 55% at 50% 0%, rgba(212,149,42,0.12) 0%, transparent 70%);
+      background: radial-gradient(ellipse 85% 55% at 50% 0%, rgba(168,85,247,0.15) 0%, rgba(255,0,229,0.05) 40%, transparent 70%);
     }
     .hero-bg-glow-left {
       position: absolute;
       width: 600px; height: 600px;
       left: -150px; top: 10%;
-      background: radial-gradient(circle, rgba(212,149,42,0.07) 0%, transparent 65%);
+      background: radial-gradient(circle, rgba(168,85,247,0.07) 0%, transparent 65%);
       border-radius: 50%; filter: blur(1px);
       animation: float-y 9s ease-in-out infinite;
     }
@@ -433,7 +421,7 @@
     /* Scan line effect */
     .scan-line {
       position: absolute; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, transparent 0%, rgba(212,149,42,0.18) 50%, transparent 100%);
+      background: linear-gradient(90deg, transparent 0%, rgba(168,85,247,0.18) 50%, transparent 100%);
       animation: scan-line 6s linear 1.5s infinite;
       pointer-events: none;
     }
@@ -441,7 +429,7 @@
     .particles { position: absolute; inset: 0; }
     .particle {
       position: absolute; border-radius: 50%;
-      background: var(--gold-400);
+      background: var(--neon-400);
       animation: particle-rise var(--dur, 5s) linear var(--del, 0s) infinite;
     }
 
@@ -457,25 +445,25 @@
     .orbit-ring {
       position: absolute; inset: 0;
       border-radius: 50%;
-      border: 1px solid rgba(212,149,42,0.12);
+      border: 1px solid rgba(168,85,247,0.12);
     }
     .orbit-ring-2 {
       position: absolute;
       inset: 60px;
       border-radius: 50%;
-      border: 1px solid rgba(212,149,42,0.08);
+      border: 1px solid rgba(168,85,247,0.08);
     }
     .orbit-ring-3 {
       position: absolute;
       inset: 120px;
       border-radius: 50%;
-      border: 1px solid rgba(212,149,42,0.14);
+      border: 1px solid rgba(168,85,247,0.14);
     }
     .orbit-dot {
       position: absolute; top: 50%; left: 50%;
       width: 10px; height: 10px; border-radius: 50%;
-      background: var(--gold-400);
-      box-shadow: 0 0 16px 4px rgba(212,149,42,0.5);
+      background: var(--neon-400);
+      box-shadow: 0 0 16px 4px rgba(168,85,247,0.5);
       margin: -5px 0 0 -5px;
       --r: 290px;
       animation: orbit 12s linear infinite;
@@ -483,8 +471,8 @@
     .orbit-dot-2 {
       position: absolute; top: 50%; left: 50%;
       width: 7px; height: 7px; border-radius: 50%;
-      background: rgba(212,149,42,0.6);
-      box-shadow: 0 0 10px 3px rgba(212,149,42,0.35);
+      background: rgba(168,85,247,0.6);
+      box-shadow: 0 0 10px 3px rgba(168,85,247,0.35);
       margin: -3.5px 0 0 -3.5px;
       --r: 220px;
       animation: orbit 8s linear 2s infinite reverse;
@@ -492,8 +480,8 @@
     .orbit-dot-3 {
       position: absolute; top: 50%; left: 50%;
       width: 5px; height: 5px; border-radius: 50%;
-      background: rgba(212,149,42,0.45);
-      box-shadow: 0 0 8px 2px rgba(212,149,42,0.25);
+      background: rgba(168,85,247,0.45);
+      box-shadow: 0 0 8px 2px rgba(168,85,247,0.25);
       margin: -2.5px 0 0 -2.5px;
       --r: 148px;
       animation: orbit 5.5s linear 1s infinite;
@@ -503,8 +491,8 @@
       width: 100px; height: 100px;
       margin: -50px 0 0 -50px;
       border-radius: 50%;
-      background: radial-gradient(circle at center, rgba(212,149,42,0.25) 0%, rgba(212,149,42,0.06) 60%, transparent 100%);
-      border: 1px solid rgba(212,149,42,0.25);
+      background: radial-gradient(circle at center, rgba(168,85,247,0.25) 0%, rgba(168,85,247,0.06) 60%, transparent 100%);
+      border: 1px solid rgba(168,85,247,0.25);
       display: flex; align-items: center; justify-content: center;
       animation: float-y 4s ease-in-out infinite;
     }
@@ -529,20 +517,20 @@
       display: inline-flex; align-items: center; gap: 0.5rem;
       padding: 0.4rem 1rem;
       border-radius: var(--radius-pill);
-      background: rgba(212,149,42,0.08);
-      border: 1px solid rgba(212,149,42,0.25);
+      background: rgba(168,85,247,0.08);
+      border: 1px solid rgba(168,85,247,0.25);
       font-size: 0.72rem; font-weight: 600;
       letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--gold-400);
+      color: var(--neon-400);
       backdrop-filter: blur(8px);
       animation: fadeSlideIn 0.6s ease 0.2s both, badge-bounce 8s ease-in-out 1.5s infinite;
       margin-bottom: 2rem;
     }
     .hero-badge .badge-dot {
       width: 6px; height: 6px; border-radius: 50%;
-      background: var(--gold-400);
-      box-shadow: 0 0 8px rgba(212,149,42,0.8);
-      animation: gold-pulse 1.8s ease-in-out infinite;
+      background: var(--neon-400);
+      box-shadow: 0 0 8px rgba(168,85,247,0.8);
+      animation: neon-pulse 1.8s ease-in-out infinite;
     }
     .hero-headline {
       font-family: 'Space Grotesk', sans-serif;
@@ -554,10 +542,10 @@
       animation: fadeSlideIn 1.6s var(--ease-out-expo) 0.35s both;
       margin-bottom: 1.75rem;
     }
-    .hero-headline .line-gold {
-      color: var(--gold-400);
+    .hero-headline .line-neon {
+      color: var(--neon-400);
       display: block;
-      animation: gold-glow-text 3s ease-in-out 2s infinite;
+      animation: neon-glow-text 3s ease-in-out 2s infinite;
     }
     .hero-headline .line-shimmer {
       display: block;
@@ -582,14 +570,14 @@
       display: inline-flex; align-items: center; gap: 0.5rem;
       padding: 0.85rem 2rem;
       border-radius: var(--radius-pill);
-      background: var(--gold-500);
-      color: #080808;
+      background: var(--neon-500);
+      color: #ffffff;
       font-size: 0.9rem; font-weight: 700;
       letter-spacing: 0.01em;
       text-decoration: none;
       overflow: hidden;
       transition: transform 0.25s var(--ease-spring), box-shadow 0.25s ease;
-      box-shadow: 0 0 0 1px rgba(212,149,42,0.6), 0 8px 32px rgba(212,149,42,0.28);
+      box-shadow: 0 0 0 1px rgba(168,85,247,0.6), 0 8px 32px rgba(168,85,247,0.28);
     }
     .btn-primary::before {
       content: "";
@@ -597,7 +585,7 @@
       background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 60%);
       opacity: 0; transition: opacity 0.25s;
     }
-    .btn-primary:hover { transform: translateY(-2px) scale(1.025); box-shadow: 0 0 0 1px rgba(232,177,52,0.8), 0 16px 48px rgba(212,149,42,0.38); }
+    .btn-primary:hover { transform: translateY(-2px) scale(1.025); box-shadow: 0 0 0 1px rgba(192,132,252,0.8), 0 16px 48px rgba(168,85,247,0.38); }
     .btn-primary:hover::before { opacity: 1; }
     .btn-primary .btn-arrow { transition: transform 0.25s var(--ease-spring); }
     .btn-primary:hover .btn-arrow { transform: translateX(3px); }
@@ -622,14 +610,14 @@
       position: absolute; bottom: 0; left: 50%;
       transform: translateX(-50%);
       width: 60%; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(212,149,42,0.6), transparent);
+      background: linear-gradient(90deg, transparent, rgba(168,85,247,0.6), transparent);
       opacity: 0; transition: opacity 0.25s ease;
     }
     .btn-secondary:hover {
       transform: translateY(-2px) scale(1.02);
-      background: rgba(212,149,42,0.07);
-      border-color: rgba(212,149,42,0.35);
-      box-shadow: 0 0 20px rgba(212,149,42,0.12);
+      background: rgba(168,85,247,0.07);
+      border-color: rgba(168,85,247,0.35);
+      box-shadow: 0 0 20px rgba(168,85,247,0.12);
     }
     .btn-secondary:hover::after { opacity: 1; }
     /* Hover glow under button */
@@ -640,7 +628,7 @@
       position: absolute; bottom: -10px; left: 50%;
       transform: translateX(-50%);
       width: 80%; height: 20px;
-      background: radial-gradient(60% 100% at 50% 50%, rgba(212,149,42,0.5), transparent 70%);
+      background: radial-gradient(60% 100% at 50% 50%, rgba(168,85,247,0.5), transparent 70%);
       filter: blur(8px);
       opacity: 0; transition: opacity 0.3s ease;
       pointer-events: none;
@@ -682,7 +670,7 @@
       border-radius: var(--radius-sm);
       transition: color 0.2s, background 0.2s;
     }
-    .ds-nav-link:hover, .ds-nav-link.active { color: var(--txt-gold); background: rgba(212,149,42,0.08); }
+    .ds-nav-link:hover, .ds-nav-link.active { color: var(--txt-neon); background: rgba(168,85,247,0.08); }
     .ds-nav-sep { width: 1px; height: 18px; background: var(--clr-border); margin: 0 0.25rem; }
 
     /* =========================================================
@@ -711,12 +699,12 @@
     }
     .section-label .dot {
       width: 5px; height: 5px; border-radius: 50%;
-      background: var(--gold-500);
+      background: var(--neon-500);
     }
     .section-label.gold {
-      color: var(--gold-400);
-      border-color: rgba(212,149,42,0.25);
-      background: rgba(212,149,42,0.06);
+      color: var(--neon-400);
+      border-color: rgba(168,85,247,0.25);
+      background: rgba(168,85,247,0.06);
     }
 
     /* Section heading */
@@ -726,7 +714,7 @@
       line-height: 1.05; color: var(--txt-primary);
       margin-bottom: 1rem;
     }
-    .section-heading .accent { color: var(--gold-400); }
+    .section-heading .accent { color: var(--neon-400); }
 
     /* =========================================================
        TYPOGRAPHY SECTION live display
@@ -774,14 +762,14 @@
       cursor: default;
     }
     .feature-card:hover {
-      border-color: var(--clr-border-gold);
-      box-shadow: 0 0 36px rgba(212,149,42,0.1), 0 16px 40px rgba(0,0,0,0.5);
+      border-color: var(--clr-border-neon);
+      box-shadow: 0 0 36px rgba(168,85,247,0.1), 0 16px 40px rgba(0,0,0,0.5);
       transform: translateY(-4px);
     }
     .feature-card::before {
       content: "";
       position: absolute; top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent 0%, rgba(212,149,42,0.4) 50%, transparent 100%);
+      background: linear-gradient(90deg, transparent 0%, rgba(168,85,247,0.4) 50%, transparent 100%);
       opacity: 0; transition: opacity 0.35s ease;
     }
     .feature-card:hover::before { opacity: 1; }
@@ -802,7 +790,7 @@
     .stat-value {
       font-size: 3rem; font-weight: 700;
       letter-spacing: -0.04em;
-      color: var(--gold-400);
+      color: var(--neon-400);
       line-height: 1;
       overflow: hidden;
     }
@@ -811,7 +799,7 @@
     /* =========================================================
        INPUTS
     ========================================================= */
-    .input-gold {
+    .input-neon {
       background: rgba(255,255,255,0.03);
       border: 1px solid var(--clr-border);
       border-radius: var(--radius-md);
@@ -823,10 +811,10 @@
       transition: border-color 0.22s ease, box-shadow 0.22s ease;
       outline: none;
     }
-    .input-gold::placeholder { color: var(--txt-muted); }
-    .input-gold:focus {
-      border-color: rgba(212,149,42,0.5);
-      box-shadow: 0 0 0 3px rgba(212,149,42,0.1);
+    .input-neon::placeholder { color: var(--txt-muted); }
+    .input-neon:focus {
+      border-color: rgba(168,85,247,0.5);
+      box-shadow: 0 0 0 3px rgba(168,85,247,0.1);
     }
 
     /* =========================================================
@@ -839,10 +827,10 @@
       font-size: 0.68rem; font-weight: 600;
       letter-spacing: 0.06em; text-transform: uppercase;
     }
-    .badge-gold {
-      background: rgba(212,149,42,0.12);
-      color: var(--gold-300);
-      border: 1px solid rgba(212,149,42,0.3);
+    .badge-neon {
+      background: rgba(168,85,247,0.12);
+      color: var(--neon-400);
+      border: 1px solid rgba(168,85,247,0.3);
     }
     .badge-surface {
       background: rgba(255,255,255,0.05);
@@ -924,7 +912,7 @@
       font-size: 1rem; line-height: 1;
       transition: background 0.2s, color 0.2s;
     }
-    .modal-close:hover { background: rgba(212,149,42,0.1); color: var(--gold-400); }
+    .modal-close:hover { background: rgba(168,85,247,0.1); color: var(--neon-400); }
 
     /* =========================================================
        MOTION DEMO CARD
@@ -959,12 +947,12 @@
       transition: border-color 0.2s, background 0.2s;
     }
     .icon-item:hover {
-      border-color: var(--clr-border-gold);
-      background: rgba(212,149,42,0.05);
+      border-color: var(--clr-border-neon);
+      background: rgba(168,85,247,0.05);
     }
     .icon-item span { font-size: 0.6rem; color: var(--txt-muted); text-align: center; }
     .icon-item svg { color: var(--txt-secondary); transition: color 0.2s; }
-    .icon-item:hover svg { color: var(--gold-400); }
+    .icon-item:hover svg { color: var(--neon-400); }
 
     /* =========================================================
        LAYOUT DEMO
@@ -1008,9 +996,9 @@
 <header id="nav-main" role="banner">
   <div class="nav-inner">
     <!-- Logo -->
-    <a class="nav-logo" href="#hero" aria-label="AURAVOX - Página inicial">
+    <a class="nav-logo" href="#hero" aria-label="AURA - Página inicial">
       <span class="logo-dot" aria-hidden="true"></span>
-      AURAVOX
+      AURA
     </a>
 
     <!-- Desktop nav links -->
@@ -1089,7 +1077,7 @@
     <!-- Headline -->
     <h1 class="hero-headline">
       <span style="display:block;">Automatize.</span>
-      <span class="line-gold shimmer-mask" style="--shine:220%">Escale.</span>
+      <span class="line-neon shimmer-mask" style="--shine:220%">Escale.</span>
       <span class="line-shimmer" style="color:rgba(240,236,228,0.72);">Lidere com I.A.</span>
     </h1>
 
@@ -1189,12 +1177,12 @@
         </div>
       </article>
 
-      <article class="bento-card" style="grid-column: span 7; min-height: 320px; background: linear-gradient(135deg, rgba(212,149,42,0.08) 0%, rgba(22,22,22,0.4) 100%); border-color: rgba(212,149,42,0.2);">
+      <article class="bento-card" style="grid-column: span 7; min-height: 320px; background: linear-gradient(135deg, rgba(168,85,247,0.08) 0%, rgba(22,22,22,0.4) 100%); border-color: rgba(168,85,247,0.2);">
         <div class="bento-content">
-          <div class="bento-icon" style="background: rgba(212,149,42,0.15); border-color: rgba(212,149,42,0.4);">
+          <div class="bento-icon" style="background: rgba(168,85,247,0.15); border-color: rgba(168,85,247,0.4);">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           </div>
-          <h3 style="font-size: 1.75rem; font-weight: 600; color: var(--gold-400); margin-bottom: 0.75rem;">Arquitetura Digital</h3>
+          <h3 style="font-size: 1.75rem; font-weight: 600; color: var(--neon-400); margin-bottom: 0.75rem;">Arquitetura Digital</h3>
           <p style="color: var(--txt-secondary); line-height: 1.6; max-width: 400px;">Do desenho da infraestrutura em nuvem até a implantação de LLMs personalizados. Nós desenhamos o futuro da sua operação.</p>
         </div>
       </article>
@@ -1211,7 +1199,7 @@
       Nosso <span class="accent">Portfólio</span>
     </h2>
     
-    <div id="portfolio-grid-placeholder" style="height: 400px; border: 1px dashed rgba(212,149,42,0.3); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; margin-top: 3rem; background: rgba(255,255,255,0.02);">
+    <div id="portfolio-grid-placeholder" style="height: 400px; border: 1px dashed rgba(168,85,247,0.3); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; margin-top: 3rem; background: rgba(255,255,255,0.02);">
       <span style="font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--txt-muted);">[ Grid de Projetos: Preview de Sites e Sistemas ]</span>
     </div>
   </div>
@@ -1226,7 +1214,7 @@
       A Metodologia <span class="accent">Aura</span>
     </h2>
     
-    <div id="sobre-placeholder" style="height: 250px; border: 1px dashed rgba(212,149,42,0.3); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; margin-top: 3rem; background: rgba(255,255,255,0.02);">
+    <div id="sobre-placeholder" style="height: 250px; border: 1px dashed rgba(168,85,247,0.3); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; margin-top: 3rem; background: rgba(255,255,255,0.02);">
       <span style="font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--txt-muted);">[ Timeline de Processos & Filosofia da Agência ]</span>
     </div>
   </div>
@@ -1238,9 +1226,9 @@
 <footer role="contentinfo">
   <div style="max-width:1280px; margin:0 auto; padding:0 2rem;">
     <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem;">
-      <span style="font-size:1rem; font-weight:700; letter-spacing:-0.02em; color:var(--txt-primary); display:flex; align-items:center; gap:0.4rem;" aria-label="AURAVOX">
-        <span style="width:7px;height:7px;border-radius:50%;background:var(--gold-400);box-shadow:0 0 10px rgba(212,149,42,0.7);" aria-hidden="true"></span>
-        AURAVOX
+      <span style="font-size:1rem; font-weight:700; letter-spacing:-0.02em; color:var(--txt-primary); display:flex; align-items:center; gap:0.4rem;" aria-label="AURA">
+        <span style="width:7px;height:7px;border-radius:50%;background:var(--neon-400);box-shadow:0 0 10px rgba(168,85,247,0.7);" aria-hidden="true"></span>
+        AURA
       </span>
       <p style="font-size:0.75rem; color:var(--txt-muted);">
         Design System v1.0 · Tech-Gold &amp; Obsidian · 2026
@@ -1321,6 +1309,18 @@
       particlesContainer.appendChild(p);
     }
   }
+
+  /* ── Neon Spotlight Tracking (Bento Cards) ── */
+  const bentoCards = document.querySelectorAll('.bento-card');
+  bentoCards.forEach(function(card) {
+    card.addEventListener('mousemove', function(e) {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mouse-x', x + 'px');
+      card.style.setProperty('--mouse-y', y + 'px');
+    });
+  });
 
   /* ── Scroll reveal for sections ── */
   const revealEls = document.querySelectorAll('.reveal-section');

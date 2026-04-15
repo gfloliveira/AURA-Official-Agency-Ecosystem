@@ -1,0 +1,2034 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>AURAVOX — Agência de Inteligência Artificial</title>
+  <meta name="description" content="AURAVOX é uma agência de I.A premium especializada em automações inteligentes, soluções de IA generativa e transformação digital para empresas visionárias."/>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: {
+              50:  '#fdf9ec',
+              100: '#faf0cc',
+              200: '#f5de99',
+              300: '#efc75f',
+              400: '#e8b134',
+              500: '#d4952a', // champagne gold
+              600: '#c47a1a',
+              700: '#a45e17',
+              800: '#864b1a',
+              900: '#703f1a',
+            },
+            obsidian: {
+              900: '#090909',
+              800: '#0d0d0d',
+              700: '#111111',
+              600: '#161616',
+              500: '#1a1a1a',
+              400: '#222222',
+            }
+          },
+          fontFamily: {
+            sans:  ['Space Grotesk', 'Inter', 'ui-sans-serif', 'system-ui'],
+            mono:  ['Space Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* =========================================================
+       BASE & RESET
+    ========================================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* ── Core palette ── */
+      --clr-bg:          #090909;
+      --clr-surface:     #111111;
+      --clr-surface-2:   #161616;
+      --clr-border:      rgba(255,255,255,0.07);
+      --clr-border-gold: rgba(212,149,42,0.35);
+
+      /* Gold spectrum */
+      --gold-50:   #fdf9ec;
+      --gold-100:  #faf0cc;
+      --gold-200:  #f5de99;
+      --gold-300:  #efc75f;
+      --gold-400:  #e8b134;
+      --gold-500:  #d4952a;   /* primary accent */
+      --gold-600:  #c47a1a;
+      --gold-700:  #a45e17;
+
+      /* Text */
+      --txt-primary:   #f0ece4;
+      --txt-secondary: rgba(240,236,228,0.65);
+      --txt-muted:     rgba(240,236,228,0.38);
+      --txt-gold:      #e8b134;
+
+      /* Radii / shadows */
+      --radius-sm:  6px;
+      --radius-md:  12px;
+      --radius-lg:  20px;
+      --radius-xl:  32px;
+      --radius-pill: 999px;
+
+      /* Easing */
+      --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+      --ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    html { background: var(--clr-bg); color: var(--txt-primary); }
+    body {
+      font-family: 'Space Grotesk', 'Inter', ui-sans-serif, system-ui, -apple-system;
+      background: var(--clr-bg);
+      color: var(--txt-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    /* =========================================================
+       KEYFRAMES
+    ========================================================= */
+    @keyframes fadeSlideIn {
+      0%   { opacity:0; transform: translateY(28px); filter: blur(8px); }
+      100% { opacity:1; transform: translateY(0);    filter: blur(0); }
+    }
+    @keyframes fadeSlideInFast {
+      0%   { opacity:0; transform: translateY(16px); filter: blur(4px); }
+      100% { opacity:1; transform: translateY(0);    filter: blur(0); }
+    }
+    @keyframes portraitFall {
+      0%   { opacity:0; transform: translateY(-120px) scale(0.6) rotate(-8deg); filter: blur(4px); }
+      60%  { opacity:1; transform: translateY(6px)   scale(1.04) rotate(2deg);  filter: blur(0); }
+      80%  { transform: translateY(-3px) scale(0.98) rotate(-0.5deg); }
+      100% { opacity:1; transform: translateY(0) scale(1) rotate(0); filter: blur(0); }
+    }
+    @keyframes word-reveal {
+      from { opacity:0; transform: translateY(18px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+    @keyframes shimmer-mask {
+      to { -webkit-mask-position: 200% 0; mask-position: 200% 0; }
+    }
+    @keyframes gold-pulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(212,149,42,0); }
+      50%     { box-shadow: 0 0 28px 6px rgba(212,149,42,0.28); }
+    }
+    @keyframes gold-glow-text {
+      0%,100% { text-shadow: 0 0 0 rgba(232,177,52,0); }
+      60%     { text-shadow: 0 0 32px rgba(232,177,52,0.4); }
+    }
+    @keyframes orbit {
+      from { transform: rotate(0deg) translateX(var(--r,110px)) rotate(0deg); }
+      to   { transform: rotate(360deg) translateX(var(--r,110px)) rotate(-360deg); }
+    }
+    @keyframes float-y {
+      0%,100% { transform: translateY(0); }
+      50%     { transform: translateY(-10px); }
+    }
+    @keyframes scan-line {
+      0%   { transform: translateY(-100%); opacity:0.6; }
+      100% { transform: translateY(400%);  opacity:0; }
+    }
+    @keyframes badge-bounce {
+      0%,86%  { transform: translateY(0) scale(1); }
+      88%     { transform: translateY(-6px) scale(.99); }
+      92%     { transform: translateY(0) scale(1.006); }
+      100%    { transform: translateY(0) scale(1); }
+    }
+    @keyframes halo-spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    @keyframes grid-fade-in {
+      from { opacity:0; }
+      to { opacity:1; }
+    }
+    @keyframes particle-rise {
+      0%   { transform: translateY(0) translateX(0) scale(1); opacity:0.7; }
+      100% { transform: translateY(-60px) translateX(var(--tx,10px)) scale(0); opacity:0; }
+    }
+    @keyframes counter-up {
+      from { transform: translateY(100%); opacity:0; }
+      to   { transform: translateY(0);    opacity:1; }
+    }
+    @keyframes border-trail {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* =========================================================
+       UTILITIES
+    ========================================================= */
+
+    /* Shimmer mask headline */
+    .shimmer-mask {
+      position: relative;
+      -webkit-mask: linear-gradient(90deg, transparent 0, #000 18%, #000 82%, transparent var(--shine, 200%)) 0 0/200% 100% no-repeat;
+      mask: linear-gradient(90deg, transparent 0, #000 18%, #000 82%, transparent var(--shine, 200%)) 0 0/200% 100% no-repeat;
+      animation: shimmer-mask 3s ease-in-out 0.8s both;
+    }
+
+    /* Word-by-word reveal */
+    .type-words { --stagger:.18s; --dur:1.6s; --ease:ease-out; --delay:0.4s; }
+    .type-words .w {
+      display: inline-block; opacity:0;
+      animation: word-reveal var(--dur) var(--ease) forwards;
+      animation-delay: calc(var(--delay) + var(--i) * var(--stagger));
+    }
+    .type-words:not(.visible) .w { animation-name: none; }
+
+    /* Section reveal on scroll */
+    .reveal-section {
+      opacity: 0; transform: translateY(44px); filter: blur(8px);
+      transition: opacity 1s var(--ease-out-expo), transform 1.1s var(--ease-out-expo), filter 0.9s ease;
+      will-change: opacity, transform, filter;
+    }
+    .reveal-section.visible { opacity:1; transform: translateY(0); filter: blur(0); }
+
+    /* Border gradient pill */
+    .border-gradient {
+      position: relative;
+    }
+    .border-gradient::before {
+      content: "";
+      position: absolute; inset: 0;
+      border-radius: inherit; padding: 1px;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      background: linear-gradient(135deg, rgba(212,149,42,0.0) 0%, rgba(212,149,42,0.55) 50%, rgba(212,149,42,0.0) 100%);
+      pointer-events: none;
+    }
+
+    /* Gold border gradient (stronger) */
+    .border-gold {
+      position: relative;
+    }
+    .border-gold::before {
+      content: "";
+      position: absolute; inset: 0;
+      border-radius: inherit; padding: 1px;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      background: linear-gradient(135deg, var(--gold-600) 0%, var(--gold-300) 50%, var(--gold-600) 100%);
+      pointer-events: none;
+    }
+
+    /* Gradient blur (bottom fade) */
+    .gradient-blur {
+      position: fixed; z-index: 5;
+      inset: auto 0 0 0; height: 12%; /* Reduzido de 45% para 12% */
+      pointer-events: none;
+    }
+    .gradient-blur > div { position: absolute; inset: 0; }
+    .gradient-blur::before {
+      content: ""; position: absolute; inset: 0; z-index: 1;
+      backdrop-filter: blur(0.5px);
+      mask: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 12.5%, rgba(0,0,0,1) 25%, rgba(0,0,0,0) 37.5%);
+    }
+    .gradient-blur > div:nth-of-type(1) { z-index:2; backdrop-filter:blur(1px);  mask:linear-gradient(to bottom,rgba(0,0,0,0) 12.5%,rgba(0,0,0,1) 25%,rgba(0,0,0,1) 37.5%,rgba(0,0,0,0) 50%); }
+    .gradient-blur > div:nth-of-type(2) { z-index:3; backdrop-filter:blur(2px);  mask:linear-gradient(to bottom,rgba(0,0,0,0) 25%,rgba(0,0,0,1) 37.5%,rgba(0,0,0,1) 50%,rgba(0,0,0,0) 62.5%); }
+    .gradient-blur > div:nth-of-type(3) { z-index:4; backdrop-filter:blur(4px);  mask:linear-gradient(to bottom,rgba(0,0,0,0) 37.5%,rgba(0,0,0,1) 50%,rgba(0,0,0,1) 62.5%,rgba(0,0,0,0) 75%); }
+    .gradient-blur > div:nth-of-type(4) { z-index:5; backdrop-filter:blur(8px);  mask:linear-gradient(to bottom,rgba(0,0,0,0) 50%,rgba(0,0,0,1) 62.5%,rgba(0,0,0,1) 75%,rgba(0,0,0,0) 87.5%); }
+    .gradient-blur > div:nth-of-type(5) { z-index:6; backdrop-filter:blur(16px); mask:linear-gradient(to bottom,rgba(0,0,0,0) 62.5%,rgba(0,0,0,1) 75%,rgba(0,0,0,1) 87.5%,rgba(0,0,0,0) 100%); }
+    .gradient-blur > div:nth-of-type(6) { z-index:7; backdrop-filter:blur(32px); mask:linear-gradient(to bottom,rgba(0,0,0,0) 75%,rgba(0,0,0,1) 87.5%,rgba(0,0,0,1) 100%); }
+    .gradient-blur::after { content:""; position:absolute; inset:0; z-index:8; backdrop-filter:blur(64px); mask:linear-gradient(to bottom,rgba(0,0,0,0) 87.5%,rgba(0,0,0,1) 100%); }
+
+    /* =========================================================
+       NAVIGATION
+    ========================================================= */
+    #nav-main {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(9,9,9,0.72);
+      backdrop-filter: blur(24px) saturate(160%);
+      border-bottom: 1px solid var(--clr-border);
+      animation: fadeSlideInFast 0.5s ease 0.05s both;
+    }
+    .nav-inner {
+      max-width: 1280px; margin: 0 auto;
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem; font-weight: 700;
+      letter-spacing: -0.02em; color: var(--txt-primary);
+      display: flex; align-items: center; gap: 0.5rem;
+      text-decoration: none;
+    }
+    .nav-logo .logo-dot {
+      display: inline-block;
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--gold-400);
+      box-shadow: 0 0 12px var(--gold-500);
+      animation: gold-pulse 2.2s ease-in-out infinite;
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 2.25rem;
+      font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.03em;
+      color: var(--txt-secondary);
+    }
+    .nav-links a {
+      text-decoration: none; color: inherit;
+      transition: color 0.2s ease;
+    }
+    .nav-links a:hover { color: var(--txt-primary); }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      font-size: 0.82rem; font-weight: 600;
+      padding: 0.6rem 1.35rem;
+      border-radius: var(--radius-pill);
+      background: var(--gold-500);
+      color: #080808;
+      text-decoration: none;
+      transition: background 0.22s ease, transform 0.2s ease, box-shadow 0.22s ease;
+      box-shadow: 0 0 0 1px rgba(212,149,42,0.4), 0 8px 24px rgba(212,149,42,0.22);
+    }
+    .nav-cta:hover {
+      background: var(--gold-400);
+      transform: translateY(-1px);
+      box-shadow: 0 0 0 1px rgba(232,177,52,0.6), 0 12px 36px rgba(212,149,42,0.35);
+    }
+    .nav-mobile-btn {
+      display: none;
+      width: 40px; height: 40px;
+      align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-sm);
+      cursor: pointer; color: var(--txt-primary);
+    }
+    @media (max-width: 1024px) {
+      .nav-links { display: none; }
+      .nav-cta-desktop { display: none; }
+      .nav-mobile-btn { display: flex; }
+    }
+
+    /* Mobile menu */
+    #mobile-menu {
+      display: none;
+      position: fixed; top: 68px; left: 0; right: 0; z-index: 99;
+      background: rgba(9,9,9,0.96);
+      backdrop-filter: blur(32px);
+      border-bottom: 1px solid var(--clr-border);
+      padding: 1.5rem 2rem 2rem;
+    }
+    #mobile-menu.open { display: block; animation: fadeSlideInFast 0.22s ease both; }
+    #mobile-menu a {
+      display: block; padding: 0.75rem 0;
+      font-size: 1rem; font-weight: 500;
+      color: var(--txt-secondary); text-decoration: none;
+      border-bottom: 1px solid var(--clr-border);
+      transition: color 0.2s;
+    }
+    #mobile-menu a:hover { color: var(--txt-primary); }
+    #mobile-menu .mobile-cta {
+      display: inline-flex; margin-top: 1.25rem;
+      background: var(--gold-500); color: #080808;
+      padding: 0.7rem 1.5rem;
+      border-radius: var(--radius-pill);
+      font-weight: 600; font-size: 0.9rem;
+      text-decoration: none;
+    }
+
+    /* =========================================================
+       BACKGROUND – Animated particles + grid
+    ========================================================= */
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      overflow: hidden; pointer-events: none;
+    }
+    .hero-bg-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(212,149,42,0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212,149,42,0.045) 1px, transparent 1px);
+      background-size: 56px 56px;
+      animation: grid-fade-in 2s ease 0.5s both;
+    }
+    .hero-bg-radial {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 85% 55% at 50% 0%, rgba(212,149,42,0.12) 0%, transparent 70%);
+    }
+    .hero-bg-glow-left {
+      position: absolute;
+      width: 600px; height: 600px;
+      left: -150px; top: 10%;
+      background: radial-gradient(circle, rgba(212,149,42,0.07) 0%, transparent 65%);
+      border-radius: 50%; filter: blur(1px);
+      animation: float-y 9s ease-in-out infinite;
+    }
+    .hero-bg-glow-right {
+      position: absolute;
+      width: 700px; height: 700px;
+      right: -200px; top: 5%;
+      background: radial-gradient(circle, rgba(180,120,10,0.06) 0%, transparent 65%);
+      border-radius: 50%; filter: blur(1px);
+      animation: float-y 12s ease-in-out 2s infinite reverse;
+    }
+    /* Scan line effect */
+    .scan-line {
+      position: absolute; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent 0%, rgba(212,149,42,0.18) 50%, transparent 100%);
+      animation: scan-line 6s linear 1.5s infinite;
+      pointer-events: none;
+    }
+    /* Particles */
+    .particles { position: absolute; inset: 0; }
+    .particle {
+      position: absolute; border-radius: 50%;
+      background: var(--gold-400);
+      animation: particle-rise var(--dur, 5s) linear var(--del, 0s) infinite;
+    }
+
+    /* Orbit rings */
+    .orbit-wrapper {
+      position: absolute;
+      right: 0; top: 50%;
+      transform: translate(15%, -50%);
+      width: 580px; height: 580px;
+      pointer-events: none;
+    }
+    @media (max-width: 1200px) { .orbit-wrapper { display: none; } }
+    .orbit-ring {
+      position: absolute; inset: 0;
+      border-radius: 50%;
+      border: 1px solid rgba(212,149,42,0.12);
+    }
+    .orbit-ring-2 {
+      position: absolute;
+      inset: 60px;
+      border-radius: 50%;
+      border: 1px solid rgba(212,149,42,0.08);
+    }
+    .orbit-ring-3 {
+      position: absolute;
+      inset: 120px;
+      border-radius: 50%;
+      border: 1px solid rgba(212,149,42,0.14);
+    }
+    .orbit-dot {
+      position: absolute; top: 50%; left: 50%;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--gold-400);
+      box-shadow: 0 0 16px 4px rgba(212,149,42,0.5);
+      margin: -5px 0 0 -5px;
+      --r: 290px;
+      animation: orbit 12s linear infinite;
+    }
+    .orbit-dot-2 {
+      position: absolute; top: 50%; left: 50%;
+      width: 7px; height: 7px; border-radius: 50%;
+      background: rgba(212,149,42,0.6);
+      box-shadow: 0 0 10px 3px rgba(212,149,42,0.35);
+      margin: -3.5px 0 0 -3.5px;
+      --r: 220px;
+      animation: orbit 8s linear 2s infinite reverse;
+    }
+    .orbit-dot-3 {
+      position: absolute; top: 50%; left: 50%;
+      width: 5px; height: 5px; border-radius: 50%;
+      background: rgba(212,149,42,0.45);
+      box-shadow: 0 0 8px 2px rgba(212,149,42,0.25);
+      margin: -2.5px 0 0 -2.5px;
+      --r: 148px;
+      animation: orbit 5.5s linear 1s infinite;
+    }
+    .orbit-center {
+      position: absolute; top: 50%; left: 50%;
+      width: 100px; height: 100px;
+      margin: -50px 0 0 -50px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, rgba(212,149,42,0.25) 0%, rgba(212,149,42,0.06) 60%, transparent 100%);
+      border: 1px solid rgba(212,149,42,0.25);
+      display: flex; align-items: center; justify-content: center;
+      animation: float-y 4s ease-in-out infinite;
+    }
+    .orbit-center-icon {
+      font-size: 2.2rem;
+      animation: float-y 3.5s ease-in-out 0.3s infinite reverse;
+    }
+
+    /* =========================================================
+       HERO SECTION
+    ========================================================= */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 120px 1.5rem 5rem;
+      overflow: hidden;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      border-radius: var(--radius-pill);
+      background: rgba(212,149,42,0.08);
+      border: 1px solid rgba(212,149,42,0.25);
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gold-400);
+      backdrop-filter: blur(8px);
+      animation: fadeSlideIn 0.6s ease 0.2s both, badge-bounce 8s ease-in-out 1.5s infinite;
+      margin-bottom: 2rem;
+    }
+    .hero-badge .badge-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gold-400);
+      box-shadow: 0 0 8px rgba(212,149,42,0.8);
+      animation: gold-pulse 1.8s ease-in-out infinite;
+    }
+    .hero-headline {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(3rem, 8.5vw, 7.5rem);
+      font-weight: 700;
+      line-height: 0.93;
+      letter-spacing: -0.03em;
+      color: var(--txt-primary);
+      animation: fadeSlideIn 1.6s var(--ease-out-expo) 0.35s both;
+      margin-bottom: 1.75rem;
+    }
+    .hero-headline .line-gold {
+      color: var(--gold-400);
+      display: block;
+      animation: gold-glow-text 3s ease-in-out 2s infinite;
+    }
+    .hero-headline .line-shimmer {
+      display: block;
+      color: rgba(240,236,228,0.8);
+    }
+    .hero-subtitle {
+      max-width: 640px; margin: 0 auto 2.75rem;
+      font-size: 1.1rem; font-weight: 400;
+      line-height: 1.7;
+      color: var(--txt-secondary);
+    }
+    .hero-cta-group {
+      display: flex; align-items: center; justify-content: center;
+      gap: 1rem; flex-wrap: wrap;
+      animation: fadeSlideIn 0.8s ease 0.9s both;
+      margin-bottom: 4rem;
+    }
+
+    /* Primary CTA button */
+    .btn-primary {
+      position: relative;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      border-radius: var(--radius-pill);
+      background: var(--gold-500);
+      color: #080808;
+      font-size: 0.9rem; font-weight: 700;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      overflow: hidden;
+      transition: transform 0.25s var(--ease-spring), box-shadow 0.25s ease;
+      box-shadow: 0 0 0 1px rgba(212,149,42,0.6), 0 8px 32px rgba(212,149,42,0.28);
+    }
+    .btn-primary::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 60%);
+      opacity: 0; transition: opacity 0.25s;
+    }
+    .btn-primary:hover { transform: translateY(-2px) scale(1.025); box-shadow: 0 0 0 1px rgba(232,177,52,0.8), 0 16px 48px rgba(212,149,42,0.38); }
+    .btn-primary:hover::before { opacity: 1; }
+    .btn-primary .btn-arrow { transition: transform 0.25s var(--ease-spring); }
+    .btn-primary:hover .btn-arrow { transform: translateX(3px); }
+
+    /* Secondary CTA button */
+    .btn-secondary {
+      position: relative;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.85rem 1.75rem;
+      border-radius: var(--radius-pill);
+      background: rgba(255,255,255,0.04);
+      color: var(--txt-primary);
+      font-size: 0.9rem; font-weight: 600;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(12px);
+      transition: transform 0.25s var(--ease-spring), background 0.22s ease, border-color 0.22s ease, box-shadow 0.25s ease;
+    }
+    .btn-secondary::after {
+      content: "";
+      position: absolute; bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 60%; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212,149,42,0.6), transparent);
+      opacity: 0; transition: opacity 0.25s ease;
+    }
+    .btn-secondary:hover {
+      transform: translateY(-2px) scale(1.02);
+      background: rgba(212,149,42,0.07);
+      border-color: rgba(212,149,42,0.35);
+      box-shadow: 0 0 20px rgba(212,149,42,0.12);
+    }
+    .btn-secondary:hover::after { opacity: 1; }
+    /* Hover glow under button */
+    .btn-secondary-wrap {
+      position: relative; display: inline-block;
+    }
+    .btn-secondary-wrap .btn-glow {
+      position: absolute; bottom: -10px; left: 50%;
+      transform: translateX(-50%);
+      width: 80%; height: 20px;
+      background: radial-gradient(60% 100% at 50% 50%, rgba(212,149,42,0.5), transparent 70%);
+      filter: blur(8px);
+      opacity: 0; transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+    .btn-secondary-wrap:hover .btn-glow { opacity: 1; }
+
+    /* Hero stats */
+    .hero-stats {
+      display: flex; align-items: center; justify-content: center;
+      gap: 2rem; flex-wrap: wrap;
+      font-size: 0.78rem; color: var(--txt-muted);
+      animation: fadeSlideIn 0.6s ease 1.2s both;
+    }
+    .hero-stats span {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+    }
+    .hero-stats svg { width: 14px; height: 14px; }
+
+    /* =========================================================
+       DS NAV (inner sub-nav)
+    ========================================================= */
+    #ds-nav {
+      position: sticky; top: 68px; z-index: 90;
+      background: rgba(9,9,9,0.88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--clr-border);
+    }
+    .ds-nav-inner {
+      max-width: 1280px; margin: 0 auto; padding: 0 2rem;
+      display: flex; align-items: center; gap: 0.25rem;
+      height: 48px; overflow-x: auto; scrollbar-width: none;
+    }
+    .ds-nav-inner::-webkit-scrollbar { display: none; }
+    .ds-nav-link {
+      white-space: nowrap; font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--txt-muted); text-decoration: none;
+      padding: 0.3rem 0.75rem;
+      border-radius: var(--radius-sm);
+      transition: color 0.2s, background 0.2s;
+    }
+    .ds-nav-link:hover, .ds-nav-link.active { color: var(--txt-gold); background: rgba(212,149,42,0.08); }
+    .ds-nav-sep { width: 1px; height: 18px; background: var(--clr-border); margin: 0 0.25rem; }
+
+    /* =========================================================
+       DS SECTIONS
+    ========================================================= */
+    .ds-section {
+      max-width: 1280px; margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+    .ds-divider {
+      border: none; margin: 0;
+      border-top: 1px solid var(--clr-border);
+    }
+
+    /* Section label pill */
+    .section-label {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.68rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--txt-muted);
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-pill);
+      background: rgba(255,255,255,0.02);
+      margin-bottom: 1.75rem;
+    }
+    .section-label .dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--gold-500);
+    }
+    .section-label.gold {
+      color: var(--gold-400);
+      border-color: rgba(212,149,42,0.25);
+      background: rgba(212,149,42,0.06);
+    }
+
+    /* Section heading */
+    .section-heading {
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      font-weight: 700; letter-spacing: -0.03em;
+      line-height: 1.05; color: var(--txt-primary);
+      margin-bottom: 1rem;
+    }
+    .section-heading .accent { color: var(--gold-400); }
+
+    /* =========================================================
+       TYPOGRAPHY SECTION live display
+    ========================================================= */
+    .typo-table { width: 100%; border-collapse: collapse; }
+    .typo-table tr { border-bottom: 1px solid var(--clr-border); }
+    .typo-table td { padding: 1.5rem 0; vertical-align: middle; }
+    .typo-name {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--txt-muted);
+      width: 160px; padding-right: 2rem; white-space: nowrap;
+      font-family: 'Space Mono', monospace;
+    }
+    .typo-preview { flex: 1; }
+    .typo-spec {
+      font-size: 0.65rem; color: var(--txt-muted);
+      font-family: 'Space Mono', monospace;
+      text-align: right; padding-left: 1.5rem;
+      white-space: nowrap;
+    }
+
+    /* =========================================================
+       COLOR SWATCHES
+    ========================================================= */
+    .color-grid { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .color-swatch { display: flex; flex-direction: column; gap: 0.5rem; width: 150px; }
+    .swatch-block {
+      height: 76px; border-radius: var(--radius-md);
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+    .swatch-name { font-size: 0.72rem; font-weight: 500; color: var(--txt-secondary); }
+    .swatch-value { font-size: 0.62rem; color: var(--txt-muted); font-family: 'Space Mono', monospace; }
+
+    /* =========================================================
+       COMPONENT CARDS
+    ========================================================= */
+    /* Feature card */
+    .feature-card {
+      position: relative; overflow: hidden;
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s var(--ease-spring);
+      cursor: default;
+    }
+    .feature-card:hover {
+      border-color: var(--clr-border-gold);
+      box-shadow: 0 0 36px rgba(212,149,42,0.1), 0 16px 40px rgba(0,0,0,0.5);
+      transform: translateY(-4px);
+    }
+    .feature-card::before {
+      content: "";
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(212,149,42,0.4) 50%, transparent 100%);
+      opacity: 0; transition: opacity 0.35s ease;
+    }
+    .feature-card:hover::before { opacity: 1; }
+
+    .card-icon {
+      width: 48px; height: 48px;
+      border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.25rem;
+      font-size: 1.35rem;
+      transition: transform 0.3s var(--ease-spring), box-shadow 0.3s ease;
+    }
+    .feature-card:hover .card-icon {
+      transform: scale(1.12) rotate(-4deg);
+    }
+
+    /* Bento/stat card */
+    .stat-value {
+      font-size: 3rem; font-weight: 700;
+      letter-spacing: -0.04em;
+      color: var(--gold-400);
+      line-height: 1;
+      overflow: hidden;
+    }
+    .stat-label { font-size: 0.82rem; color: var(--txt-muted); margin-top: 0.4rem; }
+
+    /* =========================================================
+       INPUTS
+    ========================================================= */
+    .input-gold {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-md);
+      padding: 0.8rem 1rem;
+      font-size: 0.9rem;
+      color: var(--txt-primary);
+      font-family: 'Space Grotesk', sans-serif;
+      width: 100%;
+      transition: border-color 0.22s ease, box-shadow 0.22s ease;
+      outline: none;
+    }
+    .input-gold::placeholder { color: var(--txt-muted); }
+    .input-gold:focus {
+      border-color: rgba(212,149,42,0.5);
+      box-shadow: 0 0 0 3px rgba(212,149,42,0.1);
+    }
+
+    /* =========================================================
+       BADGE / TOOLTIP
+    ========================================================= */
+    .badge {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.68rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .badge-gold {
+      background: rgba(212,149,42,0.12);
+      color: var(--gold-300);
+      border: 1px solid rgba(212,149,42,0.3);
+    }
+    .badge-surface {
+      background: rgba(255,255,255,0.05);
+      color: var(--txt-secondary);
+      border: 1px solid var(--clr-border);
+    }
+
+    /* Tooltip */
+    .tooltip-wrap { position: relative; display: inline-flex; }
+    .tooltip-box {
+      position: absolute; bottom: calc(100% + 8px); left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      background: var(--clr-surface-2);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-sm);
+      padding: 0.4rem 0.7rem;
+      font-size: 0.72rem; color: var(--txt-secondary);
+      white-space: nowrap;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.18s ease, transform 0.18s ease;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      z-index: 10;
+    }
+    .tooltip-box::after {
+      content: "";
+      position: absolute; top: 100%; left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
+      border-top-color: var(--clr-border);
+    }
+    .tooltip-wrap:hover .tooltip-box {
+      opacity: 1; transform: translateX(-50%) translateY(0);
+    }
+
+    /* =========================================================
+       NAVBAR DEMO
+    ========================================================= */
+    .demo-nav {
+      background: rgba(9,9,9,0.7);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-lg);
+      padding: 0 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px;
+    }
+
+    /* =========================================================
+       MODAL
+    ========================================================= */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .modal-overlay.open { opacity:1; pointer-events: all; }
+    .modal-box {
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-xl);
+      padding: 2.5rem;
+      max-width: 480px; width: 90%;
+      transform: scale(0.94) translateY(16px);
+      transition: transform 0.3s var(--ease-spring);
+      position: relative;
+    }
+    .modal-overlay.open .modal-box { transform: scale(1) translateY(0); }
+    .modal-close {
+      position: absolute; top: 1.25rem; right: 1.25rem;
+      width: 32px; height: 32px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--clr-border);
+      border-radius: 50%;
+      cursor: pointer; color: var(--txt-muted);
+      font-size: 1rem; line-height: 1;
+      transition: background 0.2s, color 0.2s;
+    }
+    .modal-close:hover { background: rgba(212,149,42,0.1); color: var(--gold-400); }
+
+    /* =========================================================
+       MOTION DEMO CARD
+    ========================================================= */
+    .motion-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.75rem;
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .motion-label {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--txt-muted);
+    }
+    .motion-spec {
+      font-size: 0.65rem; color: rgba(255,255,255,0.2);
+      font-family: 'Space Mono', monospace; margin-top: -0.5rem;
+    }
+
+    /* =========================================================
+       ICON SECTION
+    ========================================================= */
+    .icon-grid { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .icon-item {
+      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      width: 84px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .icon-item:hover {
+      border-color: var(--clr-border-gold);
+      background: rgba(212,149,42,0.05);
+    }
+    .icon-item span { font-size: 0.6rem; color: var(--txt-muted); text-align: center; }
+    .icon-item svg { color: var(--txt-secondary); transition: color 0.2s; }
+    .icon-item:hover svg { color: var(--gold-400); }
+
+    /* =========================================================
+       LAYOUT DEMO
+    ========================================================= */
+    .layout-box {
+      background: rgba(255,255,255,0.03);
+      border: 1px dashed rgba(255,255,255,0.1);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--txt-muted); font-size: 0.68rem;
+      font-family: 'Space Mono', monospace;
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+    footer {
+      border-top: 1px solid var(--clr-border);
+      padding: 3rem 2rem 2.5rem;
+      text-align: center;
+    }
+    footer p { font-size: 0.78rem; color: var(--txt-muted); }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Gradient blur effect (bottom of page) ── -->
+<div class="gradient-blur">
+  <div></div><div></div><div></div>
+  <div></div><div></div><div></div>
+</div>
+
+<!-- ================================================================
+     NAVIGATION
+================================================================ -->
+<header id="nav-main" role="banner">
+  <div class="nav-inner">
+    <!-- Logo -->
+    <a class="nav-logo" href="#hero" aria-label="AURAVOX - Página inicial">
+      <span class="logo-dot" aria-hidden="true"></span>
+      AURAVOX
+    </a>
+
+    <!-- Desktop nav links -->
+    <nav class="nav-links" aria-label="Navegação principal">
+      <a href="#ds-typography">Tipografia</a>
+      <a href="#ds-colors">Cores</a>
+      <a href="#ds-components">Componentes</a>
+      <a href="#ds-motion">Animações</a>
+      <a href="#ds-icons">Ícones</a>
+    </nav>
+
+    <!-- Desktop CTA -->
+    <a class="nav-cta nav-cta-desktop" href="#ds-components" id="nav-cta-btn" aria-label="Ver componentes">
+      Ver Design System
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </a>
+
+    <!-- Mobile toggle -->
+    <button class="nav-mobile-btn" id="mobile-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<nav id="mobile-menu" aria-label="Menu mobile">
+  <a href="#ds-typography">Tipografia</a>
+  <a href="#ds-colors">Cores &amp; Superfícies</a>
+  <a href="#ds-components">Componentes UI</a>
+  <a href="#ds-motion">Animações</a>
+  <a href="#ds-icons">Ícones</a>
+  <a class="mobile-cta" href="#ds-components">Ver Design System →</a>
+</nav>
+
+<!-- ================================================================
+     HERO — PRIMEIRA DOBRA
+================================================================ -->
+<main id="hero" role="main" aria-label="Seção principal">
+
+  <!-- Animated background -->
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-bg-radial"></div>
+    <div class="hero-bg-glow-left"></div>
+    <div class="hero-bg-glow-right"></div>
+    <div class="scan-line"></div>
+
+    <!-- Floating particles -->
+    <div class="particles" id="particles-container"></div>
+  </div>
+
+  <!-- Orbiting rings (desktop only) -->
+  <div class="orbit-wrapper" aria-hidden="true">
+    <div class="orbit-ring"></div>
+    <div class="orbit-ring-2"></div>
+    <div class="orbit-ring-3"></div>
+    <div class="orbit-dot"></div>
+    <div class="orbit-dot-2"></div>
+    <div class="orbit-dot-3"></div>
+    <div class="orbit-center">
+      <span class="orbit-center-icon">⚡</span>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div style="position:relative; z-index:1; max-width:860px; width:100%;">
+
+    <!-- Badge -->
+    <div class="hero-badge" role="status" aria-live="polite">
+      <span class="badge-dot" aria-hidden="true"></span>
+      Agência de Inteligência Artificial
+    </div>
+
+    <!-- Headline -->
+    <h1 class="hero-headline">
+      <span style="display:block;">Automatize.</span>
+      <span class="line-gold shimmer-mask" style="--shine:220%">Escale.</span>
+      <span class="line-shimmer" style="color:rgba(240,236,228,0.72);">Lidere com I.A.</span>
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="hero-subtitle type-words visible" data-stagger=".14s" data-dur="1.4s" aria-label="Transformamos negócios com automações inteligentes, modelos de linguagem e IA generativa — do conceito à produção.">
+      <span class="w" style="--i:0">Transformamos </span><span class="w" style="--i:1">negócios </span><span class="w" style="--i:2">com </span><span class="w" style="--i:3">automações </span><span class="w" style="--i:4">inteligentes, </span><span class="w" style="--i:5">modelos </span><span class="w" style="--i:6">de </span><span class="w" style="--i:7">linguagem </span><span class="w" style="--i:8">e </span><span class="w" style="--i:9">IA </span><span class="w" style="--i:10">generativa — </span><span class="w" style="--i:11">do </span><span class="w" style="--i:12">conceito </span><span class="w" style="--i:13">à </span><span class="w" style="--i:14">produção.</span>
+    </p>
+
+    <!-- CTA buttons -->
+    <div class="hero-cta-group">
+      <!-- Primary -->
+      <a class="btn-primary" href="#ds-components" id="hero-cta-primary" aria-label="Ver nossos serviços">
+        <span>Ver Serviços</span>
+        <svg class="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+
+      <!-- Secondary -->
+      <div class="btn-secondary-wrap">
+        <a class="btn-secondary border-gradient" href="#ds-typography" id="hero-cta-secondary" aria-label="Explorar nosso trabalho">
+          Explorar Trabalhos
+        </a>
+        <span class="btn-glow" aria-hidden="true"></span>
+      </div>
+    </div>
+
+    <!-- Stats row -->
+    <div class="hero-stats" role="list" aria-label="Estatísticas da empresa">
+      <span role="listitem">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>
+        +3 Anos de Mercado
+      </span>
+      <span role="listitem">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        +80 Clientes Atendidos
+      </span>
+      <span role="listitem">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+        +200 Automações Ativas
+      </span>
+      <span role="listitem">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
+        +15 Modelos Próprios
+      </span>
+    </div>
+  </div>
+</main>
+
+<!-- ================================================================
+     DS SUB-NAV
+================================================================ -->
+<nav id="ds-nav" aria-label="Navegação do Design System">
+  <div class="ds-nav-inner">
+    <a class="ds-nav-link" href="#ds-typography" id="ds-nav-typo">01 Tipografia</a>
+    <div class="ds-nav-sep" aria-hidden="true"></div>
+    <a class="ds-nav-link" href="#ds-colors" id="ds-nav-colors">02 Cores</a>
+    <div class="ds-nav-sep" aria-hidden="true"></div>
+    <a class="ds-nav-link" href="#ds-components" id="ds-nav-comp">03 Componentes</a>
+    <div class="ds-nav-sep" aria-hidden="true"></div>
+    <a class="ds-nav-link" href="#ds-layout" id="ds-nav-layout">04 Layout</a>
+    <div class="ds-nav-sep" aria-hidden="true"></div>
+    <a class="ds-nav-link" href="#ds-motion" id="ds-nav-motion">05 Animações</a>
+    <div class="ds-nav-sep" aria-hidden="true"></div>
+    <a class="ds-nav-link" href="#ds-icons" id="ds-nav-icons">06 Ícones</a>
+  </div>
+</nav>
+
+<!-- ================================================================
+     01 — TYPOGRAPHY
+================================================================ -->
+<section id="ds-typography" aria-labelledby="typo-heading">
+  <div class="ds-section reveal-section">
+    <span class="section-label gold"><span class="dot" aria-hidden="true"></span>01 — Tipografia</span>
+    <h2 class="section-heading" id="typo-heading">
+      Hierarquia <span class="accent">Tipográfica</span>
+    </h2>
+    <p style="font-size:0.95rem; color:var(--txt-secondary); max-width:560px; margin-bottom:3rem; line-height:1.7;">
+      Todo texto renderizado com os elementos e classes exatos do sistema. Tamanho / altura de linha anotados à direita.
+    </p>
+
+    <table class="typo-table" role="table" aria-label="Tabela de estilos tipográficos">
+      <tbody>
+        <!-- H1 Display -->
+        <tr>
+          <td class="typo-name">H1 Display</td>
+          <td class="typo-preview">
+            <h1 style="font-size:clamp(3rem,8.5vw,7.5rem); font-weight:700; line-height:0.93; letter-spacing:-0.03em; color:var(--txt-primary);">
+              Inteligência Artificial
+            </h1>
+          </td>
+          <td class="typo-spec">clamp(3rem·8.5vw·7.5rem) / 0.93 / 700 / −0.03em</td>
+        </tr>
+        <!-- H1 Gold line -->
+        <tr>
+          <td class="typo-name">H1 + Gold accent</td>
+          <td class="typo-preview">
+            <h1 style="font-size:clamp(2.5rem,6vw,6rem); font-weight:700; line-height:0.93; letter-spacing:-0.03em; color:var(--gold-400);">
+              Escale com I.A.
+            </h1>
+          </td>
+          <td class="typo-spec">var(--gold-400) / text-shadow glow</td>
+        </tr>
+        <!-- H2 Section -->
+        <tr>
+          <td class="typo-name">H2 Seção</td>
+          <td class="typo-preview">
+            <h2 style="font-size:clamp(2rem,4vw,3.25rem); font-weight:700; letter-spacing:-0.03em; line-height:1.05; color:var(--txt-primary);">
+              Nossos Serviços
+            </h2>
+          </td>
+          <td class="typo-spec">clamp(2rem·4vw·3.25rem) / 1.05 / 700</td>
+        </tr>
+        <!-- H3 Card -->
+        <tr>
+          <td class="typo-name">H3 Card</td>
+          <td class="typo-preview">
+            <h3 style="font-size:1.3rem; font-weight:600; letter-spacing:-0.02em; color:var(--txt-primary); line-height:1.2;">
+              Automação de Processos
+            </h3>
+          </td>
+          <td class="typo-spec">1.3rem / 1.2 / 600 / −0.02em</td>
+        </tr>
+        <!-- H4 Sub-card -->
+        <tr>
+          <td class="typo-name">H4 Sub-card</td>
+          <td class="typo-preview">
+            <h4 style="font-size:1rem; font-weight:600; letter-spacing:-0.01em; color:var(--txt-primary);">
+              Integração com n8n e Make
+            </h4>
+          </td>
+          <td class="typo-spec">1rem / auto / 600</td>
+        </tr>
+        <!-- Body Large -->
+        <tr>
+          <td class="typo-name">Body Large</td>
+          <td class="typo-preview">
+            <p style="font-size:1.1rem; font-weight:400; line-height:1.7; color:var(--txt-secondary);">
+              Transformamos fluxos manuais em pipelines autônomos com IA, reduzindo custos e acelerando resultados.
+            </p>
+          </td>
+          <td class="typo-spec">1.1rem / 1.7 / 400</td>
+        </tr>
+        <!-- Body Regular -->
+        <tr>
+          <td class="typo-name">Body Regular</td>
+          <td class="typo-preview">
+            <p style="font-size:0.95rem; line-height:1.7; color:var(--txt-secondary);">
+              Conectamos agentes de IA a sistemas empresariais legados via APIs robustas.
+            </p>
+          </td>
+          <td class="typo-spec">0.95rem / 1.7 / 400</td>
+        </tr>
+        <!-- Body Small -->
+        <tr>
+          <td class="typo-name">Body Small</td>
+          <td class="typo-preview">
+            <p style="font-size:0.84rem; line-height:1.65; color:var(--txt-secondary);">
+              Solução de IA generativa com fine-tuning em dados proprietários do seu negócio.
+            </p>
+          </td>
+          <td class="typo-spec">0.84rem / 1.65 / 400</td>
+        </tr>
+        <!-- Caption -->
+        <tr>
+          <td class="typo-name">Caption / Label</td>
+          <td class="typo-preview">
+            <span style="font-size:0.75rem; font-weight:500; color:var(--txt-muted); letter-spacing:0.04em;">AUTOMAÇÃO · IA GENERATIVA · AGENTES</span>
+          </td>
+          <td class="typo-spec">0.75rem / 500 / +0.04em</td>
+        </tr>
+        <!-- Section label uppercase -->
+        <tr>
+          <td class="typo-name">Section Label</td>
+          <td class="typo-preview">
+            <span style="font-size:0.68rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold-400);">01 — Tipografia</span>
+          </td>
+          <td class="typo-spec">0.68rem / 600 / +0.12em / uppercase / gold</td>
+        </tr>
+        <!-- Mono -->
+        <tr>
+          <td class="typo-name">Monospace</td>
+          <td class="typo-preview">
+            <span style="font-family:'Space Mono',monospace; font-size:0.8rem; color:var(--txt-muted);">--gold-500: #d4952a / rgb(212,149,42)</span>
+          </td>
+          <td class="typo-spec">Space Mono / 0.8rem / 400</td>
+        </tr>
+        <!-- Shimmer headline -->
+        <tr>
+          <td class="typo-name">Shimmer Headline</td>
+          <td class="typo-preview">
+            <span class="shimmer-mask" style="font-size:clamp(1.8rem,4vw,3rem); font-weight:700; letter-spacing:-0.03em; color:rgba(240,236,228,0.8); display:block; --shine:220%;">Escale com Inteligência</span>
+          </td>
+          <td class="typo-spec">shimmer-mask animation / 2.8s</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="ds-divider"/>
+
+<!-- ================================================================
+     02 — COLORS
+================================================================ -->
+<section id="ds-colors" aria-labelledby="colors-heading">
+  <div class="ds-section reveal-section">
+    <span class="section-label gold"><span class="dot" aria-hidden="true"></span>02 — Cores &amp; Superfícies</span>
+    <h2 class="section-heading" id="colors-heading">
+      Paleta <span class="accent">Tech-Gold &amp; Obsidian</span>
+    </h2>
+
+    <!-- Backgrounds -->
+    <h3 style="font-size:1rem; font-weight:600; color:var(--txt-primary); margin-bottom:1.25rem; margin-top:2.5rem; letter-spacing:-0.01em;">Fundos</h3>
+    <div class="color-grid" role="list">
+      <div class="color-swatch" role="listitem">
+        <div class="swatch-block" style="background:#090909;"></div>
+        <span class="swatch-name">Obsidian 900</span>
+        <span class="swatch-value">#090909 · hsl(0,0%,4%)<br/>Semantic: page-bg</span>
+      </div>
+      <div class="color-swatch" role="listitem">
+        <div class="swatch-block" style="background:#111111;"></div>
+        <span class="swatch-name">Surface</span>
+        <span class="swatch-value">#111111 · rgba(255,255,255,.04)<br/>Semantic: card-bg</span>
+      </div>
+      <div class="color-swatch" role="listitem">
+        <div class="swatch-block" style="background:#161616;"></div>
+        <span class="swatch-name">Surface 2</span>
+        <span class="swatch-value">#161616<br/>Semantic: elevated-surface</span>
+      </div>
+      <div class="color-swatch" role="listitem">
+        <div class="swatch-block" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.07);"></div>
+        <span class="swatch-name">Panel</span>
+        <span class="swatch-value">rgba(255,255,255,.05)<br/>Semantic: input / overlay</span>
+      </div>
+      <div class="color-swatch" role="listitem">
+        <div class="swatch-block" style="background:rgba(9,9,9,0.72); backdrop-filter:blur(24px);"></div>
+        <span class="swatch-name">Glass Nav</span>
+        <span class="swatch-value">rgba(9,9,9,.72) blur(24px)<br/>Semantic: navbar</span>
+      </div>
+    </div>
+
+    <!-- Gold spectrum -->
+    <h3 style="font-size:1rem; font-weight:600; color:var(--txt-primary); margin-bottom:1.25rem; margin-top:3rem; letter-spacing:-0.01em;">Espectro Dourado — Accent Principal</h3>
+    <div class="color-grid" role="list">
+      <div class="color-swatch" role="listitem">
+        <div class="swatch-block" style="background:#fdf9ec;"></div>
+        <span class="swatch-name">Gold 50</span>
+        <span class="swatch-value">#fdf9ec<br/>Opacity: backgrounds</span>
+      </div>
+      <div class="color-swatch" role="listitem">
+        <div class="swatch-block" style="background:#f5de99;"></div>
+        <span class="swatch-name">Gold 200</span>
+        <span class="swatch-value">#f5de99<br/>Opacity: highlights</span>
+      </div>
+      <div class="color-swatch" role="listitem">
+        <div class="swatch-block" style="background:#efc75f;"></div>
+        <span class="swatch-name">Gold 300</span>
+        <span class="swatch-value">#efc75f<br/>Role: badge text</span>
+      </div>
+      <div class="color-swatch" role="listitem">
+        <div class="swatch-block" style="background:#e8b134;"></div>
+        <span class="swatch-name">Gold 400 ★</span>
+        <span class="swatch-value">#e8b134 · rgb(232,177,52)<br/>Role: primary accent text</span>
+      </div>
+      <div class="color-swatch" role="listitem">
+        <div class="swatch-block" style="background:#d4952a; box-shadow:0 0 18px rgba(212,149,42,0.4);"></div>
+        <span class="swatch-name">Gold 500 ★★</span>
+        <span class="swatch-value">#d4952a · hsl(35,71%,47%)<br/>Role: CTA button / glow</span>
+      </div>
+      <div class="color-swatch" role="listitem">
+        <div class="swatch-block" style="background:#c47a1a;"></div>
+        <span class="swatch-name">Gold 600</span>
+        <span class="swatch-value">#c47a1a<br/>Role: hover states dark</span>
+      </div>
+      <div class="color-swatch" role="listitem">
+        <div class="swatch-block" style="background:#a45e17;"></div>
+        <span class="swatch-name">Gold 700</span>
+        <span class="swatch-value">#a45e17<br/>Role: borders/deep shadows</span>
+      </div>
+    </div>
+
+    <!-- Text colors -->
+    <h3 style="font-size:1rem; font-weight:600; color:var(--txt-primary); margin-bottom:1.25rem; margin-top:3rem; letter-spacing:-0.01em;">Texto</h3>
+    <div style="display:flex; flex-wrap:wrap; gap:2rem; align-items:flex-start;">
+      <div>
+        <span style="font-size:1rem; font-weight:600; color:#f0ece4;">txt-primary</span>
+        <div style="font-size:0.62rem; color:var(--txt-muted); font-family:'Space Mono',monospace; margin-top:0.25rem;">#f0ece4 · rgba(240,236,228,1)<br/>Contrast: AA+ on bg</div>
+      </div>
+      <div>
+        <span style="font-size:1rem; color:rgba(240,236,228,0.65);">txt-secondary</span>
+        <div style="font-size:0.62rem; color:var(--txt-muted); font-family:'Space Mono',monospace; margin-top:0.25rem;">rgba(240,236,228,.65)<br/>Body text / captions</div>
+      </div>
+      <div>
+        <span style="font-size:1rem; color:rgba(240,236,228,0.38);">txt-muted</span>
+        <div style="font-size:0.62rem; color:var(--txt-muted); font-family:'Space Mono',monospace; margin-top:0.25rem;">rgba(240,236,228,.38)<br/>Meta / labels</div>
+      </div>
+      <div>
+        <span style="font-size:1rem; color:#e8b134;">txt-gold</span>
+        <div style="font-size:0.62rem; color:var(--txt-muted); font-family:'Space Mono',monospace; margin-top:0.25rem;">#e8b134 · var(--gold-400)<br/>Accent / highlights</div>
+      </div>
+    </div>
+
+    <!-- Borders -->
+    <h3 style="font-size:1rem; font-weight:600; color:var(--txt-primary); margin-bottom:1.25rem; margin-top:3rem; letter-spacing:-0.01em;">Bordas &amp; Divisores</h3>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="swatch-block" style="border:1px solid rgba(255,255,255,0.07); background:transparent;"></div>
+        <span class="swatch-name">Border Default</span>
+        <span class="swatch-value">rgba(255,255,255,.07)</span>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="border:1px solid rgba(212,149,42,0.35); background:transparent;"></div>
+        <span class="swatch-name">Border Gold</span>
+        <span class="swatch-value">rgba(212,149,42,.35)<br/>Semantic: hover / focus</span>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="border:none; background:linear-gradient(135deg,rgba(212,149,42,0) 0%,rgba(212,149,42,0.55) 50%,rgba(212,149,42,0) 100%); height:3px; margin:36px 0;"></div>
+        <span class="swatch-name">Gradient Border</span>
+        <span class="swatch-value">135deg · gold shimmer<br/>.border-gradient::before</span>
+      </div>
+    </div>
+
+    <!-- Gradients -->
+    <h3 style="font-size:1rem; font-weight:600; color:var(--txt-primary); margin-bottom:1.25rem; margin-top:3rem; letter-spacing:-0.01em;">Gradientes</h3>
+    <div class="color-grid">
+      <div class="color-swatch" style="width:200px;">
+        <div class="swatch-block" style="background:radial-gradient(ellipse 85% 55% at 50% 0%, rgba(212,149,42,0.18) 0%, transparent 70%);"></div>
+        <span class="swatch-name">Hero Radial</span>
+        <span class="swatch-value">gold → transparent<br/>hero-bg-radial</span>
+      </div>
+      <div class="color-swatch" style="width:200px;">
+        <div class="swatch-block" style="background:linear-gradient(135deg,rgba(212,149,42,0.045) 0%,transparent 100%); background-image:linear-gradient(rgba(212,149,42,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(212,149,42,0.06) 1px,transparent 1px); background-size:32px 32px;"></div>
+        <span class="swatch-name">Grid Pattern</span>
+        <span class="swatch-value">gold 6% / 56px grid<br/>hero-bg-grid</span>
+      </div>
+      <div class="color-swatch" style="width:200px;">
+        <div class="swatch-block" style="background:linear-gradient(to top,rgba(0,0,0,0.85) 0%,rgba(0,0,0,0) 50%);"></div>
+        <span class="swatch-name">Card Overlay</span>
+        <span class="swatch-value">black/85 → transparent<br/>portfolio-overlay</span>
+      </div>
+      <div class="color-swatch" style="width:200px;">
+        <div class="swatch-block" style="background:radial-gradient(60% 100% at 50% 50%, rgba(212,149,42,0.5), rgba(212,149,42,0.25) 35%, transparent 70%); filter:blur(8px);"></div>
+        <span class="swatch-name">Button Glow</span>
+        <span class="swatch-value">gold radial / blur 8px<br/>btn-glow hover</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="ds-divider"/>
+
+<!-- ================================================================
+     03 — UI COMPONENTS
+================================================================ -->
+<section id="ds-components" aria-labelledby="comp-heading">
+  <div class="ds-section reveal-section">
+    <span class="section-label gold"><span class="dot" aria-hidden="true"></span>03 — Componentes UI</span>
+    <h2 class="section-heading" id="comp-heading">
+      Biblioteca de <span class="accent">Componentes</span>
+    </h2>
+
+    <!-- ── Buttons ── -->
+    <h3 style="font-size:1.1rem; font-weight:600; color:var(--txt-primary); margin-top:3rem; margin-bottom:1.5rem;">Botões</h3>
+
+    <div style="display:flex; flex-wrap:wrap; gap:1.5rem; align-items:flex-start;">
+      <!-- Primary CTA -->
+      <div>
+        <span style="font-size:0.68rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--txt-muted); display:block; margin-bottom:0.75rem;">Primary CTA</span>
+        <a class="btn-primary" href="#" id="demo-btn-primary" aria-label="Demonstração botão primário">
+          <span>Começar Agora</span>
+          <svg class="btn-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Secondary -->
+      <div>
+        <span style="font-size:0.68rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--txt-muted); display:block; margin-bottom:0.75rem;">Secondary Ghost</span>
+        <div class="btn-secondary-wrap">
+          <a class="btn-secondary border-gradient" href="#" id="demo-btn-secondary" aria-label="Demonstração botão secundário">Explorar Serviços</a>
+          <span class="btn-glow" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <!-- Outline gold -->
+      <div>
+        <span style="font-size:0.68rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--txt-muted); display:block; margin-bottom:0.75rem;">Outline Gold</span>
+        <button id="demo-btn-outline" style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.8rem 1.75rem; border-radius:999px; background:transparent; border:1px solid rgba(212,149,42,0.45); color:var(--gold-400); font-size:0.9rem; font-weight:600; cursor:pointer; font-family:'Space Grotesk',sans-serif; transition:all 0.25s ease;" onmouseover="this.style.background='rgba(212,149,42,0.08)'; this.style.borderColor='rgba(212,149,42,0.7)';" onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(212,149,42,0.45)';">
+          Ver Portfólio
+        </button>
+      </div>
+
+      <!-- Danger / loading state -->
+      <div>
+        <span style="font-size:0.68rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--txt-muted); display:block; margin-bottom:0.75rem;">Disabled</span>
+        <button id="demo-btn-disabled" disabled style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.8rem 1.75rem; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06); color:rgba(240,236,228,0.25); font-size:0.9rem; font-weight:600; cursor:not-allowed; font-family:'Space Grotesk',sans-serif;">
+          Indisponível
+        </button>
+      </div>
+
+      <!-- Open modal -->
+      <div>
+        <span style="font-size:0.68rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--txt-muted); display:block; margin-bottom:0.75rem;">Trigger Modal</span>
+        <button class="btn-primary" id="open-modal-btn" type="button" aria-haspopup="dialog" aria-controls="demo-modal" style="background:linear-gradient(135deg,#c47a1a,#e8b134);">
+          Abrir Modal
+        </button>
+      </div>
+    </div>
+
+    <!-- ── Inputs ── -->
+    <h3 style="font-size:1.1rem; font-weight:600; color:var(--txt-primary); margin-top:3.5rem; margin-bottom:1.5rem;">Inputs</h3>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:1.25rem; max-width:800px;">
+      <div>
+        <label style="font-size:0.78rem; color:var(--txt-muted); display:block; margin-bottom:0.5rem;" for="demo-email">E-mail</label>
+        <input class="input-gold" type="email" id="demo-email" placeholder="seu@email.com" autocomplete="email"/>
+      </div>
+      <div>
+        <label style="font-size:0.78rem; color:var(--txt-muted); display:block; margin-bottom:0.5rem;" for="demo-company">Empresa</label>
+        <input class="input-gold" type="text" id="demo-company" placeholder="Nome da empresa"/>
+      </div>
+      <div>
+        <label style="font-size:0.78rem; color:var(--txt-muted); display:block; margin-bottom:0.5rem;" for="demo-message">Mensagem</label>
+        <textarea class="input-gold" id="demo-message" placeholder="Descreva seu projeto..." rows="3" style="resize:vertical;"></textarea>
+      </div>
+    </div>
+
+    <!-- ── Feature Cards ── -->
+    <h3 style="font-size:1.1rem; font-weight:600; color:var(--txt-primary); margin-top:3.5rem; margin-bottom:1.5rem;">Cards de Serviço</h3>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(260px,1fr)); gap:1.25rem;">
+
+      <article class="feature-card" aria-label="Serviço: Automação Inteligente">
+        <div class="card-icon" style="background:linear-gradient(135deg,rgba(212,149,42,0.18),rgba(212,149,42,0.06));" aria-hidden="true">⚡</div>
+        <h3 style="font-size:1.1rem; font-weight:600; color:var(--txt-primary); margin-bottom:0.5rem; letter-spacing:-0.01em;">Automação Inteligente</h3>
+        <p style="font-size:0.85rem; color:var(--txt-secondary); line-height:1.65;">Fluxos automáticos com n8n, Make e agentes AI que trabalham enquanto você dorme.</p>
+        <div style="margin-top:1.25rem; display:flex; gap:0.5rem;">
+          <span class="badge badge-gold">n8n</span>
+          <span class="badge badge-gold">Make</span>
+        </div>
+      </article>
+
+      <article class="feature-card" aria-label="Serviço: IA Generativa">
+        <div class="card-icon" style="background:linear-gradient(135deg,rgba(99,102,241,0.18),rgba(168,85,247,0.08));" aria-hidden="true">🧠</div>
+        <h3 style="font-size:1.1rem; font-weight:600; color:var(--txt-primary); margin-bottom:0.5rem; letter-spacing:-0.01em;">IA Generativa</h3>
+        <p style="font-size:0.85rem; color:var(--txt-secondary); line-height:1.65;">GPT-4, Claude e modelos próprios com fine-tuning nos dados do seu negócio.</p>
+        <div style="margin-top:1.25rem; display:flex; gap:0.5rem;">
+          <span class="badge badge-gold">GPT-4</span>
+          <span class="badge badge-gold">Claude</span>
+        </div>
+      </article>
+
+      <article class="feature-card" aria-label="Serviço: Agentes Autônomos">
+        <div class="card-icon" style="background:linear-gradient(135deg,rgba(16,185,129,0.18),rgba(20,184,166,0.08));" aria-hidden="true">🤖</div>
+        <h3 style="font-size:1.1rem; font-weight:600; color:var(--txt-primary); margin-bottom:0.5rem; letter-spacing:-0.01em;">Agentes Autônomos</h3>
+        <p style="font-size:0.85rem; color:var(--txt-secondary); line-height:1.65;">Agentes LLM que tomam decisões, buscam dados e executam tarefas complexas.</p>
+        <div style="margin-top:1.25rem; display:flex; gap:0.5rem;">
+          <span class="badge badge-gold">LangChain</span>
+          <span class="badge badge-gold">AutoGen</span>
+        </div>
+      </article>
+
+      <article class="feature-card" aria-label="Serviço: Consultoria em IA">
+        <div class="card-icon" style="background:linear-gradient(135deg,rgba(244,63,94,0.18),rgba(236,72,153,0.08));" aria-hidden="true">💡</div>
+        <h3 style="font-size:1.1rem; font-weight:600; color:var(--txt-primary); margin-bottom:0.5rem; letter-spacing:-0.01em;">Consultoria em IA</h3>
+        <p style="font-size:0.85rem; color:var(--txt-secondary); line-height:1.65;">Mapeamos oportunidades de IA no seu negócio e entregamos um roadmap executável.</p>
+        <div style="margin-top:1.25rem; display:flex; gap:0.5rem;">
+          <span class="badge badge-gold">Estratégia</span>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- ── Stat Bento Cards ── -->
+    <h3 style="font-size:1.1rem; font-weight:600; color:var(--txt-primary); margin-top:3.5rem; margin-bottom:1.5rem;">Bento Stats</h3>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(180px,1fr)); gap:1rem;">
+      <div class="feature-card" style="text-align:center;" aria-label="Estatística: 200+ automações">
+        <div class="stat-value" aria-hidden="true">200+</div>
+        <div class="stat-label">Automações Ativas</div>
+      </div>
+      <div class="feature-card" style="text-align:center;" aria-label="Estatística: 80+ clientes">
+        <div class="stat-value" aria-hidden="true">80+</div>
+        <div class="stat-label">Clientes Satisfeitos</div>
+      </div>
+      <div class="feature-card" style="text-align:center;" aria-label="Estatística: 15+ modelos">
+        <div class="stat-value" aria-hidden="true">15+</div>
+        <div class="stat-label">Modelos Próprios</div>
+      </div>
+      <div class="feature-card" style="text-align:center;" aria-label="Estatística: 40% economia">
+        <div class="stat-value" aria-hidden="true">40%</div>
+        <div class="stat-label">Redução de Custo Médio</div>
+      </div>
+    </div>
+
+    <!-- ── Navbar Demo ── -->
+    <h3 style="font-size:1.1rem; font-weight:600; color:var(--txt-primary); margin-top:3.5rem; margin-bottom:1.5rem;">Navbar</h3>
+    <div class="demo-nav" role="navigation" aria-label="Demonstração da navbar">
+      <span style="font-size:1.1rem; font-weight:700; letter-spacing:-0.02em; color:var(--txt-primary); display:flex; align-items:center; gap:0.4rem;">
+        <span style="width:7px;height:7px;border-radius:50%;background:var(--gold-400);box-shadow:0 0 10px rgba(212,149,42,0.8);" aria-hidden="true"></span>
+        AURAVOX
+      </span>
+      <div style="display:flex; gap:2rem; font-size:0.82rem; color:var(--txt-muted);" aria-label="Links de navegação demo">
+        <span style="cursor:default;">Serviços</span>
+        <span style="cursor:default;">Cases</span>
+        <span style="color:var(--txt-primary);cursor:default;">Contato</span>
+      </div>
+      <span style="display:inline-flex; padding:0.5rem 1.1rem; background:var(--gold-500); color:#080808; border-radius:999px; font-size:0.8rem; font-weight:700; cursor:default;">Fale Conosco</span>
+    </div>
+
+    <!-- ── Badges &amp; Tooltips ── -->
+    <h3 style="font-size:1.1rem; font-weight:600; color:var(--txt-primary); margin-top:3.5rem; margin-bottom:1.5rem;">Badges &amp; Tooltips</h3>
+    <div style="display:flex; flex-wrap:wrap; gap:1rem; align-items:center; margin-bottom:2rem;">
+      <span class="badge badge-gold">Novo Serviço</span>
+      <span class="badge badge-gold">IA Generativa</span>
+      <span class="badge badge-surface">Make</span>
+      <span class="badge badge-surface">n8n</span>
+      <span class="badge badge-surface">LangChain</span>
+      <span class="badge" style="background:rgba(16,185,129,0.12); color:rgba(110,231,183,1); border:1px solid rgba(16,185,129,0.3);">✓ Ativo</span>
+      <span class="badge" style="background:rgba(244,63,94,0.1); color:rgba(252,165,165,1); border:1px solid rgba(244,63,94,0.25);">Beta</span>
+    </div>
+    <div style="display:flex; gap:2rem; align-items:center; flex-wrap:wrap;">
+      <div class="tooltip-wrap">
+        <button id="tooltip-demo-1" style="padding:0.6rem 1.2rem; background:rgba(255,255,255,0.04); border:1px solid var(--clr-border); border-radius:var(--radius-md); color:var(--txt-secondary); cursor:default; font-family:'Space Grotesk',sans-serif; font-size:0.85rem;">
+          Passe o mouse aqui
+        </button>
+        <div class="tooltip-box" role="tooltip">Tooltip elegante com gold border</div>
+      </div>
+      <div class="tooltip-wrap">
+        <button id="tooltip-demo-2" style="padding:0.6rem 1.2rem; background:var(--gold-500); border:none; border-radius:var(--radius-md); color:#080808; cursor:default; font-family:'Space Grotesk',sans-serif; font-size:0.85rem; font-weight:700;">
+          Botão com Tooltip
+        </button>
+        <div class="tooltip-box" role="tooltip" style="background:rgba(212,149,42,0.15); border-color:rgba(212,149,42,0.3); color:var(--gold-300);">Tooltip Gold variant</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal-overlay" id="demo-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc">
+  <div class="modal-box border-gold">
+    <button class="modal-close" id="close-modal-btn" aria-label="Fechar modal">✕</button>
+    <h2 id="modal-title" style="font-size:1.4rem; font-weight:700; letter-spacing:-0.02em; color:var(--txt-primary); margin-bottom:0.75rem;">
+      Solicitar Consultoria <span style="color:var(--gold-400);">Gratuita</span>
+    </h2>
+    <p id="modal-desc" style="font-size:0.88rem; color:var(--txt-secondary); line-height:1.65; margin-bottom:1.75rem;">
+      Preencha abaixo e nosso time entrará em contato em até 24 horas com um diagnóstico personalizado para o seu negócio.
+    </p>
+    <div style="display:flex; flex-direction:column; gap:1rem;">
+      <input class="input-gold" type="text" placeholder="Nome completo" id="modal-name" autocomplete="name"/>
+      <input class="input-gold" type="email" placeholder="E-mail corporativo" id="modal-email" autocomplete="email"/>
+      <textarea class="input-gold" rows="3" placeholder="Desafio que quer resolver com IA..." id="modal-challenge"></textarea>
+    </div>
+    <div style="margin-top:1.5rem; display:flex; gap:0.75rem;">
+      <button class="btn-primary" style="flex:1; justify-content:center;" id="modal-submit-btn" type="button">
+        Enviar Solicitação
+      </button>
+    </div>
+  </div>
+</div>
+
+<hr class="ds-divider"/>
+
+<!-- ================================================================
+     04 — LAYOUT
+================================================================ -->
+<section id="ds-layout" aria-labelledby="layout-heading">
+  <div class="ds-section reveal-section">
+    <span class="section-label gold"><span class="dot" aria-hidden="true"></span>04 — Layout &amp; Espaçamento</span>
+    <h2 class="section-heading" id="layout-heading">
+      Sistema de <span class="accent">Grid &amp; Espaçamento</span>
+    </h2>
+
+    <h3 style="font-size:0.9rem; font-weight:600; color:var(--txt-muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:1rem; margin-top:2.5rem;">Coluna 12 — max-width 1280px</h3>
+    <div style="display:grid; grid-template-columns:repeat(12,1fr); gap:8px; margin-bottom:2rem;" role="img" aria-label="Grade de 12 colunas">
+      <div class="layout-box" style="grid-column:span 1; height:48px;">1</div>
+      <div class="layout-box" style="grid-column:span 1; height:48px;">2</div>
+      <div class="layout-box" style="grid-column:span 1; height:48px;">3</div>
+      <div class="layout-box" style="grid-column:span 1; height:48px;">4</div>
+      <div class="layout-box" style="grid-column:span 1; height:48px;">5</div>
+      <div class="layout-box" style="grid-column:span 1; height:48px;">6</div>
+      <div class="layout-box" style="grid-column:span 1; height:48px;">7</div>
+      <div class="layout-box" style="grid-column:span 1; height:48px;">8</div>
+      <div class="layout-box" style="grid-column:span 1; height:48px;">9</div>
+      <div class="layout-box" style="grid-column:span 1; height:48px;">10</div>
+      <div class="layout-box" style="grid-column:span 1; height:48px;">11</div>
+      <div class="layout-box" style="grid-column:span 1; height:48px;">12</div>
+    </div>
+
+    <h3 style="font-size:0.9rem; font-weight:600; color:var(--txt-muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:1rem; margin-top:2rem;">Padrões Comuns</h3>
+    <div style="display:grid; grid-template-columns:repeat(12,1fr); gap:8px; margin-bottom:1rem;" role="img" aria-label="Layout hero com conteúdo e sidebar">
+      <div class="layout-box" style="grid-column:span 8; height:64px;">Hero Content (8 cols)</div>
+      <div class="layout-box" style="grid-column:span 4; height:64px;">Visual / CTA (4 cols)</div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(12,1fr); gap:8px; margin-bottom:1rem;" role="img" aria-label="Layout de três colunas">
+      <div class="layout-box" style="grid-column:span 4; height:64px;">Col 1/3</div>
+      <div class="layout-box" style="grid-column:span 4; height:64px;">Col 2/3</div>
+      <div class="layout-box" style="grid-column:span 4; height:64px;">Col 3/3</div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(12,1fr); gap:8px;" role="img" aria-label="Layout centrado">
+      <div class="layout-box" style="grid-column:3/span 8; height:64px;">Centered Content (cols 3–10)</div>
+    </div>
+
+    <p style="font-size:0.68rem; color:var(--txt-muted); font-family:'Space Mono',monospace; margin-top:1.25rem;">
+      Max-Width: 1280px · Padding-X: 2rem (32px) · Gap: 8px · Breakpoints: sm 640px · md 768px · lg 1024px · xl 1280px
+    </p>
+
+    <!-- Spacing scale -->
+    <h3 style="font-size:0.9rem; font-weight:600; color:var(--txt-muted); text-transform:uppercase; letter-spacing:0.08em; margin-top:3rem; margin-bottom:1.25rem;">Escala de Espaçamento</h3>
+    <div style="display:flex; flex-wrap:wrap; gap:1rem; align-items:flex-end;">
+      <div style="text-align:center;">
+        <div style="background:rgba(212,149,42,0.2); border:1px solid rgba(212,149,42,0.3); width:8px; height:8px; margin:0 auto;"></div>
+        <span style="font-size:0.6rem; color:var(--txt-muted); font-family:'Space Mono',monospace; display:block; margin-top:4px;">2</span>
+      </div>
+      <div style="text-align:center;">
+        <div style="background:rgba(212,149,42,0.2); border:1px solid rgba(212,149,42,0.3); width:16px; height:16px; margin:0 auto;"></div>
+        <span style="font-size:0.6rem; color:var(--txt-muted); font-family:'Space Mono',monospace; display:block; margin-top:4px;">4</span>
+      </div>
+      <div style="text-align:center;">
+        <div style="background:rgba(212,149,42,0.2); border:1px solid rgba(212,149,42,0.3); width:32px; height:32px; margin:0 auto;"></div>
+        <span style="font-size:0.6rem; color:var(--txt-muted); font-family:'Space Mono',monospace; display:block; margin-top:4px;">8</span>
+      </div>
+      <div style="text-align:center;">
+        <div style="background:rgba(212,149,42,0.2); border:1px solid rgba(212,149,42,0.3); width:48px; height:48px; margin:0 auto;"></div>
+        <span style="font-size:0.6rem; color:var(--txt-muted); font-family:'Space Mono',monospace; display:block; margin-top:4px;">12</span>
+      </div>
+      <div style="text-align:center;">
+        <div style="background:rgba(212,149,42,0.2); border:1px solid rgba(212,149,42,0.3); width:64px; height:64px; margin:0 auto;"></div>
+        <span style="font-size:0.6rem; color:var(--txt-muted); font-family:'Space Mono',monospace; display:block; margin-top:4px;">16</span>
+      </div>
+      <div style="text-align:center;">
+        <div style="background:rgba(212,149,42,0.2); border:1px solid rgba(212,149,42,0.3); width:96px; height:96px; margin:0 auto;"></div>
+        <span style="font-size:0.6rem; color:var(--txt-muted); font-family:'Space Mono',monospace; display:block; margin-top:4px;">24</span>
+      </div>
+      <div style="text-align:center;">
+        <div style="background:rgba(212,149,42,0.2); border:1px solid rgba(212,149,42,0.3); width:128px; height:128px; margin:0 auto;"></div>
+        <span style="font-size:0.6rem; color:var(--txt-muted); font-family:'Space Mono',monospace; display:block; margin-top:4px;">32</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="ds-divider"/>
+
+<!-- ================================================================
+     05 — MOTION & ANIMATIONS
+================================================================ -->
+<section id="ds-motion" aria-labelledby="motion-heading">
+  <div class="ds-section reveal-section">
+    <span class="section-label gold"><span class="dot" aria-hidden="true"></span>05 — Animações &amp; Motion</span>
+    <h2 class="section-heading" id="motion-heading">
+      Sistema de <span class="accent">Motion</span>
+    </h2>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(260px,1fr)); gap:1.25rem; margin-top:2rem;">
+
+      <!-- fadeSlideIn -->
+      <div class="motion-card">
+        <span class="motion-label">Fade Slide In</span>
+        <div style="height:80px; display:flex; align-items:center; justify-content:center; background:rgba(212,149,42,0.04); border-radius:var(--radius-md);" role="img" aria-label="Demonstração de animação fadeSlideIn">
+          <span id="anim-demo-fade" style="font-size:0.9rem; font-weight:600; color:var(--txt-primary); cursor:pointer; padding:0.5rem 1rem; border-radius:var(--radius-sm); background:rgba(212,149,42,0.08); border:1px solid rgba(212,149,42,0.2);" onclick="this.style.animation='none'; void this.offsetWidth; this.style.animation='fadeSlideIn 0.8s var(--ease-out-expo) both';">▶ Replay</span>
+        </div>
+        <span class="motion-spec">opacity:0→1 · translateY(28px→0) · blur(8px→0)</span>
+        <span style="font-size:0.65rem; color:var(--txt-muted); font-family:'Space Mono',monospace; background:rgba(255,255,255,0.02); padding:0.5rem; border-radius:var(--radius-sm); border:1px solid var(--clr-border);">animation: fadeSlideIn 0.6s ease-out both</span>
+      </div>
+
+      <!-- Shimmer mask -->
+      <div class="motion-card">
+        <span class="motion-label">Shimmer Headline</span>
+        <div style="height:80px; display:flex; align-items:center; justify-content:center;" role="img" aria-label="Demonstração de shimmer no texto">
+          <span class="shimmer-mask" style="font-size:1.6rem; font-weight:700; color:rgba(240,236,228,0.8); cursor:pointer; --shine:220%;" id="anim-shimmer" onclick="this.style.animation='none'; void this.offsetWidth; this.style.animation='shimmer-mask 3s ease-in-out both';">Auravox</span>
+        </div>
+        <span class="motion-spec">mask-position 0→200% / 3s ease-in-out</span>
+        <span style="font-size:0.65rem; color:var(--txt-muted); font-family:'Space Mono',monospace; background:rgba(255,255,255,0.02); padding:0.5rem; border-radius:var(--radius-sm); border:1px solid var(--clr-border);">.shimmer-mask { animation: shimmer-mask 3s ... }</span>
+      </div>
+
+      <!-- Word reveal -->
+      <div class="motion-card">
+        <span class="motion-label">Word Reveal</span>
+        <div style="height:80px; display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:4px;" role="img" aria-label="Demonstração de revelação palavra por palavra">
+          <span class="type-words visible" style="font-size:1rem; cursor:pointer;" onclick="this.querySelectorAll('.w').forEach((w,i)=>{w.style.animation='none'; void w.offsetWidth; w.style.animationName='word-reveal';});">
+            <span class="w" style="--i:0">Escale </span><span class="w" style="--i:1">com </span><span class="w" style="--i:2">Inteligência </span><span class="w" style="--i:3">Artificial</span>
+          </span>
+        </div>
+        <span class="motion-spec">stagger: 0.18s · dur: 1.6s · ease-out</span>
+        <span style="font-size:0.65rem; color:var(--txt-muted); font-family:'Space Mono',monospace; background:rgba(255,255,255,0.02); padding:0.5rem; border-radius:var(--radius-sm); border:1px solid var(--clr-border);">.type-words .w { animation-delay: calc(--delay + --i * --stagger); }</span>
+      </div>
+
+      <!-- Gold pulse glow -->
+      <div class="motion-card">
+        <span class="motion-label">Gold Pulse Glow</span>
+        <div style="height:80px; display:flex; align-items:center; justify-content:center;" role="img" aria-label="Demonstração de pulsação dourada">
+          <div style="width:48px; height:48px; border-radius:50%; background:var(--gold-500); animation:gold-pulse 2s ease-in-out infinite;"></div>
+        </div>
+        <span class="motion-spec">box-shadow 0→28px rgba(212,149,42,0.28) / 2.2s infinite</span>
+        <span style="font-size:0.65rem; color:var(--txt-muted); font-family:'Space Mono',monospace; background:rgba(255,255,255,0.02); padding:0.5rem; border-radius:var(--radius-sm); border:1px solid var(--clr-border);">@keyframes gold-pulse { 50% { box-shadow:…; } }</span>
+      </div>
+
+      <!-- Orbit animation -->
+      <div class="motion-card">
+        <span class="motion-label">Orbit Dots</span>
+        <div style="height:100px; display:flex; align-items:center; justify-content:center; position:relative;" role="img" aria-label="Demonstração de órbita animada">
+          <div style="position:relative; width:100px; height:100px;">
+            <div style="position:absolute; inset:0; border-radius:50%; border:1px solid rgba(212,149,42,0.2);"></div>
+            <div style="position:absolute; top:50%; left:50%; width:8px; height:8px; margin:-4px 0 0 -4px; border-radius:50%; background:var(--gold-400); box-shadow:0 0 12px rgba(212,149,42,0.7); --r:50px; animation:orbit 4s linear infinite;"></div>
+            <div style="position:absolute; top:50%; left:50%; width:5px; height:5px; margin:-2.5px 0 0 -2.5px; border-radius:50%; background:rgba(212,149,42,0.55); --r:50px; animation:orbit 6s linear 1s infinite reverse;"></div>
+          </div>
+        </div>
+        <span class="motion-spec">rotate(0→360deg) translateX(var(--r)) / linear infinite</span>
+        <span style="font-size:0.65rem; color:var(--txt-muted); font-family:'Space Mono',monospace; background:rgba(255,255,255,0.02); padding:0.5rem; border-radius:var(--radius-sm); border:1px solid var(--clr-border);">@keyframes orbit { to { rotate: 360deg … } }</span>
+      </div>
+
+      <!-- Float Y -->
+      <div class="motion-card">
+        <span class="motion-label">Float Y</span>
+        <div style="height:80px; display:flex; align-items:center; justify-content:center;" role="img" aria-label="Demonstração de flutuação vertical">
+          <span style="font-size:2.5rem; animation:float-y 3s ease-in-out infinite;" aria-hidden="true">⚡</span>
+        </div>
+        <span class="motion-spec">translateY(0 → -10px → 0) / 3–12s ease-in-out infinite</span>
+        <span style="font-size:0.65rem; color:var(--txt-muted); font-family:'Space Mono',monospace; background:rgba(255,255,255,0.02); padding:0.5rem; border-radius:var(--radius-sm); border:1px solid var(--clr-border);">.float-y { animation: float-y 3s ease-in-out infinite; }</span>
+      </div>
+
+      <!-- Scan line -->
+      <div class="motion-card">
+        <span class="motion-label">Scan Line</span>
+        <div style="height:80px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; background:rgba(212,149,42,0.02); border-radius:var(--radius-md);" role="img" aria-label="Demonstração da linha de varredura">
+          <span style="font-size:0.75rem; color:var(--txt-muted); font-family:'Space Mono',monospace;">AURAVOX / AI AGENCY</span>
+          <div style="position:absolute; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,rgba(212,149,42,0.4),transparent); animation:scan-line 3s linear infinite;" aria-hidden="true"></div>
+        </div>
+        <span class="motion-spec">translateY(-100% → 400%) / opacity 0.6→0 / 6s linear infinite</span>
+        <span style="font-size:0.65rem; color:var(--txt-muted); font-family:'Space Mono',monospace; background:rgba(255,255,255,0.02); padding:0.5rem; border-radius:var(--radius-sm); border:1px solid var(--clr-border);">@keyframes scan-line • .scan-line { animation; }</span>
+      </div>
+
+      <!-- Section scroll reveal -->
+      <div class="motion-card">
+        <span class="motion-label">Scroll Reveal (Section)</span>
+        <div style="height:80px; display:flex; align-items:center; justify-content:center;" role="img" aria-label="Demonstração de revelação por scroll">
+          <div style="padding:0.75rem 1.25rem; border-radius:var(--radius-md); border:1px solid rgba(212,149,42,0.2); background:rgba(212,149,42,0.05); font-size:0.8rem; color:var(--gold-400);">
+            section.visible ↓ triggers on scroll
+          </div>
+        </div>
+        <span class="motion-spec">opacity:0→1 · translateY(44px→0) · blur(8px→0) / 1s</span>
+        <span style="font-size:0.65rem; color:var(--txt-muted); font-family:'Space Mono',monospace; background:rgba(255,255,255,0.02); padding:0.5rem; border-radius:var(--radius-sm); border:1px solid var(--clr-border);">.reveal-section.visible { opacity:1; transform:none; }</span>
+      </div>
+
+      <!-- Portrait fall -->
+      <div class="motion-card">
+        <span class="motion-label">Portrait Fall</span>
+        <div style="height:80px; display:flex; align-items:center; justify-content:center;" role="img" aria-label="Demonstração de queda de retrato">
+          <div id="portrait-demo" style="width:56px; height:56px; border-radius:50%; background:linear-gradient(135deg,rgba(212,149,42,0.3),rgba(212,149,42,0.1)); border:2px solid rgba(212,149,42,0.3); display:flex; align-items:center; justify-content:center; font-size:1.5rem; cursor:pointer; animation:portraitFall 1.4s cubic-bezier(0.34,1.56,0.64,1) both;" onclick="this.style.animation='none'; void this.offsetWidth; this.style.animation='portraitFall 1.4s cubic-bezier(0.34,1.56,0.64,1) both';">⚡</div>
+        </div>
+        <span class="motion-spec">Y(-120px→0) scale(0.6→1) rotate(-8→0deg) / spring 1.4s</span>
+        <span style="font-size:0.65rem; color:var(--txt-muted); font-family:'Space Mono',monospace; background:rgba(255,255,255,0.02); padding:0.5rem; border-radius:var(--radius-sm); border:1px solid var(--clr-border);">@keyframes portraitFall { cubic-bezier(0.34,1.56,…) }</span>
+      </div>
+
+    </div>
+
+    <!-- Easing tokens -->
+    <h3 style="font-size:0.9rem; font-weight:600; color:var(--txt-primary); margin-top:3rem; margin-bottom:1.25rem; letter-spacing:-0.01em;">Easing Tokens</h3>
+    <div style="display:flex; flex-wrap:wrap; gap:1rem;">
+      <div style="background:rgba(255,255,255,0.02); border:1px solid var(--clr-border); border-radius:var(--radius-md); padding:1rem 1.25rem; min-width:220px;">
+        <span style="font-size:0.68rem; color:var(--txt-muted); text-transform:uppercase; letter-spacing:0.08em; display:block; margin-bottom:0.5rem;">ease-out-expo</span>
+        <span style="font-family:'Space Mono',monospace; font-size:0.75rem; color:var(--gold-400);">cubic-bezier(0.19, 1, 0.22, 1)</span>
+      </div>
+      <div style="background:rgba(255,255,255,0.02); border:1px solid var(--clr-border); border-radius:var(--radius-md); padding:1rem 1.25rem; min-width:220px;">
+        <span style="font-size:0.68rem; color:var(--txt-muted); text-transform:uppercase; letter-spacing:0.08em; display:block; margin-bottom:0.5rem;">ease-spring (bounce)</span>
+        <span style="font-family:'Space Mono',monospace; font-size:0.75rem; color:var(--gold-400);">cubic-bezier(0.34, 1.56, 0.64, 1)</span>
+      </div>
+      <div style="background:rgba(255,255,255,0.02); border:1px solid var(--clr-border); border-radius:var(--radius-md); padding:1rem 1.25rem; min-width:220px;">
+        <span style="font-size:0.68rem; color:var(--txt-muted); text-transform:uppercase; letter-spacing:0.08em; display:block; margin-bottom:0.5rem;">ease-smooth</span>
+        <span style="font-family:'Space Mono',monospace; font-size:0.75rem; color:var(--gold-400);">cubic-bezier(0.4, 0, 0.2, 1)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="ds-divider"/>
+
+<!-- ================================================================
+     06 — ICONS
+================================================================ -->
+<section id="ds-icons" aria-labelledby="icons-heading">
+  <div class="ds-section reveal-section">
+    <span class="section-label gold"><span class="dot" aria-hidden="true"></span>06 — Iconografia</span>
+    <h2 class="section-heading" id="icons-heading">
+      Sistema de <span class="accent">Ícones</span>
+    </h2>
+    <p style="font-size:0.9rem; color:var(--txt-secondary); margin-bottom:2rem; line-height:1.6;">
+      Usando Lucide Icons (SVG inline) + emojis como fallback para ícones decorativos. Tamanho padrão: 16–24px. Cor: <code style="font-family:'Space Mono',monospace; font-size:0.8em; background:rgba(255,255,255,0.04); padding:2px 6px; border-radius:4px; color:var(--gold-400);">currentColor</code>.
+    </p>
+
+    <div class="icon-grid" role="list" aria-label="Grade de ícones do sistema">
+
+      <div class="icon-item" role="listitem" aria-label="Ícone de raio / automação">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+        <span>zap</span>
+      </div>
+      <div class="icon-item" role="listitem" aria-label="Ícone de robô / IA">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8V4H8"/><rect height="12" rx="2" width="16" x="4" y="8"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
+        <span>bot</span>
+      </div>
+      <div class="icon-item" role="listitem" aria-label="Ícone de camadas / stack">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
+        <span>layers</span>
+      </div>
+      <div class="icon-item" role="listitem" aria-label="Ícone de usuários / equipe">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span>users</span>
+      </div>
+      <div class="icon-item" role="listitem" aria-label="Ícone de seta para direita">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        <span>arrow-r</span>
+      </div>
+      <div class="icon-item" role="listitem" aria-label="Ícone de check / confirmação">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold-400);" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+        <span>check</span>
+      </div>
+      <div class="icon-item" role="listitem" aria-label="Ícone de estrela / favorito">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+        <span>star</span>
+      </div>
+      <div class="icon-item" role="listitem" aria-label="Ícone de gráfico / analytics">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+        <span>analytics</span>
+      </div>
+      <div class="icon-item" role="listitem" aria-label="Ícone de cadeado / segurança">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <span>shield</span>
+      </div>
+      <div class="icon-item" role="listitem" aria-label="Ícone de relógio / tempo">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <span>clock</span>
+      </div>
+      <div class="icon-item" role="listitem" aria-label="Ícone de sparkles / novidade">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold-400);" aria-hidden="true"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg>
+        <span>sparkles</span>
+      </div>
+      <div class="icon-item" role="listitem" aria-label="Ícone de menu hambúrguer">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        <span>menu</span>
+      </div>
+    </div>
+
+    <p style="font-size:0.72rem; color:var(--txt-muted); margin-top:2rem; font-family:'Space Mono',monospace;">
+      Tamanho default: 20–24px · stroke-width: 1.8 · color: currentColor → transition hover para gold-400
+    </p>
+  </div>
+</section>
+
+<hr class="ds-divider"/>
+
+<!-- ================================================================
+     FOOTER
+================================================================ -->
+<footer role="contentinfo">
+  <div style="max-width:1280px; margin:0 auto; padding:0 2rem;">
+    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem;">
+      <span style="font-size:1rem; font-weight:700; letter-spacing:-0.02em; color:var(--txt-primary); display:flex; align-items:center; gap:0.4rem;" aria-label="AURAVOX">
+        <span style="width:7px;height:7px;border-radius:50%;background:var(--gold-400);box-shadow:0 0 10px rgba(212,149,42,0.7);" aria-hidden="true"></span>
+        AURAVOX
+      </span>
+      <p style="font-size:0.75rem; color:var(--txt-muted);">
+        Design System v1.0 · Tech-Gold &amp; Obsidian · 2026
+      </p>
+    </div>
+    <p style="font-size:0.72rem; color:var(--txt-muted); text-align:center;">
+      Construído com as melhores práticas de UI/UX para Agências de Inteligência Artificial.
+    </p>
+  </div>
+</footer>
+
+<!-- ================================================================
+     JAVASCRIPT
+================================================================ -->
+<script>
+(function() {
+  'use strict';
+
+  /* ── Mobile menu ── */
+  const mobileToggle = document.getElementById('mobile-toggle');
+  const mobileMenu   = document.getElementById('mobile-menu');
+  if (mobileToggle && mobileMenu) {
+    mobileToggle.addEventListener('click', function() {
+      const isOpen = mobileMenu.classList.toggle('open');
+      mobileToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    // Close on link click
+    mobileMenu.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        mobileMenu.classList.remove('open');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  /* ── Modal ── */
+  const openBtn  = document.getElementById('open-modal-btn');
+  const closeBtn = document.getElementById('close-modal-btn');
+  const modal    = document.getElementById('demo-modal');
+  if (openBtn && closeBtn && modal) {
+    openBtn.addEventListener('click', function() {
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+    });
+    function closeModal() {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+      openBtn.focus();
+    }
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
+  }
+
+  /* ── Generate particles ── */
+  const particlesContainer = document.getElementById('particles-container');
+  if (particlesContainer) {
+    const count = 28;
+    for (let i = 0; i < count; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      const size = Math.random() * 3 + 1.5;
+      p.style.cssText = [
+        'width:'  + size + 'px',
+        'height:' + size + 'px',
+        'left:'   + (Math.random() * 100) + '%',
+        'top:'    + (Math.random() * 100) + '%',
+        '--dur:'  + (Math.random() * 8 + 5) + 's',
+        '--del:'  + (Math.random() * 8) + 's',
+        '--tx:'   + ((Math.random() - 0.5) * 40) + 'px',
+        'opacity:' + (Math.random() * 0.5 + 0.2),
+      ].join(';');
+      particlesContainer.appendChild(p);
+    }
+  }
+
+  /* ── Scroll reveal for sections ── */
+  const revealEls = document.querySelectorAll('.reveal-section');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(function(el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function(el) { el.classList.add('visible'); });
+  }
+
+  /* ── DS nav active highlight on scroll ── */
+  const sections = document.querySelectorAll('section[id], main[id]');
+  const dsNavLinks = document.querySelectorAll('.ds-nav-link');
+  if (sections.length && dsNavLinks.length) {
+    const sectionObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          dsNavLinks.forEach(function(lk) {
+            lk.classList.toggle('active', lk.getAttribute('href') === '#' + entry.target.id);
+          });
+        }
+      });
+    }, { threshold: 0.3 });
+    sections.forEach(function(s) { sectionObs.observe(s); });
+  }
+
+  /* ── type-words trigger on scroll ── */
+  const typeWordsSections = document.querySelectorAll('.type-words:not(.visible)');
+  if (typeWordsSections.length) {
+    const twObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          twObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    typeWordsSections.forEach(function(el) { twObs.observe(el); });
+  }
+
+})();
+</script>
+
+</body>
+</html>

@@ -157,6 +157,17 @@
       50%  { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
+    @keyframes premium-reveal {
+      0% { opacity: 0; transform: translateY(50px) rotateX(-20deg) scale(0.95); filter: blur(16px); }
+      100% { opacity: 1; transform: translateY(0) rotateX(0deg) scale(1); filter: blur(0); }
+    }
+    @keyframes shine-bg {
+      to { background-position: 200% center; }
+    }
+    @keyframes aura-burst {
+      0%, 100% { opacity: 0.2; transform: scale(1); filter: blur(12px); }
+      50% { opacity: 0.8; transform: scale(1.15); filter: blur(24px); }
+    }
 
     /* =========================================================
        UTILITIES
@@ -256,12 +267,14 @@
       padding: 2.5rem;
       overflow: hidden;
       backdrop-filter: blur(12px);
-      transition: border-color 0.4s ease, transform 0.4s var(--ease-spring);
+      transition: border-color 0.4s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
       display: flex; flex-direction: column; justify-content: space-between;
     }
     .bento-card:hover {
-      border-color: rgba(168,85,247,0.35);
-      transform: translateY(-4px);
+      border-color: rgba(168, 85, 247, 0.8); /* Brilho neon mais forte */
+      box-shadow: 0 12px 40px rgba(168, 85, 247, 0.15); /* Adiciona um glow externo */
+      transform: translateY(-8px); /* Sobe o dobro da altura anterior */
+      z-index: 10;
     }
     .bento-card::before {
       content: ""; position: absolute; inset: 0;
@@ -322,7 +335,7 @@
     }
     .nav-links a {
       text-decoration: none; color: inherit;
-      transition: color 0.2s ease;
+      transition: border-color 0.4s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
     }
     .nav-links a:hover { color: var(--txt-primary); }
     .nav-cta {
@@ -539,8 +552,39 @@
       line-height: 0.93;
       letter-spacing: -0.03em;
       color: var(--txt-primary);
-      animation: fadeSlideIn 1.6s var(--ease-out-expo) 0.35s both;
       margin-bottom: 1.75rem;
+      perspective: 1000px;
+      transform-style: preserve-3d; /* Trava de segurança para 3D no Brave/Chrome */
+      animation: none !important;
+    }
+    .reveal-line {
+      display: block;
+      opacity: 0;
+      animation: premium-reveal 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      animation-delay: var(--delay);
+      will-change: transform, opacity, filter;
+    }
+    .aura-text-fx {
+      position: relative;
+      display: inline-block;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(168, 85, 247, 0.8);
+      background: linear-gradient(to right, var(--neon-500), var(--cyber-pink), var(--neon-500));
+      -webkit-background-clip: text;
+      background-clip: text;
+      background-size: 200% auto;
+      animation: shine-bg 3s linear infinite;
+    }
+    .aura-text-fx::after {
+      content: "AURA.";
+      position: absolute;
+      left: 0; top: 0;
+      color: transparent;
+      text-shadow: 0 0 40px var(--neon-500), 0 0 80px var(--cyber-pink);
+      opacity: 0;
+      animation: aura-burst 4s ease-in-out infinite 1s;
+      z-index: -1;
+      pointer-events: none;
     }
     .hero-headline .line-neon {
       color: var(--neon-400);
@@ -976,9 +1020,12 @@
     }
     footer p { font-size: 0.78rem; color: var(--txt-muted); }
 
-    /* Reduced motion */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal-line, .w, .reveal-section { 
+        opacity: 1 !important; 
+        transform: none !important; 
+        filter: none !important; 
+      }
+    }
     }
   </style>
 </head>
@@ -1076,14 +1123,16 @@
 
     <!-- Headline -->
     <h1 class="hero-headline">
-      <span style="display:block;">Automatize.</span>
-      <span class="line-neon shimmer-mask" style="--shine:220%">Escale.</span>
-      <span class="line-shimmer" style="color:rgba(240,236,228,0.72);">Lidere com I.A.</span>
+      <span class="reveal-line" style="--delay: 0.1s;">Automatize.</span>
+      <span class="reveal-line line-neon" style="--delay: 0.35s;">Escale.</span>
+      <span class="reveal-line" style="--delay: 0.6s; color: rgba(240,236,228,0.8);">
+        Lidere com a <span class="aura-text-fx">AURA.</span>
+      </span>
     </h1>
 
     <!-- Subtitle -->
-    <p class="hero-subtitle type-words visible" data-stagger=".14s" data-dur="1.4s" aria-label="Transformamos negócios com automações inteligentes, modelos de linguagem e IA generativa — do conceito à produção.">
-      <span class="w" style="--i:0">Transformamos </span><span class="w" style="--i:1">negócios </span><span class="w" style="--i:2">com </span><span class="w" style="--i:3">automações </span><span class="w" style="--i:4">inteligentes, </span><span class="w" style="--i:5">modelos </span><span class="w" style="--i:6">de </span><span class="w" style="--i:7">linguagem </span><span class="w" style="--i:8">e </span><span class="w" style="--i:9">IA </span><span class="w" style="--i:10">generativa — </span><span class="w" style="--i:11">do </span><span class="w" style="--i:12">conceito </span><span class="w" style="--i:13">à </span><span class="w" style="--i:14">produção.</span>
+    <p class="hero-subtitle" style="animation: fadeSlideIn 1s ease 1s both;">
+      Transformamos negócios com automações inteligentes, modelos de linguagem e IA generativa — do conceito à produção.
     </p>
 
     <!-- CTA buttons -->

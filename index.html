@@ -817,40 +817,59 @@
     }
 
     /* =========================================================
-       MODAL
+       UX ADVANCED: MARQUEE & PREMIUM MODAL
     ========================================================= */
+    .marquee-wrap {
+      width: 100%; overflow: hidden; white-space: nowrap;
+      border-top: 1px solid rgba(168,85,247,0.08);
+      border-bottom: 1px solid rgba(168,85,247,0.08);
+      background: linear-gradient(90deg, rgba(2,2,4,1) 0%, rgba(168,85,247,0.03) 50%, rgba(2,2,4,1) 100%);
+      padding: 1.25rem 0; margin-bottom: 2rem;
+      position: relative; z-index: 10;
+    }
+    .marquee-content {
+      display: inline-block; animation: marquee 35s linear infinite;
+      font-family: 'Space Mono', monospace; font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--txt-muted);
+    }
+    .marquee-content:hover { animation-play-state: paused; }
+    .marquee-item { display: inline-flex; align-items: center; gap: 0.75rem; margin-right: 3rem; transition: color 0.3s; }
+    .marquee-item:hover { color: var(--txt-primary); }
+    .marquee-item svg { color: var(--neon-500); width: 14px; height: 14px; }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* Modal Premium Glassmorphism */
     .modal-overlay {
-      position: fixed; inset: 0; z-index: 200;
-      background: rgba(0,0,0,0.7);
-      backdrop-filter: blur(6px);
+      position: fixed; inset: 0; z-index: 999;
+      background: rgba(2, 2, 4, 0.4);
+      backdrop-filter: blur(8px);
       display: flex; align-items: center; justify-content: center;
       opacity: 0; pointer-events: none;
-      transition: opacity 0.25s ease;
+      transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
-    .modal-overlay.open { opacity:1; pointer-events: all; }
-    .modal-box {
-      background: var(--clr-surface);
-      border: 1px solid var(--clr-border);
-      border-radius: var(--radius-xl);
-      padding: 2.5rem;
-      max-width: 480px; width: 90%;
-      transform: scale(0.94) translateY(16px);
-      transition: transform 0.3s var(--ease-spring);
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .case-glass-box {
+      background: rgba(12, 8, 20, 0.75);
+      backdrop-filter: blur(32px) saturate(180%);
+      border: 1px solid rgba(168, 85, 247, 0.25);
+      border-radius: 24px;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.9), inset 0 0 40px rgba(168, 85, 247, 0.08);
+      max-width: 720px; width: 92%; padding: 3.5rem;
+      transform: scale(0.9) translateY(30px);
+      opacity: 0;
+      transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
       position: relative;
     }
-    .modal-overlay.open .modal-box { transform: scale(1) translateY(0); }
-    .modal-close {
-      position: absolute; top: 1.25rem; right: 1.25rem;
-      width: 32px; height: 32px;
-      display: flex; align-items: center; justify-content: center;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid var(--clr-border);
-      border-radius: 50%;
-      cursor: pointer; color: var(--txt-muted);
-      font-size: 1rem; line-height: 1;
-      transition: background 0.2s, color 0.2s;
+    .modal-overlay.open .case-glass-box { transform: scale(1) translateY(0); opacity: 1; }
+    .case-close {
+      position: absolute; top: 1.5rem; right: 1.5rem;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,0.03); border: 1px solid var(--clr-border);
+      color: var(--txt-muted); display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.3s;
     }
-    .modal-close:hover { background: rgba(168,85,247,0.1); color: var(--neon-400); }
+    .case-close:hover { background: rgba(255,0,229,0.1); border-color: var(--cyber-pink); color: var(--txt-primary); transform: rotate(90deg); }
+    .badge-blue { background: rgba(56, 189, 248, 0.1); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+    .badge-green { background: rgba(52, 211, 153, 0.1); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.3); }
 
     /* =========================================================
        MOTION DEMO CARD
@@ -1186,6 +1205,23 @@
 
 <hr class="ds-divider"/>
 
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-content">
+    <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> CLÍNICAS MÉDICAS</span>
+    <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> ODONTOLOGIA</span>
+    <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> STUDIOS DE BELEZA</span>
+    <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> RESTAURANTES</span>
+    <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> FUNERÁRIAS</span>
+    <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> E-COMMERCE</span>
+    <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> CLÍNICAS MÉDICAS</span>
+    <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> ODONTOLOGIA</span>
+    <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> STUDIOS DE BELEZA</span>
+    <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> RESTAURANTES</span>
+    <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> FUNERÁRIAS</span>
+    <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> E-COMMERCE</span>
+  </div>
+</div>
+
 <section id="portfolio" aria-labelledby="portfolio-heading" class="relative z-10">
   <div class="ds-section reveal-section">
     <span class="section-label gold"><span class="dot" aria-hidden="true"></span>Trabalhos</span>
@@ -1195,7 +1231,7 @@
     
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 3rem;">
 
-      <div class="feature-card border-gradient" style="display: flex; flex-direction: column;">
+      <div id="btn-open-case" class="feature-card border-gradient" style="display: flex; flex-direction: column; cursor: pointer;">
         <div class="card-icon" style="background: rgba(168,85,247,0.1); color: var(--neon-400);">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
         </div>
@@ -1281,6 +1317,31 @@
 <!-- ================================================================
      FOOTER
 ================================================================ -->
+<div id="case-modal" class="modal-overlay">
+  <div class="case-glass-box">
+    <button class="case-close" id="btn-close-case" aria-label="Fechar modal">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    <span class="badge badge-neon" style="margin-bottom: 1.5rem;">Case de Sucesso</span>
+    <h3 style="font-size: 2.2rem; font-weight: 700; color: var(--txt-primary); margin-bottom: 1rem; line-height: 1.1;">Ecossistema Funerário Web</h3>
+
+    <div style="margin-bottom: 2rem;">
+      <h4 style="font-size: 1rem; color: var(--neon-400); margin-bottom: 0.5rem; font-weight: 600;">O Desafio</h4>
+      <p style="color: var(--txt-secondary); font-size: 0.95rem; line-height: 1.6;">O cliente enfrentava processos manuais lentos na gestão de atendimento e captura de leads durante momentos delicados. A presença digital não transmitia o acolhimento e a seriedade necessários.</p>
+    </div>
+    <div style="margin-bottom: 2.5rem;">
+      <h4 style="font-size: 1rem; color: var(--cyber-pink); margin-bottom: 0.5rem; font-weight: 600;">A Solução Aura</h4>
+      <p style="color: var(--txt-secondary); font-size: 0.95rem; line-height: 1.6;">Arquitetamos uma plataforma web imersiva (Next.js) integrada com agentes autônomos. Agora, o sistema automatiza a triagem inicial via web e organiza fluxos logísticos no painel administrativo de forma invisível para o cliente final.</p>
+    </div>
+
+    <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem;">
+      <span class="badge badge-neon">UI/UX Premium</span>
+      <span class="badge badge-blue">Next.js Framework</span>
+      <span class="badge badge-green">Integração de APIs</span>
+    </div>
+  </div>
+</div>
+
 <footer role="contentinfo">
   <div style="max-width:1280px; margin:0 auto; padding:0 2rem;">
     <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem;">
@@ -1322,27 +1383,26 @@
     });
   }
 
-  /* ── Modal ── */
-  const openBtn  = document.getElementById('open-modal-btn');
-  const closeBtn = document.getElementById('close-modal-btn');
-  const modal    = document.getElementById('demo-modal');
-  if (openBtn && closeBtn && modal) {
-    openBtn.addEventListener('click', function() {
-      modal.classList.add('open');
+  /* ── Premium Case Modal ── */
+  var caseBtnOpen  = document.getElementById('btn-open-case');
+  var caseBtnClose = document.getElementById('btn-close-case');
+  var caseModal    = document.getElementById('case-modal');
+
+  if (caseBtnOpen && caseBtnClose && caseModal) {
+    caseBtnOpen.addEventListener('click', function() {
+      caseModal.classList.add('open');
       document.body.style.overflow = 'hidden';
-      closeBtn.focus();
     });
-    function closeModal() {
-      modal.classList.remove('open');
+    function closeCase() {
+      caseModal.classList.remove('open');
       document.body.style.overflow = '';
-      openBtn.focus();
     }
-    closeBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', function(e) {
-      if (e.target === modal) closeModal();
+    caseBtnClose.addEventListener('click', closeCase);
+    caseModal.addEventListener('click', function(e) {
+      if (e.target === caseModal) closeCase();
     });
     document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+      if (e.key === 'Escape') closeCase();
     });
   }
 

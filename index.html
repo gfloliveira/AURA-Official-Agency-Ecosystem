@@ -819,23 +819,37 @@
     /* =========================================================
        UX ADVANCED: MARQUEE & PREMIUM MODAL
     ========================================================= */
+    /* ── Roleta Minimalista (Crystal White) ── */
     .marquee-wrap {
       width: 100%; overflow: hidden; white-space: nowrap;
-      border-top: 1px solid rgba(168,85,247,0.08);
-      border-bottom: 1px solid rgba(168,85,247,0.08);
-      background: linear-gradient(90deg, rgba(2,2,4,1) 0%, rgba(168,85,247,0.03) 50%, rgba(2,2,4,1) 100%);
-      padding: 1.25rem 0; margin-bottom: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(2, 2, 4, 0.4);
+      padding: 1.25rem 0; margin: 2rem 0;
       position: relative; z-index: 10;
+      backdrop-filter: blur(8px);
     }
     .marquee-content {
-      display: inline-block; animation: marquee 35s linear infinite;
-      font-family: 'Space Mono', monospace; font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--txt-muted);
+      display: inline-block;
+      animation: marquee-scroll 50s linear infinite;
+      transition: animation-duration 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
-    .marquee-content:hover { animation-play-state: paused; }
-    .marquee-item { display: inline-flex; align-items: center; gap: 0.75rem; margin-right: 3rem; transition: color 0.3s; }
-    .marquee-item:hover { color: var(--txt-primary); }
-    .marquee-item svg { color: var(--neon-500); width: 14px; height: 14px; }
-    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .marquee-wrap:hover .marquee-content { animation-duration: 25s; }
+    .marquee-item {
+      display: inline-flex; align-items: center; gap: 0.8rem;
+      margin-right: 5rem; font-family: 'Space Mono', monospace;
+      font-size: 0.75rem; letter-spacing: 0.25em;
+      color: rgba(248, 250, 252, 0.5);
+      transition: all 0.4s ease;
+    }
+    .marquee-wrap:hover .marquee-item {
+      color: rgba(248, 250, 252, 1);
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+    @keyframes marquee-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
 
     /* Modal Premium Glassmorphism */
     .modal-overlay {
@@ -1207,18 +1221,26 @@
 
 <div class="marquee-wrap" aria-hidden="true">
   <div class="marquee-content">
-    <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> CLÍNICAS MÉDICAS</span>
-    <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> ODONTOLOGIA</span>
-    <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> STUDIOS DE BELEZA</span>
-    <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> RESTAURANTES</span>
-    <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> FUNERÁRIAS</span>
-    <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> E-COMMERCE</span>
-    <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> CLÍNICAS MÉDICAS</span>
-    <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> ODONTOLOGIA</span>
-    <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> STUDIOS DE BELEZA</span>
-    <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> RESTAURANTES</span>
-    <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> FUNERÁRIAS</span>
-    <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> E-COMMERCE</span>
+    <span class="marquee-item">✶ CLÍNICAS MÉDICAS</span>
+    <span class="marquee-item">✶ ODONTOLOGIA</span>
+    <span class="marquee-item">✶ ESTÉTICA AVANÇADA</span>
+    <span class="marquee-item">✶ RESTAURANTES</span>
+    <span class="marquee-item">✶ FUNERÁRIAS</span>
+    <span class="marquee-item">✶ E-COMMERCE DE LUXO</span>
+    <span class="marquee-item">✶ ESCRITÓRIOS DE ARQUITETURA</span>
+    <span class="marquee-item">✶ STARTUPS DE GAMING</span>
+    <span class="marquee-item">✶ BOUTIQUES JURÍDICAS</span>
+    <span class="marquee-item">✶ REDE IMOBILIÁRIA</span>
+    <span class="marquee-item">✶ CLÍNICAS MÉDICAS</span>
+    <span class="marquee-item">✶ ODONTOLOGIA</span>
+    <span class="marquee-item">✶ ESTÉTICA AVANÇADA</span>
+    <span class="marquee-item">✶ RESTAURANTES</span>
+    <span class="marquee-item">✶ FUNERÁRIAS</span>
+    <span class="marquee-item">✶ E-COMMERCE DE LUXO</span>
+    <span class="marquee-item">✶ ESCRITÓRIOS DE ARQUITETURA</span>
+    <span class="marquee-item">✶ STARTUPS DE GAMING</span>
+    <span class="marquee-item">✶ BOUTIQUES JURÍDICAS</span>
+    <span class="marquee-item">✶ REDE IMOBILIÁRIA</span>
   </div>
 </div>
 

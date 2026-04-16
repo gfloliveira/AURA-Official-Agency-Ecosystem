@@ -1021,8 +1021,8 @@
     </nav>
 
     <!-- Desktop CTA -->
-    <a class="nav-cta nav-cta-desktop" href="#ds-components" id="nav-cta-btn" aria-label="Ver componentes">
-      Ver Design System
+    <a class="nav-cta nav-cta-desktop" href="#sobre" id="nav-cta-btn" aria-label="Agendar Diagnóstico">
+      Agendar Diagnóstico
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
     </a>
 
@@ -1120,12 +1120,12 @@
 </main>
 
 <section id="status-quo" aria-labelledby="status-heading" class="relative z-10">
-  <div class="ds-section reveal-section text-center" style="padding-top: 8rem; padding-bottom: 8rem;">
-    <span class="section-label gold"><span class="dot" aria-hidden="true"></span>O Cenário</span>
-    <h2 class="section-heading mx-auto" id="status-heading" style="max-width: 800px;">
+  <div class="ds-section text-center" style="padding-top: 8rem; padding-bottom: 8rem;">
+    <span class="section-label gold reveal-section" style="transition-delay: 0.1s"><span class="dot" aria-hidden="true"></span>O Cenário</span>
+    <h2 class="section-heading mx-auto reveal-section" id="status-heading" style="max-width: 850px; font-size: clamp(2.5rem, 5.5vw, 4.2rem); transition-delay: 0.2s;">
       Empresas que não adotam I.A. hoje, serão <span class="accent">substituídas</span> por aquelas que adotam amanhã.
     </h2>
-    <p style="font-size:1.1rem; color:var(--txt-secondary); max-width:640px; margin: 1.5rem auto 0; line-height:1.7;">
+    <p class="reveal-section" style="font-size:1.15rem; color:var(--txt-secondary); max-width:680px; margin: 1.5rem auto 0; line-height:1.7; transition-delay: 0.4s;">
       Não se trata de inovação pelo hype. Trata-se de sobrevivência, redução brutal de custos operacionais e escala sem limites.
     </p>
   </div>
@@ -1147,7 +1147,7 @@
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
           </div>
           <h3 style="font-size: 1.75rem; font-weight: 600; color: var(--txt-primary); margin-bottom: 0.75rem;">Automações Inteligentes</h3>
-          <p style="color: var(--txt-secondary); line-height: 1.6; max-width: 480px;">Conectamos seus sistemas e eliminamos tarefas repetitivas. Desenvolvemos fluxos complexos no n8n e Make para que sua equipe foque no que realmente importa.</p>
+          <p style="color: var(--txt-secondary); line-height: 1.6; max-width: 480px;">Conectamos seus sistemas e eliminamos tarefas repetitivas. Desenvolvemos fluxos complexos de integração e orquestração de dados para que sua equipe foque no que realmente importa.</p>
         </div>
       </article>
 
@@ -1171,9 +1171,9 @@
         </div>
       </article>
 
-      <article class="bento-card" style="grid-column: span 7; min-height: 320px; background: linear-gradient(135deg, rgba(168,85,247,0.08) 0%, rgba(22,22,22,0.4) 100%); border-color: rgba(168,85,247,0.2);">
+      <article class="bento-card" style="grid-column: span 7; min-height: 320px;">
         <div class="bento-content">
-          <div class="bento-icon" style="background: rgba(168,85,247,0.15); border-color: rgba(168,85,247,0.4);">
+          <div class="bento-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           </div>
           <h3 style="font-size: 1.75rem; font-weight: 600; color: var(--neon-400); margin-bottom: 0.75rem;">Arquitetura Digital</h3>
@@ -1219,7 +1219,7 @@
         </p>
         <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
           <span class="badge badge-neon" style="color: var(--cyber-pink); border-color: rgba(255,0,229,0.3);">IA Generativa</span>
-          <span class="badge badge-surface">Automação (n8n/Make)</span>
+          <span class="badge badge-surface">Orquestração de Dados</span>
         </div>
       </div>
 
@@ -1434,7 +1434,7 @@
           io.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.15, rootMargin: '0px 0px -120px 0px' });
     revealEls.forEach(function(el) { io.observe(el); });
   } else {
     revealEls.forEach(function(el) { el.classList.add('visible'); });

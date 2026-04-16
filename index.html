@@ -947,6 +947,44 @@
     .timeline-desc { font-size: 0.95rem; color: var(--txt-secondary); line-height: 1.6; }
 
     /* =========================================================
+       AURA PREMIUM CARD HOVER (GLASS REFLECTION)
+    ========================================================= */
+    .feature-card, .bento-card {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(12px);
+    }
+
+    /* O feixe de luz de vidro que varre o card */
+    .feature-card::after, .bento-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.08), transparent);
+      transform: skewX(-25deg);
+      transition: left 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* Elevação + Glow Interno + Borda Neon no hover */
+    .feature-card:hover, .bento-card:hover {
+      border-color: rgba(168, 85, 247, 0.5);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 0 25px rgba(168, 85, 247, 0.15);
+      transform: translateY(-8px);
+    }
+
+    /* Dispara o feixe de luz ao hover */
+    .feature-card:hover::after, .bento-card:hover::after {
+      left: 200%;
+    }
+
+    /* =========================================================
        FOOTER
     ========================================================= */
     footer {

@@ -1267,7 +1267,7 @@
         </div>
       </div>
 
-      <div class="feature-card border-neon" style="display: flex; flex-direction: column;">
+      <div id="btn-open-ia" class="feature-card border-gradient" style="display: flex; flex-direction: column; cursor: pointer;">
         <div class="card-icon" style="background: rgba(255,0,229,0.1); color: var(--cyber-pink);">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </div>
@@ -1336,6 +1336,19 @@
   </div>
 </section>
 
+<section id="cta-final" class="ds-section text-center" style="padding-top: 8rem; padding-bottom: 8rem; position: relative; z-index: 10;">
+  <div style="max-width: 800px; margin: 0 auto; background: rgba(12, 8, 20, 0.5); border: 1px solid rgba(168, 85, 247, 0.2); border-radius: 32px; padding: 5rem 2rem; backdrop-filter: blur(16px); box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 0 40px rgba(168,85,247,0.05); transition: border-color 0.4s ease;" onmouseover="this.style.borderColor='rgba(255,0,229,0.4)'" onmouseout="this.style.borderColor='rgba(168,85,247,0.2)'">
+    
+    <h2 style="font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 700; color: var(--txt-primary); margin-bottom: 1.5rem; line-height: 1.1;">Pronto para <span class="aura-text-fx">escalar?</span></h2>
+    <p style="font-size: 1.15rem; color: var(--txt-secondary); max-width: 550px; margin: 0 auto 3rem; line-height: 1.6;">A diferença entre os líderes de mercado e a concorrência é a velocidade de execução. Deixe a IA assumir o trabalho pesado da sua operação.</p>
+    
+    <a href="#" class="nav-cta" style="font-size: 1.1rem; padding: 1.2rem 2.5rem; display: inline-flex; justify-content: center; box-shadow: 0 0 20px rgba(168,85,247,0.4);">
+      Agendar Diagnóstico Gratuito
+      <svg style="margin-left: 0.5rem;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+    </a>
+  </div>
+</section>
+
 <!-- ================================================================
      FOOTER
 ================================================================ -->
@@ -1360,6 +1373,31 @@
       <span class="badge badge-neon">UI/UX Premium</span>
       <span class="badge badge-blue">Next.js Framework</span>
       <span class="badge badge-green">Integração de APIs</span>
+    </div>
+  </div>
+</div>
+
+<div id="modal-ia" class="modal-overlay">
+  <div class="case-glass-box">
+    <button class="case-close" aria-label="Fechar modal">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    <span class="badge badge-neon" style="margin-bottom: 1.5rem; color: var(--cyber-pink); border-color: rgba(255,0,229,0.3); background: rgba(255,0,229,0.1);">Automação de Alta Escala</span>
+    <h3 style="font-size: 2.2rem; font-weight: 700; color: var(--txt-primary); margin-bottom: 1rem; line-height: 1.1;">Agentes Autônomos de Triagem</h3>
+    
+    <div style="margin-bottom: 2rem;">
+      <h4 style="font-size: 1rem; color: var(--neon-400); margin-bottom: 0.5rem; font-weight: 600;">O Desafio Operacional</h4>
+      <p style="color: var(--txt-secondary); font-size: 0.95rem; line-height: 1.6;">O tempo de resposta é o maior assassino de vendas. A equipe de atendimento estava sobrecarregada com dúvidas repetitivas, perdendo leads quentes que exigiam atendimento imediato fora do horário comercial.</p>
+    </div>
+    <div style="margin-bottom: 2.5rem;">
+      <h4 style="font-size: 1rem; color: var(--cyber-pink); margin-bottom: 0.5rem; font-weight: 600;">A Arquitetura Aura</h4>
+      <p style="color: var(--txt-secondary); font-size: 0.95rem; line-height: 1.6;">Desenvolvemos fluxos de orquestração de dados interligando LLMs avançados ao WhatsApp corporativo. O agente qualifica o lead, responde dúvidas técnicas com base no conhecimento da empresa e agenda reuniões diretamente no calendário dos vendedores — 24 horas por dia.</p>
+    </div>
+    
+    <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem;">
+      <span class="badge badge-neon">Orquestração de Dados</span>
+      <span class="badge badge-blue" style="background: rgba(168, 85, 247, 0.1); color: #a855f7; border-color: rgba(168, 85, 247, 0.3);">Modelos LLM Customizados</span>
+      <span class="badge badge-green" style="background: rgba(56, 189, 248, 0.1); color: #38bdf8; border-color: rgba(56, 189, 248, 0.3);">Webhooks & APIs</span>
     </div>
   </div>
 </div>
@@ -1405,28 +1443,30 @@
     });
   }
 
-  /* ── Premium Case Modal ── */
-  var caseBtnOpen  = document.getElementById('btn-open-case');
-  var caseBtnClose = document.getElementById('btn-close-case');
-  var caseModal    = document.getElementById('case-modal');
+  /* ── Multi-Modal Manager ── */
+  const setupModal = (btnId, modalId) => {
+    const btn = document.getElementById(btnId);
+    const modal = document.getElementById(modalId);
+    if (btn && modal) {
+      const closeBtn = modal.querySelector('.case-close');
+      const openModal = () => { modal.classList.add('open'); document.body.style.overflow = 'hidden'; };
+      const closeModal = () => { modal.classList.remove('open'); document.body.style.overflow = ''; };
+      
+      btn.addEventListener('click', openModal);
+      if (closeBtn) closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    }
+  };
+  
+  setupModal('btn-open-case', 'case-modal'); // Modal Funerária
+  setupModal('btn-open-ia', 'modal-ia');     // Modal Automação IA
 
-  if (caseBtnOpen && caseBtnClose && caseModal) {
-    caseBtnOpen.addEventListener('click', function() {
-      caseModal.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    });
-    function closeCase() {
-      caseModal.classList.remove('open');
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
       document.body.style.overflow = '';
     }
-    caseBtnClose.addEventListener('click', closeCase);
-    caseModal.addEventListener('click', function(e) {
-      if (e.target === caseModal) closeCase();
-    });
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeCase();
-    });
-  }
+  });
 
   /* ── Neural Constellation ── */
   const canvas = document.getElementById('neural-canvas');

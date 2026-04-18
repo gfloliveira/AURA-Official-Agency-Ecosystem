@@ -1099,6 +1099,45 @@
     .signature-wrapper:hover .signature-overlay {
       animation: signatureReveal 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     }
+
+    /* ── Modal Aura Premium ── */
+    #portfolio-modal-content {
+      background: rgba(15, 15, 20, 0.8);
+      backdrop-filter: blur(30px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 80px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(168, 85, 247, 0.05);
+    }
+    /* Animação dos itens da lista (Stagger) */
+    .modal-list-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .modal-list-item.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .item-icon-box {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      display: flex; align-items: center; justify-content: center;
+      color: #d4af37; font-size: 1.25rem;
+    }
+    /* Brilho de fundo dinâmico */
+    .modal-glow {
+      position: absolute; top: -100px; left: -100px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+      filter: blur(40px); pointer-events: none;
+    }
   </style>
 </head>
 <body>
@@ -1510,29 +1549,23 @@
 <!-- ================================================================
      MODAL DINÂMICO (PORTFÓLIO AURA)
 ================================================================ -->
-<div id="service-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-md transition-opacity duration-[400ms] opacity-0 pointer-events-none" onclick="if(event.target === this) { this.classList.add('opacity-0', 'pointer-events-none'); document.getElementById('modal-content-box').classList.add('scale-95', 'opacity-0'); document.body.style.overflow=''; }">
-  <div id="modal-content-box" class="relative w-[90%] max-w-2xl rounded-[24px] bg-[#0c0c12]/70 p-8 shadow-[0_40px_80px_rgba(0,0,0,0.8),inset_0_0_25px_rgba(168,85,247,0.15)] border border-white/5 backdrop-blur-[40px] transition-all duration-[500ms] scale-95 opacity-0 flex flex-col max-h-[90vh] overflow-y-auto">
-    
-    <button aria-label="Fechar modal" class="absolute top-6 right-6 text-white/50 hover:text-white transition-colors p-2" onclick="document.getElementById('service-modal').classList.add('opacity-0', 'pointer-events-none'); document.getElementById('modal-content-box').classList.add('scale-95', 'opacity-0'); document.body.style.overflow='';">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+<div id="portfolio-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-md transition-opacity duration-500 opacity-0 pointer-events-none" onclick="if(event.target === this) closePortfolioModal();">
+  <div id="portfolio-modal-content" class="relative p-8 md:p-12 rounded-[32px] max-w-xl w-[90%] transform scale-95 opacity-0 transition-all duration-500 overflow-hidden">
+    <div class="modal-glow"></div>
+    <button onclick="closePortfolioModal()" class="absolute top-6 right-6 text-white/30 hover:text-white transition-colors z-10 w-10 h-10 flex items-center justify-center">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
     </button>
     
-    <span class="inline-block rounded-full border border-[rgba(212,175,55,0.3)] bg-[rgba(212,175,55,0.1)] px-3 py-1 text-xs font-semibold text-[#d4af37] tracking-wider uppercase mb-5 self-start">Visão Geral do Escopo</span>
-    
-    <h3 id="modal-title" class="text-3xl sm:text-4xl font-bold text-white mb-2 leading-tight">Título</h3>
-    <p id="modal-description" class="text-[var(--txt-secondary)] text-[0.95rem] leading-relaxed mb-8 border-b border-white/10 pb-6 pr-8">Subtítulo</p>
-    
-    <div>
-      <h4 class="text-sm font-semibold text-[var(--neon-400)] mb-5 tracking-widest uppercase">Módulos Estratégicos:</h4>
-      <ul id="modal-list" class="flex flex-col gap-4 mb-8">
-        <!-- Injetado via JS -->
-      </ul>
-    </div>
-    
-    <div class="flex justify-end pt-6 mt-auto border-t border-white/5">
-        <a href="#sobre" onclick="document.getElementById('service-modal').classList.add('opacity-0', 'pointer-events-none'); document.body.style.overflow='';" style="background: linear-gradient(135deg, var(--neon-500), var(--cyber-pink)); padding: 0.8rem 2rem; border-radius: 99px; font-weight: 600; color: #fff; text-decoration: none; box-shadow: 0 0 20px rgba(168,85,247,0.4); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.05em; transition: all 0.3s ease;">
-          Aplicar Este Blueprint
-        </a>
+    <div class="relative z-10">
+      <h3 id="p-modal-title" class="text-3xl font-bold text-white mb-3 tracking-tight"></h3>
+      <p id="p-modal-desc" class="text-white/50 text-lg mb-8 leading-relaxed"></p>
+      
+      <div id="p-modal-list" class="flex flex-col gap-4 mb-10">
+      </div>
+      
+      <button onclick="closePortfolioModal()" class="w-full py-5 bg-white text-black font-bold rounded-2xl hover:bg-[#d4af37] hover:text-white transition-all duration-300 transform active:scale-[0.98]">
+        Entendido, fechar detalhes
+      </button>
     </div>
   </div>
 </div>
@@ -1831,27 +1864,51 @@
       const data = portfolioData[key];
       if(!data) return;
 
-      // Preenchimento dos campos com IDs corrigidos
-      document.getElementById('modal-title').innerText = data.title;
-      document.getElementById('modal-description').innerText = data.sub; // ID Corrigido para funcionar
+      document.getElementById('p-modal-title').innerText = data.title;
+      document.getElementById('p-modal-desc').innerText = data.sub;
       
-      const list = document.getElementById('modal-list');
+      const list = document.getElementById('p-modal-list');
+      // Gerando os itens com a classe de animação
       list.innerHTML = data.items.map(i => `
-        <li class="flex items-center gap-3 text-white/80">
-          <i class="ph-fill ph-check-circle text-gold text-xl"></i>
-          <span>${i}</span>
-        </li>
+        <div class="modal-list-item">
+          <div class="item-icon-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          </div>
+          <span class="text-white/90 font-medium">${i}</span>
+        </div>
       `).join('');
       
-      // Gatilho de abertura do Modal de Vidro
-      const modal = document.getElementById('service-modal');
-      const box = document.getElementById('modal-content-box');
+      const modal = document.getElementById('portfolio-modal');
+      const box = document.getElementById('portfolio-modal-content');
       
-      if(modal && box) {
-        modal.classList.remove('opacity-0', 'pointer-events-none');
-        setTimeout(() => box.classList.remove('scale-95', 'opacity-0'), 10);
-        document.body.style.overflow = 'hidden';
-      }
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        box.classList.remove('scale-95', 'opacity-0');
+        
+        // Efeito Stagger: anima cada item com um pequeno atraso
+        const items = document.querySelectorAll('.modal-list-item');
+        items.forEach((item, index) => {
+          setTimeout(() => {
+            item.classList.add('show');
+          }, 100 * (index + 1));
+        });
+      }, 10);
+      
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePortfolioModal() {
+      const modal = document.getElementById('portfolio-modal');
+      const box = document.getElementById('portfolio-modal-content');
+      const items = document.querySelectorAll('.modal-list-item');
+      
+      items.forEach(item => item.classList.remove('show'));
+      box.classList.add('scale-95', 'opacity-0');
+      
+      setTimeout(() => {
+        modal.classList.add('opacity-0', 'pointer-events-none');
+        document.body.style.overflow = '';
+      }, 500);
     }
 
 </script>

@@ -1146,6 +1146,11 @@
       border-color: rgba(212, 175, 55, 0.4);
       color: #d4af37; box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
     }
+
+    /* Otimização: Aceleração de Hardware */
+    .card-premium, .neon-emoji, #portfolio-modal-content {
+      will-change: transform, opacity;
+    }
   </style>
 </head>
 <body>
@@ -1889,6 +1894,21 @@
         document.body.style.overflow = '';
       }, 500);
     }
+
+    // Usabilidade: Fechar modal com a tecla ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const modal = document.getElementById('portfolio-modal');
+        if (modal && !modal.classList.contains('pointer-events-none')) {
+          closePortfolioModal();
+        }
+      }
+    });
+
+    // Usabilidade: Fechar ao clicar no fundo (overlay)
+    document.getElementById('portfolio-modal')?.addEventListener('click', (e) => {
+      if (e.target.id === 'portfolio-modal') closePortfolioModal();
+    });
 
 </script>
 

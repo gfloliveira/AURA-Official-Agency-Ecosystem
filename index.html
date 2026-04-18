@@ -1023,10 +1023,10 @@
       left: 200%;
     }
 
-    /* ── Portfólio 5 Pilares AURA ── */
+    /* ── Portfólio 6 Ecossistemas AURA ── */
     .portfolio-grid-main {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       gap: 2rem; margin-top: 4rem;
     }
     .card-premium {
@@ -1035,31 +1035,32 @@
       border-radius: 24px; overflow: hidden;
       display: flex; flex-direction: column;
       backdrop-filter: blur(20px);
-      transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+      transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+      height: 100%;
     }
     .card-premium:hover {
       transform: translateY(-10px);
       border-color: rgba(168, 85, 247, 0.3);
       box-shadow: 0 40px 80px rgba(0,0,0,0.6);
     }
-    /* Placeholder de Design (Aura de Luz) */
     .visual-slot {
-      width: 100%; height: 200px; position: relative; overflow: hidden;
+      width: 100%; height: 180px; position: relative; overflow: hidden;
       background: #08080a; border-bottom: 1px solid rgba(255,255,255,0.03);
       display: flex; align-items: center; justify-content: center;
     }
-    .aura-effect {
-      position: absolute; width: 140px; height: 140px;
-      border-radius: 50%; filter: blur(60px); opacity: 0.2;
-      animation: aura-pulse 8s infinite ease-in-out;
+    .neon-emoji {
+      font-size: 4.5rem;
+      filter: drop-shadow(0 0 15px currentColor);
+      animation: float-emoji 3.5s infinite ease-in-out;
+      user-select: none;
     }
-    @keyframes aura-pulse {
-      0%, 100% { transform: scale(1); opacity: 0.2; }
-      50% { transform: scale(1.4); opacity: 0.4; }
+    @keyframes float-emoji {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(3deg); }
     }
-    .body-premium { padding: 2.5rem; flex-grow: 1; display: flex; flex-direction: column; }
-    .title-premium { font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem; letter-spacing: -0.02em; }
-    .desc-premium { font-size: 0.9rem; color: var(--txt-secondary); line-height: 1.6; margin-bottom: 2rem; }
+    .body-premium { padding: 2.2rem; flex-grow: 1; display: flex; flex-direction: column; }
+    .title-premium { font-size: 1.4rem; font-weight: 700; color: #fff; margin-bottom: 0.6rem; letter-spacing: -0.01em; }
+    .desc-premium { font-size: 0.85rem; color: var(--txt-secondary); line-height: 1.6; margin-bottom: 1.5rem; }
 
     /* =========================================================
        FOOTER & ASSINATURA PREMIUM
@@ -1322,16 +1323,12 @@
 </div>
 
 <section id="portfolio" class="ds-section" style="max-width: 1280px; margin: 0 auto; padding-top: 8rem;">
-  <span class="section-label gold reveal-section"><span class="dot"></span>Ecossistemas de Impacto</span>
+  <span class="section-label gold reveal-section"><span class="dot"></span>Ecossistemas & Portfólio</span>
   <h2 class="section-heading reveal-section">Engenharia que <span class="aura-text-fx">converte.</span></h2>
   
   <div class="portfolio-grid-main reveal-section">
-    
     <div id="btn-open-case" class="card-premium" style="cursor: pointer;">
-      <div class="visual-slot">
-        <div class="aura-effect" style="background: #d4af37;"></div>
-        <span style="font-family:'Space Mono'; font-size:10px; color:rgba(212,175,55,0.3); letter-spacing:4px;">PARAMIRIM • ATIVO</span>
-      </div>
+      <div class="visual-slot"><div class="neon-emoji" style="color: #d4af37;">⚰️</div></div>
       <div class="body-premium">
         <span class="badge" style="color:#d4af37; border-color:rgba(212,175,55,0.2); margin-bottom: 1rem;">Case Real</span>
         <h3 class="title-premium">Ecossistema Digital Funerário</h3>
@@ -1341,10 +1338,7 @@
     </div>
 
     <div id="btn-open-ia" class="card-premium" style="cursor: pointer;">
-      <div class="visual-slot">
-        <div class="aura-effect" style="background: #a855f7;"></div>
-        <span style="font-family:'Space Mono'; font-size:10px; color:rgba(168,85,247,0.3); letter-spacing:4px;">IA • ORQUESTRAÇÃO</span>
-      </div>
+      <div class="visual-slot"><div class="neon-emoji" style="color: #a855f7;">🤖</div></div>
       <div class="body-premium">
         <span class="badge" style="color:#a855f7; border-color:rgba(168,85,247,0.2); margin-bottom: 1rem;">Aura Blueprint</span>
         <h3 class="title-premium">Sistemas de Automação I.A.</h3>
@@ -1354,44 +1348,46 @@
     </div>
 
     <div class="card-premium">
-      <div class="visual-slot">
-        <div class="aura-effect" style="background: #ff00e5;"></div>
-        <span style="font-family:'Space Mono'; font-size:10px; color:rgba(255,0,229,0.3); letter-spacing:4px;">SAÚDE • ESTÉTICA</span>
-      </div>
+      <div class="visual-slot"><div class="neon-emoji" style="color: #ff00e5;">✨</div></div>
       <div class="body-premium">
         <span class="badge" style="color:#ff00e5; border-color:rgba(255,0,229,0.2); margin-bottom: 1rem;">Aura Blueprint</span>
-        <h3 class="title-premium">Clínicas & Centros de Estética</h3>
+        <h3 class="title-premium">Clínicas Médicas & Estéticas</h3>
         <p class="desc-premium">Plataformas de agendamento e experiência do paciente focadas em conversão e luxo.</p>
-        <div style="margin-top:auto;"><span class="badge badge-surface">Design System</span></div>
+        <div style="margin-top:auto;"><span class="badge badge-surface">Health Tech</span></div>
       </div>
     </div>
 
     <div class="card-premium">
-      <div class="visual-slot">
-        <div class="aura-effect" style="background: #38bdf8;"></div>
-        <span style="font-family:'Space Mono'; font-size:10px; color:rgba(56,189,248,0.3); letter-spacing:4px;">ARQUITETURA • DESIGN</span>
-      </div>
+      <div class="visual-slot"><div class="neon-emoji" style="color: #38bdf8;">📐</div></div>
       <div class="body-premium">
         <span class="badge" style="color:#38bdf8; border-color:rgba(56,189,248,0.2); margin-bottom: 1rem;">Aura Blueprint</span>
-        <h3 class="title-premium">Arquitetura & Design de Interiores</h3>
-        <p class="desc-premium">Vitrines digitais imersivas para exibição de projetos em alta definição e captação de clientes.</p>
-        <div style="margin-top:auto;"><span class="badge badge-surface">Performance Web</span></div>
+        <h3 class="title-premium">Arquitetura & Design</h3>
+        <p class="desc-premium">Vitrines digitais imersivas para exibição de projetos em alta definição e captação.</p>
+        <div style="margin-top:auto;"><span class="badge badge-surface">Immersive Web</span></div>
       </div>
     </div>
 
     <div class="card-premium">
-      <div class="visual-slot">
-        <div class="aura-effect" style="background: #34d399;"></div>
-        <span style="font-family:'Space Mono'; font-size:10px; color:rgba(52,211,153,0.3); letter-spacing:4px;">JURÍDICO • DADOS</span>
-      </div>
+      <div class="visual-slot"><div class="neon-emoji" style="color: #34d399;">⚖️</div></div>
       <div class="body-premium">
         <span class="badge" style="color:#34d399; border-color:rgba(52,211,153,0.2); margin-bottom: 1rem;">Aura Blueprint</span>
         <h3 class="title-premium">Gestão & Automação Jurídica</h3>
-        <p class="desc-premium">Orquestração de dados e automação de documentos para escritórios de advocacia de alta performance.</p>
+        <p class="desc-premium">Orquestração de dados e automação de documentos para escritórios de alta performance.</p>
         <div style="margin-top:auto;"><span class="badge badge-surface">Data Intelligence</span></div>
       </div>
     </div>
 
+    <div class="card-premium">
+      <div class="visual-slot">
+        <div class="neon-emoji" style="color: #f59e0b;">🚧</div>
+      </div>
+      <div class="body-premium">
+        <span class="badge" style="color:#f59e0b; border-color:rgba(245,158,11,0.2); margin-bottom: 1rem;">Aura Labs</span>
+        <h3 class="title-premium">Projetos Sob Demanda</h3>
+        <p class="desc-premium">Engenharia personalizada para novos nichos. Seu próximo ecossistema está sendo construído aqui.</p>
+        <div style="margin-top:auto;"><span class="badge badge-surface">Em Desenvolvimento</span></div>
+      </div>
+    </div>
   </div>
 </section>
 

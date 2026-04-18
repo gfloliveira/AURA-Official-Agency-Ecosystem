@@ -1100,43 +1100,51 @@
       animation: signatureReveal 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     }
 
-    /* ── Modal Aura Premium ── */
+    /* ── Subtela Aura Experience ── */
     #portfolio-modal-content {
-      background: rgba(15, 15, 20, 0.8);
-      backdrop-filter: blur(30px) saturate(180%);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 0 80px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(168, 85, 247, 0.05);
+      background: rgba(10, 10, 15, 0.9);
+      backdrop-filter: blur(40px) saturate(150%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 100px rgba(0, 0, 0, 0.9);
+      position: relative; overflow: hidden;
     }
-    /* Animação dos itens da lista (Stagger) */
-    .modal-list-item {
-      background: rgba(255, 255, 255, 0.02);
+    /* Brilho Dinâmico de Fundo */
+    .modal-glow-dynamic {
+      position: absolute; top: -150px; left: -150px;
+      width: 400px; height: 400px;
+      filter: blur(80px); opacity: 0.2;
+      pointer-events: none; transition: background 0.8s ease;
+      z-index: 0;
+    }
+    /* Itens da Lista com Efeito Stagger */
+    .modal-item-v3 {
+      background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 16px;
-      padding: 1.25rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      transform: translateY(20px);
-      opacity: 0;
-      transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+      border-radius: 18px; padding: 1.2rem;
+      display: flex; align-items: center; gap: 1rem;
+      transform: translateY(20px); opacity: 0;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .modal-list-item.show {
-      transform: translateY(0);
-      opacity: 1;
-    }
-    .item-icon-box {
-      width: 40px; height: 40px; border-radius: 10px;
-      background: rgba(212, 175, 55, 0.1);
-      border: 1px solid rgba(212, 175, 55, 0.2);
+    .modal-item-v3.show { transform: translateY(0); opacity: 1; }
+    .icon-wrapper {
+      width: 42px; height: 42px; border-radius: 12px;
+      background: rgba(255, 255, 255, 0.05);
       display: flex; align-items: center; justify-content: center;
-      color: #d4af37; font-size: 1.25rem;
+      font-size: 1.3rem; transition: all 0.3s ease;
     }
-    /* Brilho de fundo dinâmico */
-    .modal-glow {
-      position: absolute; top: -100px; left: -100px;
-      width: 300px; height: 300px;
-      background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
-      filter: blur(40px); pointer-events: none;
+    /* Botão de Fechar Premium */
+    .btn-modal-close {
+      width: 100%; padding: 1.25rem; margin-top: 1rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #fff; font-weight: 600; border-radius: 16px;
+      transition: all 0.3s ease; cursor: pointer;
+      text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem;
+    }
+    .btn-modal-close:hover {
+      background: rgba(212, 175, 55, 0.1);
+      border-color: rgba(212, 175, 55, 0.4);
+      color: #d4af37; box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
     }
   </style>
 </head>
@@ -1550,21 +1558,18 @@
      MODAL DINÂMICO (PORTFÓLIO AURA)
 ================================================================ -->
 <div id="portfolio-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-md transition-opacity duration-500 opacity-0 pointer-events-none" onclick="if(event.target === this) closePortfolioModal();">
-  <div id="portfolio-modal-content" class="relative p-8 md:p-12 rounded-[32px] max-w-xl w-[90%] transform scale-95 opacity-0 transition-all duration-500 overflow-hidden">
-    <div class="modal-glow"></div>
-    <button onclick="closePortfolioModal()" class="absolute top-6 right-6 text-white/30 hover:text-white transition-colors z-10 w-10 h-10 flex items-center justify-center">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-    </button>
+  <div id="portfolio-modal-content" class="relative p-8 md:p-12 rounded-[32px] max-w-xl w-[90%] transform scale-95 opacity-0 transition-all duration-500">
+    <div id="dynamic-glow" class="modal-glow-dynamic"></div>
     
     <div class="relative z-10">
-      <h3 id="p-modal-title" class="text-3xl font-bold text-white mb-3 tracking-tight"></h3>
-      <p id="p-modal-desc" class="text-white/50 text-lg mb-8 leading-relaxed"></p>
+      <h3 id="p-modal-title" class="text-3xl font-bold text-white mb-2 tracking-tight"></h3>
+      <p id="p-modal-desc" class="text-white/40 text-lg mb-8 leading-relaxed"></p>
       
-      <div id="p-modal-list" class="flex flex-col gap-4 mb-10">
+      <div id="p-modal-list" class="flex flex-col gap-3 mb-10">
       </div>
       
-      <button onclick="closePortfolioModal()" class="w-full py-5 bg-white text-black font-bold rounded-2xl hover:bg-[#d4af37] hover:text-white transition-all duration-300 transform active:scale-[0.98]">
-        Entendido, fechar detalhes
+      <button onclick="closePortfolioModal()" class="btn-modal-close">
+        Finalizar Leitura
       </button>
     </div>
   </div>
@@ -1833,31 +1838,11 @@
 
 /* ── Lógica de Ativação do Portfólio ── */
     const portfolioData = {
-      'funerario': { 
-        title: "Ecossistema Digital Funerário", 
-        sub: "Digitalização com foco em acolhimento e gestão.", 
-        items: ["Interface Humanizada", "Gestão de Planos", "Atendimento 24h Integrado", "Memorial Digital"] 
-      },
-      'saude': { 
-        title: "Clínicas & Centros de Saúde Premium", 
-        sub: "A autoridade da sua clínica refletida em cada pixel.", 
-        items: ["Vitrinas de Especialidades", "Agendamento Inteligente", "Triagem Digital por I.A.", "Jornada de Cuidado Contínuo"] 
-      },
-      'arquitetura': { 
-        title: "Arquitetura & Design", 
-        sub: "Onde a precisão técnica encontra a arte visual.", 
-        items: ["Portfólio Imersivo 4K", "Navegação de Ambientes", "Gestão de Leads (CRM)", "Timeline de Obras"] 
-      },
-      'autoridade': { 
-        title: "Portfólios de Autoridade", 
-        sub: "Sua vitrine pessoal com sofisticação global.", 
-        items: ["Design de Posicionamento", "Narrativa de Carreira", "Link-in-Bio Premium", "SEO de Autoridade"] 
-      },
-      'ia': { 
-        title: "Sistemas de Automação I.A.", 
-        sub: "Eficiência operacional levada ao limite.", 
-        items: ["Agentes Autônomos", "Qualificação de Leads", "Automação de WhatsApp", "Análise de Dados"] 
-      }
+      'funerario': { title: "Ecossistema Digital Funerário", sub: "Acolhimento e gestão operacional.", color: "#d4af37", items: ["Interface Humanizada", "Gestão de Planos", "Atendimento 24h", "Memorial Digital"] },
+      'ia': { title: "Sistemas de Automação I.A.", sub: "Eficiência operacional levada ao limite.", color: "#a855f7", items: ["Agentes Autônomos", "Qualificação de Leads", "Automação de WhatsApp", "Análise de Dados"] },
+      'saude': { title: "Clínicas & Centros de Saúde Premium", sub: "Autoridade médica refletida em cada pixel.", color: "#ff00e5", items: ["Vitrinas de Especialidades", "Agendamento Inteligente", "Triagem Digital por I.A.", "Jornada do Paciente"] },
+      'arquitetura': { title: "Arquitetura & Design", sub: "A precisão técnica encontra a arte visual.", color: "#38bdf8", items: ["Portfólio 4K", "Navegação de Ambientes", "Gestão de Leads (CRM)", "Timeline de Obras"] },
+      'autoridade': { title: "Portfólios de Autoridade", sub: "Sua vitrine pessoal com sofisticação global.", color: "#34d399", items: ["Design de Posicionamento", "Narrativa de Carreira", "Link-in-Bio Premium", "SEO de Autoridade"] }
     };
 
     function openPortfolioModal(key) {
@@ -1866,12 +1851,12 @@
 
       document.getElementById('p-modal-title').innerText = data.title;
       document.getElementById('p-modal-desc').innerText = data.sub;
+      document.getElementById('dynamic-glow').style.background = `radial-gradient(circle, ${data.color} 0%, transparent 70%)`;
       
       const list = document.getElementById('p-modal-list');
-      // Gerando os itens com a classe de animação
       list.innerHTML = data.items.map(i => `
-        <div class="modal-list-item">
-          <div class="item-icon-box">
+        <div class="modal-item-v3">
+          <div class="icon-wrapper" style="color: ${data.color}; border-color: ${data.color}33; background: ${data.color}11;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
           </div>
           <span class="text-white/90 font-medium">${i}</span>
@@ -1884,23 +1869,17 @@
       modal.classList.remove('opacity-0', 'pointer-events-none');
       setTimeout(() => {
         box.classList.remove('scale-95', 'opacity-0');
-        
-        // Efeito Stagger: anima cada item com um pequeno atraso
-        const items = document.querySelectorAll('.modal-list-item');
-        items.forEach((item, index) => {
-          setTimeout(() => {
-            item.classList.add('show');
-          }, 100 * (index + 1));
+        document.querySelectorAll('.modal-item-v3').forEach((item, index) => {
+          setTimeout(() => item.classList.add('show'), 80 * (index + 1));
         });
       }, 10);
-      
       document.body.style.overflow = 'hidden';
     }
 
     function closePortfolioModal() {
       const modal = document.getElementById('portfolio-modal');
       const box = document.getElementById('portfolio-modal-content');
-      const items = document.querySelectorAll('.modal-list-item');
+      const items = document.querySelectorAll('.modal-item-v3');
       
       items.forEach(item => item.classList.remove('show'));
       box.classList.add('scale-95', 'opacity-0');

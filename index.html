@@ -1173,6 +1173,51 @@
     .card-premium, .neon-emoji, #portfolio-modal-content {
       will-change: transform, opacity;
     }
+
+    /* ── Manifesto AURA ── */
+    .manifesto-grid {
+      display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center; margin-bottom: 4rem;
+    }
+    @media (max-width: 992px) { .manifesto-grid { grid-template-columns: 1fr; gap: 3rem; } }
+    
+    .manifesto-text { font-size: 1.15rem; color: var(--txt-secondary); line-height: 1.8; font-weight: 300; }
+    .manifesto-text strong { color: var(--txt-primary); font-weight: 500; }
+    
+    .micro-cards-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-bottom: 6rem;
+    }
+    .micro-card {
+      background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px; padding: 1.5rem; backdrop-filter: blur(12px);
+      transition: all 0.4s ease; display: flex; flex-direction: column;
+    }
+    .micro-card:hover {
+      border-color: rgba(168, 85, 247, 0.3); background: rgba(168, 85, 247, 0.05);
+      transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .micro-icon {
+      width: 40px; height: 40px; border-radius: 10px; background: rgba(255,255,255,0.03);
+      display: flex; align-items: center; justify-content: center; color: var(--neon-400);
+      margin-bottom: 1.2rem; border: 1px solid rgba(255,255,255,0.05);
+    }
+    .micro-title { font-size: 1.05rem; font-weight: 600; color: #fff; margin-bottom: 0.5rem; }
+    .micro-desc { font-size: 0.85rem; color: var(--txt-muted); line-height: 1.6; }
+
+    /* Esfera Flutuante do Manifesto */
+    .manifesto-visual { position: relative; display: flex; justify-content: center; align-items: center; }
+    .manifesto-sphere {
+      width: 280px; height: 280px; border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(168, 85, 247, 0.15), rgba(255, 0, 229, 0.05), transparent 70%);
+      box-shadow: 0 0 60px rgba(168, 85, 247, 0.15), inset 0 0 30px rgba(255, 0, 229, 0.1);
+      animation: float-sphere 6s ease-in-out infinite;
+      border: 1px solid rgba(255,255,255,0.03);
+      backdrop-filter: blur(5px);
+      display: flex; align-items: center; justify-content: center;
+    }
+    @keyframes float-sphere {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-15px) scale(1.02); }
+    }
   </style>
 </head>
 <body>
@@ -1466,50 +1511,90 @@
 
 <section id="sobre" aria-labelledby="sobre-heading" class="relative z-10">
   <div class="ds-section reveal-section">
-    <span class="section-label gold"><span class="dot" aria-hidden="true"></span>AURA</span>
+    
+    <span class="section-label gold"><span class="dot" aria-hidden="true"></span>Manifesto</span>
     <h2 class="section-heading" id="sobre-heading">
-      A Metodologia <span class="accent">Aura</span>
+      A Força <span class="accent">Motriz.</span>
     </h2>
     
-    <div class="timeline-wrap">
-
-      <div class="timeline-item" style="animation-delay: 0.1s;">
-        <div class="timeline-node"></div>
-        <div class="timeline-content">
-          <span class="timeline-step">Fase 01</span>
-          <h3 class="timeline-title">Mapeamento &amp; Diagnóstico</h3>
-          <p class="timeline-desc">Mergulhamos na operação da sua empresa. Identificamos gargalos, processos manuais e onde a inteligência artificial pode gerar o maior retorno sobre investimento (ROI) imediato.</p>
+    <div class="manifesto-grid mt-6">
+      <div>
+        <p class="manifesto-text">
+          Acreditamos que a estética sem performance é vazia. A <strong>AURA</strong> nasceu para ser a ponte definitiva entre o design de luxo e a engenharia de dados. Não entregamos apenas sites; <strong>arquitetamos ecossistemas digitais de alta conversão.</strong><br><br>
+          Nossa raiz está na compreensão profunda de negócios reais, e nossa tecnologia transforma operações complexas em experiências de usuário fluídas, automatizadas e implacáveis.
+        </p>
+      </div>
+      <div class="manifesto-visual hidden lg:flex">
+        <div class="manifesto-sphere">
+          <img src="assets/img/favicon-aura.png" alt="AURA Símbolo" style="width: 80px; opacity: 0.9; filter: drop-shadow(0 0 20px rgba(255,255,255,0.3));">
         </div>
       </div>
-
-      <div class="timeline-item" style="animation-delay: 0.3s;">
-        <div class="timeline-node" style="border-color: var(--cyber-pink); box-shadow: 0 0 12px var(--cyber-pink);"></div>
-        <div class="timeline-content">
-          <span class="timeline-step" style="color: var(--cyber-pink);">Fase 02</span>
-          <h3 class="timeline-title">Arquitetura da Solução</h3>
-          <p class="timeline-desc">Desenhamos a infraestrutura do sistema. Seja um agente de IA para WhatsApp, integrações via n8n, ou o desenvolvimento de um painel web exclusivo para controle operacional.</p>
-        </div>
-      </div>
-
-      <div class="timeline-item" style="animation-delay: 0.5s;">
-        <div class="timeline-node"></div>
-        <div class="timeline-content">
-          <span class="timeline-step">Fase 03</span>
-          <h3 class="timeline-title">Deploy &amp; Integração</h3>
-          <p class="timeline-desc">Implementamos a automação no seu ambiente. Conectamos os sistemas (CRM, ERP, Redes Sociais) garantindo que a transição seja suave, segura e sem interrupções no seu fluxo de caixa.</p>
-        </div>
-      </div>
-
-      <div class="timeline-item" style="animation-delay: 0.7s;">
-        <div class="timeline-node" style="border-color: var(--txt-primary); box-shadow: 0 0 12px rgba(255,255,255,0.3);"></div>
-        <div class="timeline-content">
-          <span class="timeline-step" style="color: var(--txt-primary);">Fase 04</span>
-          <h3 class="timeline-title">Escala Contínua</h3>
-          <p class="timeline-desc">A tecnologia evolui rápido, e nós também. Monitoramos os agentes, ajustamos os prompts dos LLMs e refinamos as automações para garantir que o sistema escale junto com o seu faturamento.</p>
-        </div>
-      </div>
-
     </div>
+
+    <div class="micro-cards-grid">
+      <div class="micro-card">
+        <div class="micro-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+        </div>
+        <h4 class="micro-title">Engenharia Proprietary</h4>
+        <p class="micro-desc">Código limpo, arquitetura escalável e sistemas sob medida que não dependem de templates engessados.</p>
+      </div>
+      <div class="micro-card">
+        <div class="micro-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+        </div>
+        <h4 class="micro-title">I.A. Aplicada</h4>
+        <p class="micro-desc">Automações neurais e agentes inteligentes que trabalham pelo seu negócio 24 horas por dia.</p>
+      </div>
+      <div class="micro-card">
+        <div class="micro-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1-1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path></svg>
+        </div>
+        <h4 class="micro-title">Design System Elite</h4>
+        <p class="micro-desc">Interfaces cinematográficas e dark mode nativo, projetadas para elevar a percepção de valor imediata.</p>
+      </div>
+    </div>
+    
+    <div style="margin-top: 5rem; padding-top: 3rem; border-top: 1px solid rgba(255,255,255,0.05);">
+      <span class="section-label gold"><span class="dot" aria-hidden="true"></span>Processo</span>
+      <h3 style="font-size: 2rem; font-weight: 700; color: #fff; margin-bottom: 2rem; letter-spacing: -0.02em;">Como nós <span style="color: var(--neon-400);">operamos.</span></h3>
+      
+      <div class="timeline-wrap" style="margin-top: 0;">
+        <div class="timeline-item" style="animation-delay: 0.1s;">
+          <div class="timeline-node"></div>
+          <div class="timeline-content">
+            <span class="timeline-step">Fase 01</span>
+            <h3 class="timeline-title">Mapeamento &amp; Diagnóstico</h3>
+            <p class="timeline-desc">Mergulhamos na operação da sua empresa. Identificamos gargalos, processos manuais e onde a inteligência artificial pode gerar o maior retorno sobre investimento (ROI) imediato.</p>
+          </div>
+        </div>
+        <div class="timeline-item" style="animation-delay: 0.3s;">
+          <div class="timeline-node" style="border-color: var(--cyber-pink); box-shadow: 0 0 12px var(--cyber-pink);"></div>
+          <div class="timeline-content">
+            <span class="timeline-step" style="color: var(--cyber-pink);">Fase 02</span>
+            <h3 class="timeline-title">Arquitetura da Solução</h3>
+            <p class="timeline-desc">Desenhamos a infraestrutura do sistema. Seja um agente de IA para WhatsApp, integrações via n8n, ou o desenvolvimento de um painel web exclusivo para controle operacional.</p>
+          </div>
+        </div>
+        <div class="timeline-item" style="animation-delay: 0.5s;">
+          <div class="timeline-node"></div>
+          <div class="timeline-content">
+            <span class="timeline-step">Fase 03</span>
+            <h3 class="timeline-title">Deploy &amp; Integração</h3>
+            <p class="timeline-desc">Implementamos a automação no seu ambiente. Conectamos os sistemas (CRM, ERP, Redes Sociais) garantindo que a transição seja suave, segura e sem interrupções no seu fluxo de caixa.</p>
+          </div>
+        </div>
+        <div class="timeline-item" style="animation-delay: 0.7s;">
+          <div class="timeline-node" style="border-color: var(--txt-primary); box-shadow: 0 0 12px rgba(255,255,255,0.3);"></div>
+          <div class="timeline-content">
+            <span class="timeline-step" style="color: var(--txt-primary);">Fase 04</span>
+            <h3 class="timeline-title">Escala Contínua</h3>
+            <p class="timeline-desc">A tecnologia evolui rápido, e nós também. Monitoramos os agentes, ajustamos os prompts dos LLMs e refinamos as automações para garantir que o sistema escale junto com o seu faturamento.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 

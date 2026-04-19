@@ -155,26 +155,31 @@
 </head>
 <body class="antialiased">
 
+    <div id="portal-wrapper" class="fixed inset-0 z-[100] flex items-center justify-center bg-[#020204] pointer-events-none">
+        <img src="assets/img/logo-aura-sem-fundo.png" alt="AURA" class="h-20 w-auto opacity-20 filter grayscale origin-center" id="portal-logo">
+        <div id="portal-counter" class="absolute top-[58%] font-mono text-neon-500 text-sm tracking-widest opacity-80">0%</div>
+    </div>
+
     <div class="hero-bg-grid"></div>
     <div class="hero-bg-radial"></div>
     <div class="scan-line"></div>
 
     <main class="max-w-md mx-auto px-6 pt-16 pb-12 flex flex-col items-center min-h-screen relative z-10">
+
+    <header class="gsap-item flex flex-col items-center text-center mb-10 w-full relative z-10">
+        <div class="relative mb-5 flex items-center justify-center w-full">
+            <div class="absolute bg-neon-500/20 blur-3xl rounded-full w-24 h-24 scale-150 pointer-events-none"></div>
+            <img src="assets/img/logo-aura-sem-fundo.png" alt="AURA" class="h-16 w-auto relative z-10 object-contain drop-shadow-[0_0_15px_rgba(168,85,247,0.4)] mx-auto block">
+        </div>
         
-        <header class="gsap-item flex flex-col items-center text-center mb-10 w-full">
-            <div class="relative mb-5 flex justify-center w-full">
-                <div class="absolute inset-0 bg-neon-500/20 blur-3xl rounded-full scale-150"></div>
-                <img src="assets/img/logo-aura-sem-fundo.png" alt="AURA" class="h-16 w-auto relative z-10 object-contain drop-shadow-[0_0_15px_rgba(168,85,247,0.4)]">
-            </div>
-            
-            <h1 class="text-3xl font-bold tracking-tight mb-3">
-                Agência <span class="aura-text-fx">AURA.</span>
-            </h1>
-            
-            <div class="badge-pulse">
-                <span class="badge-dot"></span> Engenharia & I.A.
-            </div>
-        </header>
+        <h1 class="text-3xl font-bold tracking-tight mb-3 text-center w-full">
+            Reescrevendo a <br><span class="aura-text-fx">Realidade.</span>
+        </h1>
+        
+        <div class="badge-pulse mx-auto">
+            <span class="badge-dot"></span> I.A. De Alta Performance
+        </div>
+    </header>
 
         <nav class="w-full space-y-4 mb-10">
             
@@ -234,18 +239,36 @@
 
     <script>
         window.onload = () => {
-            // Fade In do Body
-            gsap.to("body", { opacity: 1, duration: 0.8 });
-            
-            // Animação de entrada dos elementos (Cascata / Stagger)
-            gsap.from(".gsap-item", {
-                y: 40,
-                opacity: 0,
-                duration: 1.2,
-                stagger: 0.15,
-                ease: "power4.out",
-                delay: 0.1
-            });
+            const tl = gsap.timeline();
+            gsap.set(".gsap-item", { y: 40, opacity: 0 });
+
+            let counterObj = { val: 0 };
+            const counterEl = document.getElementById("portal-counter");
+            const logoEl = document.getElementById("portal-logo");
+
+            tl.to("body", { opacity: 1, duration: 0.1 })
+              // 1. Contador de 0 a 100%
+              .to(counterObj, {
+                  val: 100,
+                  duration: 1.2,
+                  ease: "power2.inOut",
+                  onUpdate: () => { counterEl.innerText = Math.round(counterObj.val) + "%"; }
+              })
+              // 2. Acende a logo (Neon) e some com o contador
+              .to(logoEl, { opacity: 1, filter: "grayscale(0) drop-shadow(0 0 20px rgba(168,85,247,0.8))", duration: 0.3 })
+              .to(counterEl, { opacity: 0, duration: 0.2 }, "<")
+              
+              // 3. O Pulo no Portal (ZOOM NO CENTRO EXATO)
+              .to("#portal-logo", {
+                  scale: 60, // A imagem expande a partir do seu próprio centro
+                  opacity: 0,
+                  duration: 1.2,
+                  ease: "power3.in"
+              }, "+=0.2")
+              
+              // 4. Remove o fundo preto e revela a cascata
+              .to("#portal-wrapper", { opacity: 0, duration: 0.4, onComplete: () => document.getElementById('portal-wrapper').remove() }, "-=0.4")
+              .to(".gsap-item", { y: 0, opacity: 1, duration: 1, stagger: 0.15, ease: "power4.out" }, "-=0.6");
         };
     </script>
 </body>

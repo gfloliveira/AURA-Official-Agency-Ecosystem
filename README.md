@@ -1,4 +1,4 @@
-# AURA — Official Agency Ecosystem
+# AURA  —  Official Agency Ecosystem
 
 Repositório oficial da [AURA.xyz.br](https://aura.xyz.br). Um ecossistema digital de alta performance desenvolvido com foco em estética cinematográfica e conversão estratégica. 
 
@@ -14,7 +14,7 @@ Integrando interfaces de luxo, engenharia de front-end otimizada e fluxos de aut
 * **Performance:** Aceleração de hardware (`will-change`), estratégias de *font swapping*, custom scrollbars e otimização de renderização 60fps.
 
 ## ⚙️ Funcionalidades Em Destaque
-* **Design System Premium:** Dark mode nativo com paleta de cores High-Contrast Neon/Obsidian.
+* **Design System Premium:** Dark mode nativo com paleta de cores High-Contrast Neon/Obsidian. 
 * **Motor de Portfólio V3:** Subtelas com brilho dinâmico e saturação em vidro (Glassmorphism avançado).
 * **CTAs de Alta Conversão:** Links de ação interligados diretamente ao WhatsApp corporativo com *payloads* de texto parametrizados para qualificação imediata do lead.
 * **SEO & Compartilhamento:** Open Graph Meta Tags completas para previews de alta qualidade no WhatsApp e LinkedIn.

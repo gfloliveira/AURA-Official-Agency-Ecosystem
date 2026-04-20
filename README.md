@@ -1,4 +1,4 @@
-# AURA  —  Official Agency Ecosystem
+# AURA — Official Agency Ecosystem
 
 Repositório oficial da [AURA.xyz.br](https://aura.xyz.br). Um ecossistema digital de alta performance desenvolvido com foco em estética cinematográfica e conversão estratégica. 
 

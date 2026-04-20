@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
+
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AURA — Agência de Inteligência Artificial</title>
-  <meta name="description" content="AURA é uma agência de I.A premium especializada em automações inteligentes, soluções de IA generativa e transformação digital para empresas visionárias."/>
-  <link rel="icon" type="image/png" href="assets/img/favicon.png"/>
-  
-  <meta property="og:type" content="website"/>
-  <meta property="og:title" content="AURA — Agência de Inteligência Artificial"/>
-  <meta property="og:description" content="Automatize. Escale. Lidere. Transformamos negócios com automações inteligentes e IA generativa."/>
-  <meta property="og:image" content="assets/img/logo.png"/>
-  <meta property="og:url" content="https://aura.xyz.br/"/>
+  <meta name="description"
+    content="AURA é uma agência de I.A premium especializada em automações inteligentes, soluções de IA generativa e transformação digital para empresas visionárias." />
+  <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="AURA — Agência de Inteligência Artificial" />
+  <meta property="og:description"
+    content="Automatize. Escale. Lidere. Transformamos negócios com automações inteligentes e IA generativa." />
+  <meta property="og:image" content="assets/img/logo.png" />
+  <meta property="og:url" content="https://aura.xyz.br/" />
 
   <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet" />
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -26,7 +31,7 @@
         extend: {
           colors: {
             neon: {
-              50:  '#faf5ff',
+              50: '#faf5ff',
               400: '#c084fc', // Light purple
               500: '#a855f7', // Neon Purple (Primary)
               600: '#9333ea',
@@ -39,8 +44,8 @@
             cyber: '#ff00e5', // Cyber Pink (Secondary)
           },
           fontFamily: {
-            sans:  ['Space Grotesk', 'Inter', 'ui-sans-serif', 'system-ui'],
-            mono:  ['Space Mono', 'monospace'],
+            sans: ['Space Grotesk', 'Inter', 'ui-sans-serif', 'system-ui'],
+            mono: ['Space Mono', 'monospace'],
           }
         }
       }
@@ -54,57 +59,82 @@
       font-weight: normal;
       font-display: swap;
     }
+
     /* =========================================================
        BASE & RESET
     ========================================================= */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
       /* ── Core palette ── */
-      --clr-bg:          #020204;
-      --clr-surface:     #080015;
-      --clr-surface-2:   #120d1d;
-      --clr-border:      rgba(168, 85, 247, 0.15);
+      --clr-bg: #020204;
+      --clr-surface: #080015;
+      --clr-surface-2: #120d1d;
+      --clr-border: rgba(168, 85, 247, 0.15);
       --clr-border-neon: rgba(168, 85, 247, 0.5);
 
-      --neon-400:        #c084fc;
-      --neon-500:        #a855f7;
-      --cyber-pink:      #ff00e5;
+      --neon-400: #c084fc;
+      --neon-500: #a855f7;
+      --cyber-pink: #ff00e5;
 
       /* Text */
-      --txt-primary:     #f5f3ff;
-      --txt-secondary:   rgba(245, 243, 255, 0.7);
-      --txt-muted:       rgba(245, 243, 255, 0.38);
-      --txt-neon:        #c084fc;
+      --txt-primary: #f5f3ff;
+      --txt-secondary: rgba(245, 243, 255, 0.7);
+      --txt-muted: rgba(245, 243, 255, 0.38);
+      --txt-neon: #c084fc;
 
       /* Radii / shadows */
-      --radius-sm:  6px;
-      --radius-md:  12px;
-      --radius-lg:  20px;
-      --radius-xl:  32px;
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --radius-xl: 32px;
       --radius-pill: 999px;
 
       /* Easing */
       --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
-      --ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     /* Custom Scrollbar */
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: var(--clr-bg); }
-    ::-webkit-scrollbar-thumb { 
-      background: rgba(168, 85, 247, 0.2); 
-      border-radius: 10px; 
+    ::-webkit-scrollbar {
+      width: 8px;
     }
-    ::-webkit-scrollbar-thumb:hover { 
-      background: rgba(168, 85, 247, 0.6); 
+
+    ::-webkit-scrollbar-track {
+      background: var(--clr-bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(168, 85, 247, 0.2);
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(168, 85, 247, 0.6);
     }
 
     /* Text Selection Color */
-    ::selection { background: rgba(168, 85, 247, 0.4); color: #fff; }
-    ::-moz-selection { background: rgba(168, 85, 247, 0.4); color: #fff; }
+    ::selection {
+      background: rgba(168, 85, 247, 0.4);
+      color: #fff;
+    }
 
-    html { background: var(--clr-bg); color: var(--txt-primary); }
+    ::-moz-selection {
+      background: rgba(168, 85, 247, 0.4);
+      color: #fff;
+    }
+
+    html {
+      background: var(--clr-bg);
+      color: var(--txt-primary);
+    }
+
     body {
       font-family: 'Space Grotesk', 'Inter', ui-sans-serif, system-ui, -apple-system;
       background: var(--clr-bg);
@@ -118,83 +148,246 @@
        KEYFRAMES
     ========================================================= */
     @keyframes fadeSlideIn {
-      0%   { opacity:0; transform: translateY(28px); filter: blur(8px); }
-      100% { opacity:1; transform: translateY(0);    filter: blur(0); }
+      0% {
+        opacity: 0;
+        transform: translateY(28px);
+        filter: blur(8px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
     }
+
     @keyframes fadeSlideInFast {
-      0%   { opacity:0; transform: translateY(16px); filter: blur(4px); }
-      100% { opacity:1; transform: translateY(0);    filter: blur(0); }
+      0% {
+        opacity: 0;
+        transform: translateY(16px);
+        filter: blur(4px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
     }
+
     @keyframes portraitFall {
-      0%   { opacity:0; transform: translateY(-120px) scale(0.6) rotate(-8deg); filter: blur(4px); }
-      60%  { opacity:1; transform: translateY(6px)   scale(1.04) rotate(2deg);  filter: blur(0); }
-      80%  { transform: translateY(-3px) scale(0.98) rotate(-0.5deg); }
-      100% { opacity:1; transform: translateY(0) scale(1) rotate(0); filter: blur(0); }
+      0% {
+        opacity: 0;
+        transform: translateY(-120px) scale(0.6) rotate(-8deg);
+        filter: blur(4px);
+      }
+
+      60% {
+        opacity: 1;
+        transform: translateY(6px) scale(1.04) rotate(2deg);
+        filter: blur(0);
+      }
+
+      80% {
+        transform: translateY(-3px) scale(0.98) rotate(-0.5deg);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(0);
+        filter: blur(0);
+      }
     }
+
     @keyframes word-reveal {
-      from { opacity:0; transform: translateY(18px); }
-      to   { opacity:1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
+
     @keyframes shimmer-mask {
-      to { -webkit-mask-position: 200% 0; mask-position: 200% 0; }
+      to {
+        -webkit-mask-position: 200% 0;
+        mask-position: 200% 0;
+      }
     }
+
     @keyframes neon-pulse {
-      0%,100% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0); }
-      50%     { box-shadow: 0 0 28px 6px rgba(168, 85, 247, 0.4); }
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(168, 85, 247, 0);
+      }
+
+      50% {
+        box-shadow: 0 0 28px 6px rgba(168, 85, 247, 0.4);
+      }
     }
+
     @keyframes neon-glow-text {
-      0%,100% { text-shadow: 0 0 0 rgba(168,85,247,0); }
-      60%     { text-shadow: 0 0 32px rgba(168,85,247,0.5); }
+
+      0%,
+      100% {
+        text-shadow: 0 0 0 rgba(168, 85, 247, 0);
+      }
+
+      60% {
+        text-shadow: 0 0 32px rgba(168, 85, 247, 0.5);
+      }
     }
+
     @keyframes orbit {
-      from { transform: rotate(0deg) translateX(var(--r,110px)) rotate(0deg); }
-      to   { transform: rotate(360deg) translateX(var(--r,110px)) rotate(-360deg); }
+      from {
+        transform: rotate(0deg) translateX(var(--r, 110px)) rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg) translateX(var(--r, 110px)) rotate(-360deg);
+      }
     }
+
     @keyframes float-y {
-      0%,100% { transform: translateY(0); }
-      50%     { transform: translateY(-10px); }
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
     }
+
     @keyframes scan-line {
-      0%   { transform: translateY(-100%); opacity:0.6; }
-      100% { transform: translateY(400%);  opacity:0; }
+      0% {
+        transform: translateY(-100%);
+        opacity: 0.6;
+      }
+
+      100% {
+        transform: translateY(400%);
+        opacity: 0;
+      }
     }
+
     @keyframes badge-bounce {
-      0%,86%  { transform: translateY(0) scale(1); }
-      88%     { transform: translateY(-6px) scale(.99); }
-      92%     { transform: translateY(0) scale(1.006); }
-      100%    { transform: translateY(0) scale(1); }
+
+      0%,
+      86% {
+        transform: translateY(0) scale(1);
+      }
+
+      88% {
+        transform: translateY(-6px) scale(.99);
+      }
+
+      92% {
+        transform: translateY(0) scale(1.006);
+      }
+
+      100% {
+        transform: translateY(0) scale(1);
+      }
     }
+
     @keyframes halo-spin {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
     }
+
     @keyframes grid-fade-in {
-      from { opacity:0; }
-      to { opacity:1; }
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
     }
+
     @keyframes particle-rise {
-      0%   { transform: translateY(0) translateX(0) scale(1); opacity:0.7; }
-      100% { transform: translateY(-60px) translateX(var(--tx,10px)) scale(0); opacity:0; }
+      0% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 0.7;
+      }
+
+      100% {
+        transform: translateY(-60px) translateX(var(--tx, 10px)) scale(0);
+        opacity: 0;
+      }
     }
+
     @keyframes counter-up {
-      from { transform: translateY(100%); opacity:0; }
-      to   { transform: translateY(0);    opacity:1; }
+      from {
+        transform: translateY(100%);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
+
     @keyframes border-trail {
-      0%   { background-position: 0% 50%; }
-      50%  { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
+
     @keyframes premium-reveal {
-      0% { opacity: 0; transform: translateY(50px) rotateX(-20deg) scale(0.95); filter: blur(16px); }
-      100% { opacity: 1; transform: translateY(0) rotateX(0deg) scale(1); filter: blur(0); }
+      0% {
+        opacity: 0;
+        transform: translateY(50px) rotateX(-20deg) scale(0.95);
+        filter: blur(16px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0) rotateX(0deg) scale(1);
+        filter: blur(0);
+      }
     }
+
     @keyframes shine-bg {
-      to { background-position: 200% center; }
+      to {
+        background-position: 200% center;
+      }
     }
+
     @keyframes aura-burst {
-      0%, 100% { opacity: 0.2; transform: scale(1); filter: blur(12px); }
-      50% { opacity: 0.8; transform: scale(1.15); filter: blur(24px); }
+
+      0%,
+      100% {
+        opacity: 0.2;
+        transform: scale(1);
+        filter: blur(12px);
+      }
+
+      50% {
+        opacity: 0.8;
+        transform: scale(1.15);
+        filter: blur(24px);
+      }
     }
 
     /* =========================================================
@@ -210,35 +403,55 @@
     }
 
     /* Word-by-word reveal */
-    .type-words { --stagger:.18s; --dur:1.6s; --ease:ease-out; --delay:0.4s; }
+    .type-words {
+      --stagger: .18s;
+      --dur: 1.6s;
+      --ease: ease-out;
+      --delay: 0.4s;
+    }
+
     .type-words .w {
-      display: inline-block; opacity:0;
+      display: inline-block;
+      opacity: 0;
       animation: word-reveal var(--dur) var(--ease) forwards;
       animation-delay: calc(var(--delay) + var(--i) * var(--stagger));
     }
-    .type-words:not(.visible) .w { animation-name: none; }
+
+    .type-words:not(.visible) .w {
+      animation-name: none;
+    }
 
     /* Section reveal on scroll */
     .reveal-section {
-      opacity: 0; transform: translateY(44px); filter: blur(8px);
+      opacity: 0;
+      transform: translateY(44px);
+      filter: blur(8px);
       transition: opacity 1s var(--ease-out-expo), transform 1.1s var(--ease-out-expo), filter 0.9s ease;
       will-change: opacity, transform, filter;
     }
-    .reveal-section.visible { opacity:1; transform: translateY(0); filter: blur(0); }
+
+    .reveal-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
 
     /* Border gradient pill */
     .border-gradient {
       position: relative;
     }
+
     .border-gradient::before {
       content: "";
-      position: absolute; inset: 0;
-      border-radius: inherit; padding: 1px;
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
-      background: linear-gradient(135deg, rgba(168,85,247,0.0) 0%, rgba(168,85,247,0.55) 50%, rgba(168,85,247,0.0) 100%);
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.0) 0%, rgba(168, 85, 247, 0.55) 50%, rgba(168, 85, 247, 0.0) 100%);
       pointer-events: none;
     }
 
@@ -246,10 +459,13 @@
     .border-neon {
       position: relative;
     }
+
     .border-neon::before {
       content: "";
-      position: absolute; inset: 0;
-      border-radius: inherit; padding: 1px;
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
@@ -269,6 +485,7 @@
       gap: 1.5rem;
       margin-top: 3rem;
     }
+
     .bento-card {
       position: relative;
       background: rgba(22, 22, 22, 0.4);
@@ -278,131 +495,222 @@
       overflow: hidden;
       backdrop-filter: blur(12px);
       transition: border-color 0.4s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
-      display: flex; flex-direction: column; justify-content: space-between;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
+
     .bento-card:hover {
       border-color: var(--neon-500);
       box-shadow: 0 0 40px rgba(168, 85, 247, 0.25);
       transform: translateY(-12px) scale(1.01);
       background: rgba(168, 85, 247, 0.05);
     }
+
     .bento-card::before {
-      content: ""; position: absolute; inset: 0;
+      content: "";
+      position: absolute;
+      inset: 0;
       background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(168, 85, 247, 0.06), transparent 40%);
-      opacity: 0; transition: opacity 0.3s; pointer-events: none; z-index: 0;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      z-index: 0;
     }
-    .bento-card:hover::before { opacity: 1; }
-    .bento-content { position: relative; z-index: 1; }
+
+    .bento-card:hover::before {
+      opacity: 1;
+    }
+
+    .bento-content {
+      position: relative;
+      z-index: 1;
+    }
+
     .bento-icon {
-      width: 56px; height: 56px; border-radius: var(--radius-lg);
-      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--neon-400); margin-bottom: 2rem;
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--neon-400);
+      margin-bottom: 2rem;
       transition: transform 0.4s var(--ease-spring), background 0.4s ease;
     }
+
     .bento-card:hover .bento-icon {
-      transform: scale(1.1) rotate(-5deg); background: rgba(168,85,247,0.1); border-color: rgba(168,85,247,0.3);
+      transform: scale(1.1) rotate(-5deg);
+      background: rgba(168, 85, 247, 0.1);
+      border-color: rgba(168, 85, 247, 0.3);
     }
+
     @media (max-width: 992px) {
-      .bento-card { grid-column: span 12 !important; }
+      .bento-card {
+        grid-column: span 12 !important;
+      }
     }
 
     /* =========================================================
        NAVIGATION
     ========================================================= */
     #nav-main {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(9,9,9,0.72);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(9, 9, 9, 0.72);
       backdrop-filter: blur(24px) saturate(160%);
       border-bottom: 1px solid var(--clr-border);
       animation: fadeSlideInFast 0.5s ease 0.05s both;
     }
+
     .nav-inner {
-      max-width: 1280px; margin: 0 auto;
+      max-width: 1280px;
+      margin: 0 auto;
       padding: 0 2rem;
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       height: 68px;
     }
+
     .nav-logo {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.25rem; font-weight: 700;
-      letter-spacing: -0.02em; color: var(--txt-primary);
-      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--txt-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
       text-decoration: none;
     }
+
     .nav-logo .logo-dot {
       display: inline-block;
-      width: 8px; height: 8px; border-radius: 50%;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
       background: var(--neon-400);
       box-shadow: 0 0 12px var(--neon-500);
       animation: neon-pulse 2.2s ease-in-out infinite;
     }
+
     .nav-links {
-      display: flex; align-items: center; gap: 2.25rem;
-      font-size: 0.82rem; font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 2.25rem;
+      font-size: 0.82rem;
+      font-weight: 500;
       letter-spacing: 0.03em;
       color: var(--txt-secondary);
     }
+
     .nav-links a {
-      text-decoration: none; color: inherit;
+      text-decoration: none;
+      color: inherit;
       transition: color 0.2s ease;
     }
-    .nav-links a:hover { color: var(--txt-primary); }
+
+    .nav-links a:hover {
+      color: var(--txt-primary);
+    }
+
     .nav-cta {
-      display: inline-flex; align-items: center; gap: 0.45rem;
-      font-size: 0.82rem; font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.82rem;
+      font-weight: 600;
       padding: 0.6rem 1.35rem;
       border-radius: var(--radius-pill);
       background: var(--neon-500);
       color: #080808;
       text-decoration: none;
       transition: background 0.22s ease, transform 0.2s ease, box-shadow 0.22s ease;
-      box-shadow: 0 0 0 1px rgba(168,85,247,0.4), 0 8px 24px rgba(168,85,247,0.22);
+      box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.4), 0 8px 24px rgba(168, 85, 247, 0.22);
     }
+
     .nav-cta:hover {
       background: var(--neon-400);
       transform: translateY(-1px);
-      box-shadow: 0 0 0 1px rgba(192,132,252,0.6), 0 12px 36px rgba(168,85,247,0.35);
+      box-shadow: 0 0 0 1px rgba(192, 132, 252, 0.6), 0 12px 36px rgba(168, 85, 247, 0.35);
     }
+
     .nav-mobile-btn {
       display: none;
-      width: 40px; height: 40px;
-      align-items: center; justify-content: center;
-      background: rgba(255,255,255,0.04);
+      width: 40px;
+      height: 40px;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--clr-border);
       border-radius: var(--radius-sm);
-      cursor: pointer; color: var(--txt-primary);
+      cursor: pointer;
+      color: var(--txt-primary);
     }
+
     @media (max-width: 1024px) {
-      .nav-links { display: none; }
-      .nav-cta-desktop { display: none; }
-      .nav-mobile-btn { display: flex; }
+      .nav-links {
+        display: none;
+      }
+
+      .nav-cta-desktop {
+        display: none;
+      }
+
+      .nav-mobile-btn {
+        display: flex;
+      }
     }
 
     /* Mobile menu */
     #mobile-menu {
       display: none;
-      position: fixed; top: 68px; left: 0; right: 0; z-index: 99;
-      background: rgba(9,9,9,0.96);
+      position: fixed;
+      top: 68px;
+      left: 0;
+      right: 0;
+      z-index: 99;
+      background: rgba(9, 9, 9, 0.96);
       backdrop-filter: blur(32px);
       border-bottom: 1px solid var(--clr-border);
       padding: 1.5rem 2rem 2rem;
     }
-    #mobile-menu.open { display: block; animation: fadeSlideInFast 0.22s ease both; }
+
+    #mobile-menu.open {
+      display: block;
+      animation: fadeSlideInFast 0.22s ease both;
+    }
+
     #mobile-menu a {
-      display: block; padding: 0.75rem 0;
-      font-size: 1rem; font-weight: 500;
-      color: var(--txt-secondary); text-decoration: none;
+      display: block;
+      padding: 0.75rem 0;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--txt-secondary);
+      text-decoration: none;
       border-bottom: 1px solid var(--clr-border);
       transition: color 0.2s;
     }
-    #mobile-menu a:hover { color: var(--txt-primary); }
+
+    #mobile-menu a:hover {
+      color: var(--txt-primary);
+    }
+
     #mobile-menu .mobile-cta {
-      display: inline-flex; margin-top: 1.25rem;
-      background: var(--neon-500); color: #080808;
+      display: inline-flex;
+      margin-top: 1.25rem;
+      background: var(--neon-500);
+      color: #080808;
       padding: 0.7rem 1.5rem;
       border-radius: var(--radius-pill);
-      font-weight: 600; font-size: 0.9rem;
+      font-weight: 600;
+      font-size: 0.9rem;
       text-decoration: none;
     }
 
@@ -410,25 +718,36 @@
        BACKGROUND – Grid + Neural Canvas
     ========================================================= */
     .hero-bg {
-      position: absolute; inset: 0; z-index: 0;
-      overflow: hidden; pointer-events: none;
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
     }
+
     .hero-bg-grid {
-      position: absolute; inset: 0;
+      position: absolute;
+      inset: 0;
       background-image:
-        linear-gradient(rgba(168,85,247,0.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(168,85,247,0.045) 1px, transparent 1px);
+        linear-gradient(rgba(168, 85, 247, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(168, 85, 247, 0.045) 1px, transparent 1px);
       background-size: 56px 56px;
       animation: grid-fade-in 2s ease 0.5s both;
     }
+
     .hero-bg-radial {
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 85% 55% at 50% 0%, rgba(168,85,247,0.15) 0%, rgba(255,0,229,0.05) 40%, transparent 70%);
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 85% 55% at 50% 0%, rgba(168, 85, 247, 0.15) 0%, rgba(255, 0, 229, 0.05) 40%, transparent 70%);
     }
+
     /* Scan line effect */
     .scan-line {
-      position: absolute; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, transparent 0%, rgba(168,85,247,0.18) 50%, transparent 100%);
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent 0%, rgba(168, 85, 247, 0.18) 50%, transparent 100%);
       animation: scan-line 6s linear 1.5s infinite;
       pointer-events: none;
     }
@@ -439,31 +758,42 @@
     #hero {
       position: relative;
       min-height: 100vh;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
       padding: 120px 1.5rem 5rem;
       overflow: hidden;
     }
+
     .hero-badge {
-      display: inline-flex; align-items: center; gap: 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       padding: 0.4rem 1rem;
       border-radius: var(--radius-pill);
-      background: rgba(168,85,247,0.08);
-      border: 1px solid rgba(168,85,247,0.25);
-      font-size: 0.72rem; font-weight: 600;
-      letter-spacing: 0.1em; text-transform: uppercase;
+      background: rgba(168, 85, 247, 0.08);
+      border: 1px solid rgba(168, 85, 247, 0.25);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       color: var(--neon-400);
       backdrop-filter: blur(8px);
       animation: fadeSlideIn 0.6s ease 0.2s both, badge-bounce 8s ease-in-out 1.5s infinite;
       margin-bottom: 2rem;
     }
+
     .hero-badge .badge-dot {
-      width: 6px; height: 6px; border-radius: 50%;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
       background: var(--neon-400);
-      box-shadow: 0 0 8px rgba(168,85,247,0.8);
+      box-shadow: 0 0 8px rgba(168, 85, 247, 0.8);
       animation: neon-pulse 1.8s ease-in-out infinite;
     }
+
     .hero-headline {
       font-family: 'Space Grotesk', sans-serif;
       font-size: clamp(3rem, 8.5vw, 7.5rem);
@@ -473,9 +803,11 @@
       color: var(--txt-primary);
       margin-bottom: 1.75rem;
       perspective: 1000px;
-      transform-style: preserve-3d; /* Trava de segurança para 3D no Brave/Chrome */
+      transform-style: preserve-3d;
+      /* Trava de segurança para 3D no Brave/Chrome */
       animation: none !important;
     }
+
     .reveal-line {
       display: block;
       opacity: 0;
@@ -483,6 +815,7 @@
       animation-delay: var(--delay);
       will-change: transform, opacity, filter;
     }
+
     .aura-text-fx {
       position: relative;
       display: inline-block;
@@ -494,10 +827,12 @@
       background-size: 200% auto;
       animation: shine-bg 3s linear infinite;
     }
+
     .aura-text-fx::after {
       content: "AURA.";
       position: absolute;
-      left: 0; top: 0;
+      left: 0;
+      top: 0;
       color: transparent;
       text-shadow: 0 0 30px var(--neon-500), 0 0 60px var(--cyber-pink);
       opacity: 0;
@@ -506,6 +841,7 @@
       pointer-events: none;
       white-space: nowrap;
     }
+
     .hero-headline .line-neon {
       color: var(--neon-400);
       display: block;
@@ -513,19 +849,27 @@
       animation: premium-reveal 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards, neon-glow-text 3s ease-in-out 2s infinite;
       animation-delay: var(--delay, 0.5s), 2s;
     }
+
     .hero-headline .line-shimmer {
       display: block;
-      color: rgba(240,236,228,0.8);
+      color: rgba(240, 236, 228, 0.8);
     }
+
     .hero-subtitle {
-      max-width: 640px; margin: 0 auto 2.75rem;
-      font-size: 1.1rem; font-weight: 400;
+      max-width: 640px;
+      margin: 0 auto 2.75rem;
+      font-size: 1.1rem;
+      font-weight: 400;
       line-height: 1.7;
       color: var(--txt-secondary);
     }
+
     .hero-cta-group {
-      display: flex; align-items: center; justify-content: center;
-      gap: 1rem; flex-wrap: wrap;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
       animation: fadeSlideIn 0.8s ease 0.9s both;
       margin-bottom: 4rem;
     }
@@ -533,193 +877,334 @@
     /* Primary CTA button */
     .btn-primary {
       position: relative;
-      display: inline-flex; align-items: center; gap: 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       padding: 0.85rem 2rem;
       border-radius: var(--radius-pill);
       background: var(--neon-500);
       color: #ffffff;
-      font-size: 0.9rem; font-weight: 700;
+      font-size: 0.9rem;
+      font-weight: 700;
       letter-spacing: 0.01em;
       text-decoration: none;
       overflow: hidden;
       transition: transform 0.25s var(--ease-spring), box-shadow 0.25s ease;
-      box-shadow: 0 0 0 1px rgba(168,85,247,0.6), 0 8px 32px rgba(168,85,247,0.28);
+      box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.6), 0 8px 32px rgba(168, 85, 247, 0.28);
     }
+
     .btn-primary::before {
       content: "";
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 60%);
-      opacity: 0; transition: opacity 0.25s;
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0) 60%);
+      opacity: 0;
+      transition: opacity 0.25s;
     }
-    .btn-primary:hover { transform: translateY(-2px) scale(1.025); box-shadow: 0 0 0 1px rgba(192,132,252,0.8), 0 16px 48px rgba(168,85,247,0.38); }
-    .btn-primary:hover::before { opacity: 1; }
-    .btn-primary .btn-arrow { transition: transform 0.25s var(--ease-spring); }
-    .btn-primary:hover .btn-arrow { transform: translateX(3px); }
+
+    .btn-primary:hover {
+      transform: translateY(-2px) scale(1.025);
+      box-shadow: 0 0 0 1px rgba(192, 132, 252, 0.8), 0 16px 48px rgba(168, 85, 247, 0.38);
+    }
+
+    .btn-primary:hover::before {
+      opacity: 1;
+    }
+
+    .btn-primary .btn-arrow {
+      transition: transform 0.25s var(--ease-spring);
+    }
+
+    .btn-primary:hover .btn-arrow {
+      transform: translateX(3px);
+    }
 
     /* Secondary CTA button */
     .btn-secondary {
       position: relative;
-      display: inline-flex; align-items: center; gap: 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       padding: 0.85rem 1.75rem;
       border-radius: var(--radius-pill);
-      background: rgba(255,255,255,0.04);
+      background: rgba(255, 255, 255, 0.04);
       color: var(--txt-primary);
-      font-size: 0.9rem; font-weight: 600;
+      font-size: 0.9rem;
+      font-weight: 600;
       letter-spacing: 0.01em;
       text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(12px);
       transition: transform 0.25s var(--ease-spring), background 0.22s ease, border-color 0.22s ease, box-shadow 0.25s ease;
     }
+
     .btn-secondary::after {
       content: "";
-      position: absolute; bottom: 0; left: 50%;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
       transform: translateX(-50%);
-      width: 60%; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(168,85,247,0.6), transparent);
-      opacity: 0; transition: opacity 0.25s ease;
+      width: 60%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.6), transparent);
+      opacity: 0;
+      transition: opacity 0.25s ease;
     }
+
     .btn-secondary:hover {
       transform: translateY(-2px) scale(1.02);
-      background: rgba(168,85,247,0.07);
-      border-color: rgba(168,85,247,0.35);
-      box-shadow: 0 0 20px rgba(168,85,247,0.12);
+      background: rgba(168, 85, 247, 0.07);
+      border-color: rgba(168, 85, 247, 0.35);
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.12);
     }
-    .btn-secondary:hover::after { opacity: 1; }
+
+    .btn-secondary:hover::after {
+      opacity: 1;
+    }
+
     /* Hover glow under button */
     .btn-secondary-wrap {
-      position: relative; display: inline-block;
+      position: relative;
+      display: inline-block;
     }
+
     .btn-secondary-wrap .btn-glow {
-      position: absolute; bottom: -10px; left: 50%;
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
       transform: translateX(-50%);
-      width: 80%; height: 20px;
-      background: radial-gradient(60% 100% at 50% 50%, rgba(168,85,247,0.5), transparent 70%);
+      width: 80%;
+      height: 20px;
+      background: radial-gradient(60% 100% at 50% 50%, rgba(168, 85, 247, 0.5), transparent 70%);
       filter: blur(8px);
-      opacity: 0; transition: opacity 0.3s ease;
+      opacity: 0;
+      transition: opacity 0.3s ease;
       pointer-events: none;
     }
-    .btn-secondary-wrap:hover .btn-glow { opacity: 1; }
+
+    .btn-secondary-wrap:hover .btn-glow {
+      opacity: 1;
+    }
 
     /* Hero stats */
     .hero-stats {
-      display: flex; align-items: center; justify-content: center;
-      gap: 2rem; flex-wrap: wrap;
-      font-size: 0.78rem; color: var(--txt-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      font-size: 0.78rem;
+      color: var(--txt-muted);
       animation: fadeSlideIn 0.6s ease 1.2s both;
     }
+
     .hero-stats span {
-      display: inline-flex; align-items: center; gap: 0.4rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
     }
-    .hero-stats svg { width: 14px; height: 14px; }
+
+    .hero-stats svg {
+      width: 14px;
+      height: 14px;
+    }
 
     /* =========================================================
        DS NAV (inner sub-nav)
     ========================================================= */
     #ds-nav {
-      position: sticky; top: 68px; z-index: 90;
-      background: rgba(9,9,9,0.88);
+      position: sticky;
+      top: 68px;
+      z-index: 90;
+      background: rgba(9, 9, 9, 0.88);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--clr-border);
     }
+
     .ds-nav-inner {
-      max-width: 1280px; margin: 0 auto; padding: 0 2rem;
-      display: flex; align-items: center; gap: 0.25rem;
-      height: 48px; overflow-x: auto; scrollbar-width: none;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      height: 48px;
+      overflow-x: auto;
+      scrollbar-width: none;
     }
-    .ds-nav-inner::-webkit-scrollbar { display: none; }
+
+    .ds-nav-inner::-webkit-scrollbar {
+      display: none;
+    }
+
     .ds-nav-link {
-      white-space: nowrap; font-size: 0.75rem; font-weight: 500;
-      letter-spacing: 0.06em; text-transform: uppercase;
-      color: var(--txt-muted); text-decoration: none;
+      white-space: nowrap;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--txt-muted);
+      text-decoration: none;
       padding: 0.3rem 0.75rem;
       border-radius: var(--radius-sm);
       transition: color 0.2s, background 0.2s;
     }
-    .ds-nav-link:hover, .ds-nav-link.active { color: var(--txt-neon); background: rgba(168,85,247,0.08); }
-    .ds-nav-sep { width: 1px; height: 18px; background: var(--clr-border); margin: 0 0.25rem; }
+
+    .ds-nav-link:hover,
+    .ds-nav-link.active {
+      color: var(--txt-neon);
+      background: rgba(168, 85, 247, 0.08);
+    }
+
+    .ds-nav-sep {
+      width: 1px;
+      height: 18px;
+      background: var(--clr-border);
+      margin: 0 0.25rem;
+    }
 
     /* =========================================================
        DS SECTIONS
     ========================================================= */
     .ds-section {
-      max-width: 1280px; margin: 0 auto;
+      max-width: 1280px;
+      margin: 0 auto;
       padding: 5rem 2rem;
     }
+
     .ds-divider {
-      border: none; margin: 0;
+      border: none;
+      margin: 0;
       border-top: 1px solid var(--clr-border);
     }
 
     /* Section label pill */
     .section-label {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      font-size: 0.68rem; font-weight: 600;
-      letter-spacing: 0.12em; text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
       color: var(--txt-muted);
       padding: 0.3rem 0.8rem;
       border: 1px solid var(--clr-border);
       border-radius: var(--radius-pill);
-      background: rgba(255,255,255,0.02);
+      background: rgba(255, 255, 255, 0.02);
       margin-bottom: 1.75rem;
     }
+
     .section-label .dot {
-      width: 5px; height: 5px; border-radius: 50%;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
       background: var(--neon-500);
     }
+
     .section-label.gold {
       color: var(--neon-400);
-      border-color: rgba(168,85,247,0.25);
-      background: rgba(168,85,247,0.06);
+      border-color: rgba(168, 85, 247, 0.25);
+      background: rgba(168, 85, 247, 0.06);
     }
 
     /* Section heading */
     .section-heading {
       font-size: clamp(2rem, 4vw, 3.25rem);
-      font-weight: 700; letter-spacing: -0.03em;
-      line-height: 1.05; color: var(--txt-primary);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      color: var(--txt-primary);
       margin-bottom: 1rem;
     }
-    .section-heading .accent { color: var(--neon-400); }
+
+    .section-heading .accent {
+      color: var(--neon-400);
+    }
 
     /* =========================================================
        TYPOGRAPHY SECTION live display
     ========================================================= */
-    .typo-table { width: 100%; border-collapse: collapse; }
-    .typo-table tr { border-bottom: 1px solid var(--clr-border); }
-    .typo-table td { padding: 1.5rem 0; vertical-align: middle; }
+    .typo-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .typo-table tr {
+      border-bottom: 1px solid var(--clr-border);
+    }
+
+    .typo-table td {
+      padding: 1.5rem 0;
+      vertical-align: middle;
+    }
+
     .typo-name {
-      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--txt-muted);
-      width: 160px; padding-right: 2rem; white-space: nowrap;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--txt-muted);
+      width: 160px;
+      padding-right: 2rem;
+      white-space: nowrap;
       font-family: 'Space Mono', monospace;
     }
-    .typo-preview { flex: 1; }
+
+    .typo-preview {
+      flex: 1;
+    }
+
     .typo-spec {
-      font-size: 0.65rem; color: var(--txt-muted);
+      font-size: 0.65rem;
+      color: var(--txt-muted);
       font-family: 'Space Mono', monospace;
-      text-align: right; padding-left: 1.5rem;
+      text-align: right;
+      padding-left: 1.5rem;
       white-space: nowrap;
     }
 
     /* =========================================================
        COLOR SWATCHES
     ========================================================= */
-    .color-grid { display: flex; flex-wrap: wrap; gap: 1rem; }
-    .color-swatch { display: flex; flex-direction: column; gap: 0.5rem; width: 150px; }
-    .swatch-block {
-      height: 76px; border-radius: var(--radius-md);
-      border: 1px solid rgba(255,255,255,0.07);
+    .color-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
-    .swatch-name { font-size: 0.72rem; font-weight: 500; color: var(--txt-secondary); }
-    .swatch-value { font-size: 0.62rem; color: var(--txt-muted); font-family: 'Space Mono', monospace; }
+
+    .color-swatch {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      width: 150px;
+    }
+
+    .swatch-block {
+      height: 76px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .swatch-name {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--txt-secondary);
+    }
+
+    .swatch-value {
+      font-size: 0.62rem;
+      color: var(--txt-muted);
+      font-family: 'Space Mono', monospace;
+    }
 
     /* =========================================================
        COMPONENT CARDS
     ========================================================= */
     /* Feature card */
     .feature-card {
-      position: relative; overflow: hidden;
+      position: relative;
+      overflow: hidden;
       background: var(--clr-surface);
       border: 1px solid var(--clr-border);
       border-radius: var(--radius-lg);
@@ -727,46 +1212,66 @@
       transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s var(--ease-spring);
       cursor: default;
     }
+
     .feature-card:hover {
       border-color: var(--clr-border-neon);
-      box-shadow: 0 0 36px rgba(168,85,247,0.1), 0 16px 40px rgba(0,0,0,0.5);
+      box-shadow: 0 0 36px rgba(168, 85, 247, 0.1), 0 16px 40px rgba(0, 0, 0, 0.5);
       transform: translateY(-4px);
     }
+
     .feature-card::before {
       content: "";
-      position: absolute; top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent 0%, rgba(168,85,247,0.4) 50%, transparent 100%);
-      opacity: 0; transition: opacity 0.35s ease;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(168, 85, 247, 0.4) 50%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
     }
-    .feature-card:hover::before { opacity: 1; }
+
+    .feature-card:hover::before {
+      opacity: 1;
+    }
 
     .card-icon {
-      width: 48px; height: 48px;
+      width: 48px;
+      height: 48px;
       border-radius: var(--radius-md);
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       margin-bottom: 1.25rem;
       font-size: 1.35rem;
       transition: transform 0.3s var(--ease-spring), box-shadow 0.3s ease;
     }
+
     .feature-card:hover .card-icon {
       transform: scale(1.12) rotate(-4deg);
     }
 
     /* Bento/stat card */
     .stat-value {
-      font-size: 3rem; font-weight: 700;
+      font-size: 3rem;
+      font-weight: 700;
       letter-spacing: -0.04em;
       color: var(--neon-400);
       line-height: 1;
       overflow: hidden;
     }
-    .stat-label { font-size: 0.82rem; color: var(--txt-muted); margin-top: 0.4rem; }
+
+    .stat-label {
+      font-size: 0.82rem;
+      color: var(--txt-muted);
+      margin-top: 0.4rem;
+    }
 
     /* =========================================================
        INPUTS
     ========================================================= */
     .input-neon {
-      background: rgba(255,255,255,0.03);
+      background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--clr-border);
       border-radius: var(--radius-md);
       padding: 0.8rem 1rem;
@@ -777,70 +1282,95 @@
       transition: border-color 0.22s ease, box-shadow 0.22s ease;
       outline: none;
     }
-    .input-neon::placeholder { color: var(--txt-muted); }
+
+    .input-neon::placeholder {
+      color: var(--txt-muted);
+    }
+
     .input-neon:focus {
-      border-color: rgba(168,85,247,0.5);
-      box-shadow: 0 0 0 3px rgba(168,85,247,0.1);
+      border-color: rgba(168, 85, 247, 0.5);
+      box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1);
     }
 
     /* =========================================================
        BADGE / TOOLTIP
     ========================================================= */
     .badge {
-      display: inline-flex; align-items: center; gap: 0.35rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
       padding: 0.25rem 0.65rem;
       border-radius: var(--radius-pill);
-      font-size: 0.68rem; font-weight: 600;
-      letter-spacing: 0.06em; text-transform: uppercase;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
+
     .badge-neon {
-      background: rgba(168,85,247,0.12);
+      background: rgba(168, 85, 247, 0.12);
       color: var(--neon-400);
-      border: 1px solid rgba(168,85,247,0.3);
+      border: 1px solid rgba(168, 85, 247, 0.3);
     }
+
     .badge-surface {
-      background: rgba(255,255,255,0.05);
+      background: rgba(255, 255, 255, 0.05);
       color: var(--txt-secondary);
       border: 1px solid var(--clr-border);
     }
 
     /* Tooltip */
-    .tooltip-wrap { position: relative; display: inline-flex; }
+    .tooltip-wrap {
+      position: relative;
+      display: inline-flex;
+    }
+
     .tooltip-box {
-      position: absolute; bottom: calc(100% + 8px); left: 50%;
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
       transform: translateX(-50%) translateY(4px);
       background: var(--clr-surface-2);
       border: 1px solid var(--clr-border);
       border-radius: var(--radius-sm);
       padding: 0.4rem 0.7rem;
-      font-size: 0.72rem; color: var(--txt-secondary);
+      font-size: 0.72rem;
+      color: var(--txt-secondary);
       white-space: nowrap;
-      opacity: 0; pointer-events: none;
+      opacity: 0;
+      pointer-events: none;
       transition: opacity 0.18s ease, transform 0.18s ease;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
       z-index: 10;
     }
+
     .tooltip-box::after {
       content: "";
-      position: absolute; top: 100%; left: 50%;
+      position: absolute;
+      top: 100%;
+      left: 50%;
       transform: translateX(-50%);
       border: 5px solid transparent;
       border-top-color: var(--clr-border);
     }
+
     .tooltip-wrap:hover .tooltip-box {
-      opacity: 1; transform: translateX(-50%) translateY(0);
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
     }
 
     /* =========================================================
        NAVBAR DEMO
     ========================================================= */
     .demo-nav {
-      background: rgba(9,9,9,0.7);
+      background: rgba(9, 9, 9, 0.7);
       backdrop-filter: blur(20px);
       border: 1px solid var(--clr-border);
       border-radius: var(--radius-lg);
       padding: 0 1.5rem;
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       height: 60px;
     }
 
@@ -849,119 +1379,214 @@
     ========================================================= */
     /* ── Roleta Minimalista (Crystal White) ── */
     .marquee-wrap {
-      width: 100%; overflow: hidden; white-space: nowrap;
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
       border-top: 1px solid rgba(255, 255, 255, 0.05);
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       background: rgba(2, 2, 4, 0.4);
-      padding: 1.25rem 0; margin: 2rem 0;
-      position: relative; z-index: 10;
+      padding: 1.25rem 0;
+      margin: 2rem 0;
+      position: relative;
+      z-index: 10;
       backdrop-filter: blur(8px);
     }
+
     .marquee-content {
       display: inline-block;
       animation: marquee-scroll 50s linear infinite;
       transition: animation-duration 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
-    .marquee-wrap:hover .marquee-content { animation-duration: 25s; }
+
+    .marquee-wrap:hover .marquee-content {
+      animation-duration: 25s;
+    }
+
     .marquee-item {
-      display: inline-flex; align-items: center; gap: 0.8rem;
-      margin-right: 5rem; font-family: 'Space Mono', monospace;
-      font-size: 0.75rem; letter-spacing: 0.25em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-right: 5rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
       color: rgba(248, 250, 252, 0.5);
       transition: all 0.4s ease;
     }
+
     .marquee-wrap:hover .marquee-item {
       color: rgba(248, 250, 252, 1);
       text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
     }
+
     @keyframes marquee-scroll {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
     }
 
     /* Modal Premium Glassmorphism */
     .modal-overlay {
-      position: fixed; inset: 0; z-index: 999;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
       background: rgba(2, 2, 4, 0.4);
       backdrop-filter: blur(8px);
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
       transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
-    .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
     .case-glass-box {
       background: rgba(12, 8, 20, 0.75);
       backdrop-filter: blur(32px) saturate(180%);
       border: 1px solid rgba(168, 85, 247, 0.25);
       border-radius: 24px;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.9), inset 0 0 40px rgba(168, 85, 247, 0.08);
-      max-width: 720px; width: 92%; padding: 3.5rem;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.9), inset 0 0 40px rgba(168, 85, 247, 0.08);
+      max-width: 720px;
+      width: 92%;
+      padding: 3.5rem;
       transform: scale(0.9) translateY(30px);
       opacity: 0;
       transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
       position: relative;
     }
-    .modal-overlay.open .case-glass-box { transform: scale(1) translateY(0); opacity: 1; }
-    .case-close {
-      position: absolute; top: 1.5rem; right: 1.5rem;
-      width: 40px; height: 40px; border-radius: 50%;
-      background: rgba(255,255,255,0.03); border: 1px solid var(--clr-border);
-      color: var(--txt-muted); display: flex; align-items: center; justify-content: center;
-      cursor: pointer; transition: all 0.3s;
+
+    .modal-overlay.open .case-glass-box {
+      transform: scale(1) translateY(0);
+      opacity: 1;
     }
-    .case-close:hover { background: rgba(255,0,229,0.1); border-color: var(--cyber-pink); color: var(--txt-primary); transform: rotate(90deg); }
-    .badge-blue { background: rgba(56, 189, 248, 0.1); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
-    .badge-green { background: rgba(52, 211, 153, 0.1); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.3); }
+
+    .case-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--clr-border);
+      color: var(--txt-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .case-close:hover {
+      background: rgba(255, 0, 229, 0.1);
+      border-color: var(--cyber-pink);
+      color: var(--txt-primary);
+      transform: rotate(90deg);
+    }
+
+    .badge-blue {
+      background: rgba(56, 189, 248, 0.1);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .badge-green {
+      background: rgba(52, 211, 153, 0.1);
+      color: #34d399;
+      border: 1px solid rgba(52, 211, 153, 0.3);
+    }
 
     /* =========================================================
        MOTION DEMO CARD
     ========================================================= */
     .motion-card {
-      background: rgba(255,255,255,0.02);
+      background: rgba(255, 255, 255, 0.02);
       border: 1px solid var(--clr-border);
       border-radius: var(--radius-lg);
       padding: 2rem 1.75rem;
-      display: flex; flex-direction: column; gap: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
+
     .motion-label {
-      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--txt-muted);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--txt-muted);
     }
+
     .motion-spec {
-      font-size: 0.65rem; color: rgba(255,255,255,0.2);
-      font-family: 'Space Mono', monospace; margin-top: -0.5rem;
+      font-size: 0.65rem;
+      color: rgba(255, 255, 255, 0.2);
+      font-family: 'Space Mono', monospace;
+      margin-top: -0.5rem;
     }
 
     /* =========================================================
        ICON SECTION
     ========================================================= */
-    .icon-grid { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .icon-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
     .icon-item {
-      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
-      background: rgba(255,255,255,0.02);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.02);
       border: 1px solid var(--clr-border);
       border-radius: var(--radius-md);
       padding: 1.25rem;
       width: 84px;
       transition: border-color 0.2s, background 0.2s;
     }
+
     .icon-item:hover {
       border-color: var(--clr-border-neon);
-      background: rgba(168,85,247,0.05);
+      background: rgba(168, 85, 247, 0.05);
     }
-    .icon-item span { font-size: 0.6rem; color: var(--txt-muted); text-align: center; }
-    .icon-item svg { color: var(--txt-secondary); transition: color 0.2s; }
-    .icon-item:hover svg { color: var(--neon-400); }
+
+    .icon-item span {
+      font-size: 0.6rem;
+      color: var(--txt-muted);
+      text-align: center;
+    }
+
+    .icon-item svg {
+      color: var(--txt-secondary);
+      transition: color 0.2s;
+    }
+
+    .icon-item:hover svg {
+      color: var(--neon-400);
+    }
 
     /* =========================================================
        LAYOUT DEMO
     ========================================================= */
     .layout-box {
-      background: rgba(255,255,255,0.03);
-      border: 1px dashed rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px dashed rgba(255, 255, 255, 0.1);
       border-radius: var(--radius-sm);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--txt-muted); font-size: 0.68rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--txt-muted);
+      font-size: 0.68rem;
       font-family: 'Space Mono', monospace;
     }
 
@@ -969,48 +1594,88 @@
        TIMELINE (METODOLOGIA)
     ========================================================= */
     .timeline-wrap {
-      position: relative; max-width: 800px; margin: 4rem auto 0;
+      position: relative;
+      max-width: 800px;
+      margin: 4rem auto 0;
     }
+
     .timeline-wrap::before {
-      content: ""; position: absolute; top: 0; bottom: 0; left: 24px;
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 24px;
       width: 2px;
       background: linear-gradient(to bottom, var(--neon-500) 0%, var(--cyber-pink) 80%, transparent 100%);
       opacity: 0.3;
     }
+
     .timeline-item {
-      position: relative; padding-left: 72px; margin-bottom: 3rem;
-      opacity: 0; transform: translateX(-20px);
+      position: relative;
+      padding-left: 72px;
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateX(-20px);
       animation: fadeSlideIn 0.8s forwards;
     }
-    .timeline-item:last-child { margin-bottom: 0; }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
     .timeline-node {
-      position: absolute; left: 16px; top: 4px;
-      width: 18px; height: 18px; border-radius: 50%;
+      position: absolute;
+      left: 16px;
+      top: 4px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
       background: var(--clr-bg);
       border: 3px solid var(--neon-400);
       box-shadow: 0 0 12px var(--neon-500);
       z-index: 2;
     }
+
     .timeline-content {
-      background: rgba(255,255,255,0.02);
+      background: rgba(255, 255, 255, 0.02);
       border: 1px solid var(--clr-border);
       border-radius: var(--radius-lg);
       padding: 1.5rem;
       transition: border-color 0.3s ease, transform 0.3s ease, background 0.3s ease;
     }
+
     .timeline-item:hover .timeline-content {
-      border-color: rgba(255,0,229,0.4);
-      background: rgba(168,85,247,0.05);
+      border-color: rgba(255, 0, 229, 0.4);
+      background: rgba(168, 85, 247, 0.05);
       transform: translateX(4px);
     }
-    .timeline-step { font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--neon-400); margin-bottom: 0.5rem; display: block; }
-    .timeline-title { font-size: 1.25rem; font-weight: 600; color: var(--txt-primary); margin-bottom: 0.5rem; }
-    .timeline-desc { font-size: 0.95rem; color: var(--txt-secondary); line-height: 1.6; }
+
+    .timeline-step {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--neon-400);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .timeline-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--txt-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-desc {
+      font-size: 0.95rem;
+      color: var(--txt-secondary);
+      line-height: 1.6;
+    }
 
     /* =========================================================
        AURA PREMIUM CARD HOVER (GLASS REFLECTION)
     ========================================================= */
-    .feature-card, .bento-card {
+    .feature-card,
+    .bento-card {
       position: relative;
       overflow: hidden;
       transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1019,7 +1684,8 @@
     }
 
     /* O feixe de luz de vidro que varre o card */
-    .feature-card::after, .bento-card::after {
+    .feature-card::after,
+    .bento-card::after {
       content: '';
       position: absolute;
       top: 0;
@@ -1034,90 +1700,194 @@
     }
 
     /* Elevação + Glow Interno + Borda Neon no hover */
-    .feature-card:hover, .bento-card:hover {
+    .feature-card:hover,
+    .bento-card:hover {
       border-color: rgba(168, 85, 247, 0.5);
       box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 0 25px rgba(168, 85, 247, 0.15);
       transform: translateY(-8px);
     }
 
     /* Dispara o feixe de luz ao hover */
-    .feature-card:hover::after, .bento-card:hover::after {
+    .feature-card:hover::after,
+    .bento-card:hover::after {
       left: 200%;
     }
 
     /* ── Portfólio Ativo AURA ── */
     .portfolio-grid-main {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 2rem; margin-top: 4rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
     }
+
     .card-premium {
-      background: rgba(12, 12, 18, 0.4); border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 24px; overflow: hidden; display: flex; flex-direction: column;
-      backdrop-filter: blur(20px); transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-      min-height: 460px; cursor: pointer; position: relative;
+      background: rgba(12, 12, 18, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 24px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(20px);
+      transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+      min-height: 460px;
+      cursor: pointer;
+      position: relative;
     }
+
     .card-premium:hover {
-      transform: translateY(-10px); border-color: rgba(168, 85, 247, 0.3);
-      box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+      transform: translateY(-10px);
+      border-color: rgba(168, 85, 247, 0.3);
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
     }
+
     .visual-slot {
-      width: 100%; height: 180px; position: relative; overflow: hidden;
-      background: #08080a; border-bottom: 1px solid rgba(255,255,255,0.03);
-      display: flex; align-items: center; justify-content: center;
+      width: 100%;
+      height: 180px;
+      position: relative;
+      overflow: hidden;
+      background: #08080a;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+
     .neon-emoji {
-      font-size: 4.2rem; filter: drop-shadow(0 0 15px currentColor);
+      font-size: 4.2rem;
+      filter: drop-shadow(0 0 15px currentColor);
       animation: float-emoji 3.5s infinite ease-in-out;
     }
+
     /* Ícone do Rei (Portfólio de Autoridade) */
-    .king-stack { position: relative; display: flex; align-items: center; justify-content: center; }
-    .king-stack .crown { position: absolute; top: -22px; font-size: 2.2rem; z-index: 2; filter: drop-shadow(0 0 10px #34d399); }
-    
-    @keyframes float-emoji {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-12px) rotate(3deg); }
+    .king-stack {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .body-premium { padding: 2.2rem; flex-grow: 1; display: flex; flex-direction: column; }
-    .title-premium { font-size: 1.4rem; font-weight: 700; color: #fff; margin-bottom: 0.6rem; }
-    .desc-premium { font-size: 0.85rem; color: var(--txt-secondary); line-height: 1.6; margin-bottom: 1.5rem; }
+
+    .king-stack .crown {
+      position: absolute;
+      top: -22px;
+      font-size: 2.2rem;
+      z-index: 2;
+      filter: drop-shadow(0 0 10px #34d399);
+    }
+
+    @keyframes float-emoji {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-12px) rotate(3deg);
+      }
+    }
+
+    .body-premium {
+      padding: 2.2rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .title-premium {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.6rem;
+    }
+
+    .desc-premium {
+      font-size: 0.85rem;
+      color: var(--txt-secondary);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
 
     /* =========================================================
        FOOTER & ASSINATURA PREMIUM
     ========================================================= */
     .aura-footer {
-      position: relative; border-top: 1px solid rgba(168, 85, 247, 0.15);
-      padding: 6rem 2rem 2rem; background: linear-gradient(to bottom, var(--clr-bg) 0%, #05000a 100%);
-      display: flex; flex-direction: column; align-items: center;
+      position: relative;
+      border-top: 1px solid rgba(168, 85, 247, 0.15);
+      padding: 6rem 2rem 2rem;
+      background: linear-gradient(to bottom, var(--clr-bg) 0%, #05000a 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
+
     .footer-link {
-      font-size: 0.9rem; font-weight: 500; color: var(--txt-secondary);
-      text-decoration: none; transition: color 0.3s ease, text-shadow 0.3s ease;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--txt-secondary);
+      text-decoration: none;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
     }
-    .footer-link:hover { color: var(--txt-primary); text-shadow: 0 0 10px rgba(255,0,229,0.4); }
-    
+
+    .footer-link:hover {
+      color: var(--txt-primary);
+      text-shadow: 0 0 10px rgba(255, 0, 229, 0.4);
+    }
+
     /* Efeito Exato da Assinatura */
     @keyframes signatureReveal {
-      0% { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); filter: brightness(1) drop-shadow(0 0 0px rgba(168, 85, 247, 0)); }
-      50% { filter: brightness(1.5) drop-shadow(0 0 12px rgba(168, 85, 247, 0.6)); }
-      100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); filter: brightness(1.2) drop-shadow(0 0 6px rgba(168, 85, 247, 0.4)); }
+      0% {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+        filter: brightness(1) drop-shadow(0 0 0px rgba(168, 85, 247, 0));
+      }
+
+      50% {
+        filter: brightness(1.5) drop-shadow(0 0 12px rgba(168, 85, 247, 0.6));
+      }
+
+      100% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        filter: brightness(1.2) drop-shadow(0 0 6px rgba(168, 85, 247, 0.4));
+      }
     }
+
     .signature-wrapper {
-      display: inline-flex; align-items: center; gap: 0.35rem;
-      text-decoration: none; color: var(--txt-muted); font-size: 0.65rem;
-      letter-spacing: 0.05em; transition: opacity 0.3s ease; opacity: 0.5;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      text-decoration: none;
+      color: var(--txt-muted);
+      font-size: 0.65rem;
+      letter-spacing: 0.05em;
+      transition: opacity 0.3s ease;
+      opacity: 0.5;
       text-transform: uppercase;
     }
-    .signature-wrapper:hover { opacity: 1; }
-    
+
+    .signature-wrapper:hover {
+      opacity: 1;
+    }
+
     .signature-text {
-      position: relative; font-family: 'Brittany', cursive; font-size: 1rem;
-      color: var(--txt-secondary); line-height: 1; margin-top: 0; 
-      text-transform: none; letter-spacing: normal;
+      position: relative;
+      font-family: 'Brittany', cursive;
+      font-size: 1rem;
+      color: var(--txt-secondary);
+      line-height: 1;
+      margin-top: 0;
+      text-transform: none;
+      letter-spacing: normal;
     }
+
     .signature-overlay {
-      position: absolute; left: 0; top: 0; color: #fff;
-      clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); white-space: nowrap;
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #fff;
+      clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+      white-space: nowrap;
     }
+
     .signature-wrapper:hover .signature-overlay {
       animation: signatureReveal 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     }
@@ -1128,823 +1898,1117 @@
       backdrop-filter: blur(40px) saturate(150%);
       border: 1px solid rgba(255, 255, 255, 0.08);
       box-shadow: 0 0 100px rgba(0, 0, 0, 0.9);
-      position: relative; overflow: hidden;
+      position: relative;
+      overflow: hidden;
     }
+
     /* Brilho Dinâmico de Fundo */
     .modal-glow-dynamic {
-      position: absolute; top: -150px; left: -150px;
-      width: 400px; height: 400px;
-      filter: blur(80px); opacity: 0.2;
-      pointer-events: none; transition: background 0.8s ease;
+      position: absolute;
+      top: -150px;
+      left: -150px;
+      width: 400px;
+      height: 400px;
+      filter: blur(80px);
+      opacity: 0.2;
+      pointer-events: none;
+      transition: background 0.8s ease;
       z-index: 0;
     }
+
     /* Itens da Lista com Efeito Stagger */
     .modal-item-v3 {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 18px; padding: 1.2rem;
-      display: flex; align-items: center; gap: 1rem;
-      transform: translateY(20px); opacity: 0;
+      border-radius: 18px;
+      padding: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transform: translateY(20px);
+      opacity: 0;
       transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .modal-item-v3.show { transform: translateY(0); opacity: 1; }
-    .icon-wrapper {
-      width: 42px; height: 42px; border-radius: 12px;
-      background: rgba(255, 255, 255, 0.05);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.3rem; transition: all 0.3s ease;
+
+    .modal-item-v3.show {
+      transform: translateY(0);
+      opacity: 1;
     }
+
+    .icon-wrapper {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      transition: all 0.3s ease;
+    }
+
     /* Botão de Fechar Premium */
     .btn-modal-close {
-      width: 100%; padding: 1.25rem; margin-top: 1rem;
+      width: 100%;
+      padding: 1.25rem;
+      margin-top: 1rem;
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #fff; font-weight: 600; border-radius: 16px;
-      transition: all 0.3s ease; cursor: pointer;
-      text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 16px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.85rem;
     }
+
     .btn-modal-close:hover {
       background: rgba(212, 175, 55, 0.1);
       border-color: rgba(212, 175, 55, 0.4);
-      color: #d4af37; box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+      color: #d4af37;
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
     }
 
     /* Otimização: Aceleração de Hardware */
-    .card-premium, .neon-emoji, #portfolio-modal-content {
+    .card-premium,
+    .neon-emoji,
+    #portfolio-modal-content {
       will-change: transform, opacity;
     }
 
     /* ── Manifesto AURA ── */
     .manifesto-grid {
-      display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center; margin-bottom: 4rem;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 4rem;
+      align-items: center;
+      margin-bottom: 4rem;
     }
-    @media (max-width: 992px) { .manifesto-grid { grid-template-columns: 1fr; gap: 3rem; } }
-    
-    .manifesto-text { font-size: 1.15rem; color: var(--txt-secondary); line-height: 1.8; font-weight: 300; }
-    .manifesto-text strong { color: var(--txt-primary); font-weight: 500; }
-    
+
+    @media (max-width: 992px) {
+      .manifesto-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+    }
+
+    .manifesto-text {
+      font-size: 1.15rem;
+      color: var(--txt-secondary);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .manifesto-text strong {
+      color: var(--txt-primary);
+      font-weight: 500;
+    }
+
     .micro-cards-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-bottom: 6rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 6rem;
     }
+
     .micro-card {
-      background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 16px; padding: 1.5rem; backdrop-filter: blur(12px);
-      transition: all 0.4s ease; display: flex; flex-direction: column;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 1.5rem;
+      backdrop-filter: blur(12px);
+      transition: all 0.4s ease;
+      display: flex;
+      flex-direction: column;
     }
+
     .micro-card:hover {
-      border-color: rgba(168, 85, 247, 0.3); background: rgba(168, 85, 247, 0.05);
-      transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      border-color: rgba(168, 85, 247, 0.3);
+      background: rgba(168, 85, 247, 0.05);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
+
     .micro-icon {
-      width: 40px; height: 40px; border-radius: 10px; background: rgba(255,255,255,0.03);
-      display: flex; align-items: center; justify-content: center; color: var(--neon-400);
-      margin-bottom: 1.2rem; border: 1px solid rgba(255,255,255,0.05);
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.03);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--neon-400);
+      margin-bottom: 1.2rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
     }
-    .micro-title { font-size: 1.05rem; font-weight: 600; color: #fff; margin-bottom: 0.5rem; }
-    .micro-desc { font-size: 0.85rem; color: var(--txt-muted); line-height: 1.6; }
+
+    .micro-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .micro-desc {
+      font-size: 0.85rem;
+      color: var(--txt-muted);
+      line-height: 1.6;
+    }
 
     /* Esfera Flutuante do Manifesto */
-    .manifesto-visual { position: relative; display: flex; justify-content: center; align-items: center; }
+    .manifesto-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
     .manifesto-sphere {
-      width: 280px; height: 280px; border-radius: 50%;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
       background: radial-gradient(circle at 30% 30%, rgba(168, 85, 247, 0.15), rgba(255, 0, 229, 0.05), transparent 70%);
       box-shadow: 0 0 60px rgba(168, 85, 247, 0.15), inset 0 0 30px rgba(255, 0, 229, 0.1);
       animation: float-sphere 6s ease-in-out infinite;
-      border: 1px solid rgba(255,255,255,0.03);
+      border: 1px solid rgba(255, 255, 255, 0.03);
       backdrop-filter: blur(5px);
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+
     @keyframes float-sphere {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-15px) scale(1.02); }
+
+      0%,
+      100% {
+        transform: translateY(0) scale(1);
+      }
+
+      50% {
+        transform: translateY(-15px) scale(1.02);
+      }
     }
   </style>
 </head>
+
 <body>
 
-<canvas id="neural-canvas" style="position:fixed; inset:0; z-index:0; pointer-events:none;"></canvas>
+  <canvas id="neural-canvas" style="position:fixed; inset:0; z-index:0; pointer-events:none;"></canvas>
 
 
 
-<!-- ================================================================
+  <!-- ================================================================
      NAVIGATION
 ================================================================ -->
-<header id="nav-main" role="banner">
-  <div class="nav-inner">
-    <!-- Logo -->
-    <a class="nav-logo" href="#hero" aria-label="AURA - Página inicial">
-      <img src="assets/img/logo.png" alt="AURA Inteligência Artificial" style="height: 44px; width: auto; object-fit: contain; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-    </a>
-
-    <!-- Desktop nav links -->
-    <nav class="nav-links" aria-label="Navegação principal">
-      <a href="#hero">Início</a>
-      <a href="#servicos">Expertise</a>
-      <a href="#portfolio">Trabalhos</a>
-      <a href="#sobre">Metodologia</a>
-    </nav>
-
-    <!-- Desktop CTA -->
-    <a href="https://wa.me/5577998252595?text=Olá! Gostaria de agendar um diagnóstico de I.A. para minha empresa." target="_blank" class="nav-cta nav-cta-desktop" style="color: #ffffff;" id="nav-cta-btn" aria-label="Agendar Diagnóstico">
-      Agendar Diagnóstico
-    </a>
-
-    <!-- Mobile toggle -->
-    <button class="nav-mobile-btn" id="mobile-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/>
-      </svg>
-    </button>
-  </div>
-</header>
-
-<!-- Mobile menu -->
-<nav id="mobile-menu" aria-label="Menu mobile">
-  <a href="#hero">Início</a>
-  <a href="#servicos">Expertise</a>
-  <a href="#portfolio">Trabalhos</a>
-  <a href="#sobre">Metodologia</a>
-  <a class="mobile-cta" href="#servicos">Ver Serviços →</a>
-</nav>
-
-<!-- ================================================================
-     HERO — PRIMEIRA DOBRA
-================================================================ -->
-<main id="hero" role="main" aria-label="Seção principal">
-
-  <!-- Animated background -->
-  <div class="hero-bg" aria-hidden="true">
-    <div class="hero-bg-grid"></div>
-    <div class="hero-bg-radial"></div>
-    <div class="scan-line"></div>
-  </div>
-
-  <!-- Content -->
-  <div style="position:relative; z-index:1; max-width:860px; width:100%;">
-
-    <!-- Badge -->
-    <div class="hero-badge" role="status" aria-live="polite">
-      <span class="badge-dot" aria-hidden="true"></span>
-      Agência de Inteligência Artificial
-    </div>
-
-    <!-- Headline -->
-    <h1 class="hero-headline" style="perspective: 1200px;">
-      <span class="reveal-line" style="--delay: 0.2s; opacity: 0;">Automatize.</span>
-      <span class="reveal-line line-neon" style="--delay: 1.0s; opacity: 0;">Escale.</span>
-      <span class="reveal-line" style="--delay: 1.8s; opacity: 0; color: rgba(245,243,255,0.9);">
-        Lidere com a<br>
-        <span class="aura-text-fx">AURA.</span>
-      </span>
-    </h1>
-
-    <!-- Subtitle -->
-    <p class="hero-subtitle" style="opacity: 0; animation: fadeSlideIn 1.2s ease 2.8s forwards; margin-top: 2rem;">
-      Transformamos negócios com automações inteligentes, modelos de linguagem e IA generativa — do conceito à produção.
-    </p>
-
-    <!-- CTA buttons -->
-    <div class="hero-cta-group">
-      <!-- Primary -->
-      <a class="btn-primary" href="#portfolio" id="hero-cta-primary" aria-label="Explorar Soluções">
-        <span>Explorar Soluções</span>
-        <svg class="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+  <header id="nav-main" role="banner">
+    <div class="nav-inner">
+      <!-- Logo -->
+      <a class="nav-logo" href="#hero" aria-label="AURA - Página inicial">
+        <img src="assets/img/logo.png" alt="AURA Inteligência Artificial"
+          style="height: 44px; width: auto; object-fit: contain; transition: transform 0.3s ease;"
+          onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
       </a>
 
-      <!-- Secondary -->
-      <div class="btn-secondary-wrap">
-        <a class="btn-secondary border-gradient" href="https://wa.me/5577998252595?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20AURA%20e%20gostaria%20de%20falar%20com%20um%20consultor." target="_blank" id="hero-cta-secondary" aria-label="Falar com Consultor">
-          Falar com Consultor
-        </a>
-        <span class="btn-glow" aria-hidden="true"></span>
-      </div>
-    </div>
+      <!-- Desktop nav links -->
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#hero">Início</a>
+        <a href="#servicos">Expertise</a>
+        <a href="#portfolio">Trabalhos</a>
+        <a href="#sobre">Metodologia</a>
+      </nav>
 
-    <!-- Stats row -->
-    <div class="hero-stats" role="list" aria-label="Estatísticas da empresa">
-      <span role="listitem">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
-        Sistemas: I.A. de Alta Performance
-      </span>
-      <span role="listitem">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
-        Foco: Automação Inteligente
-      </span>
-      <span role="listitem">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-        Design: UI/UX Minimalista
-      </span>
-      <span role="listitem">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
-        Infra: Deploy Escalável
-      </span>
-    </div>
-  </div>
-</main>
+      <!-- Desktop CTA -->
+      <a href="https://wa.me/5577998252595?text=Olá! Gostaria de agendar um diagnóstico de I.A. para minha empresa."
+        target="_blank" class="nav-cta nav-cta-desktop" style="color: #ffffff;" id="nav-cta-btn"
+        aria-label="Agendar Diagnóstico">
+        Agendar Diagnóstico
+      </a>
 
-<section id="status-quo" aria-labelledby="status-heading" class="relative z-10">
-  <div class="ds-section text-center" style="padding-top: 8rem; padding-bottom: 8rem;">
-    <span class="section-label gold reveal-section" style="transition-delay: 0.1s"><span class="dot" aria-hidden="true"></span>O Cenário</span>
-    <h2 class="section-heading mx-auto reveal-section" id="status-heading" style="max-width: 850px; font-size: clamp(2.5rem, 5.5vw, 4.2rem); transition-delay: 0.2s;">
-      Empresas que não adotam I.A. hoje, serão <span class="accent">substituídas</span> por aquelas que adotam amanhã.
-    </h2>
-    <p class="reveal-section" style="font-size:1.15rem; color:var(--txt-secondary); max-width:680px; margin: 1.5rem auto 0; line-height:1.7; transition-delay: 0.4s;">
-      Não se trata de inovação pelo hype. Trata-se de sobrevivência, redução brutal de custos operacionais e escala sem limites.
-    </p>
-  </div>
-</section>
-
-<hr class="ds-divider"/>
-
-<section id="servicos" aria-labelledby="servicos-heading" class="relative z-10">
-  <div class="ds-section reveal-section">
-    <span class="section-label gold"><span class="dot" aria-hidden="true"></span>Expertise</span>
-    <h2 class="section-heading" id="servicos-heading">
-      Soluções de <span class="accent">Alto Impacto</span>
-    </h2>
-    
-    <div class="bento-grid">
-      <article class="bento-card" style="grid-column: span 8; min-height: 340px;">
-        <div class="bento-content">
-          <div class="bento-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          </div>
-          <h3 style="font-size: 1.75rem; font-weight: 600; color: var(--txt-primary); margin-bottom: 0.75rem;">Automações Inteligentes</h3>
-          <p style="color: var(--txt-secondary); line-height: 1.6; max-width: 480px;">Conectamos seus sistemas e eliminamos tarefas repetitivas. Desenvolvemos fluxos complexos de integração e orquestração de dados para que sua equipe foque no que realmente importa.</p>
-        </div>
-      </article>
-
-      <article class="bento-card" style="grid-column: span 4; min-height: 340px;">
-        <div class="bento-content">
-          <div class="bento-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
-          </div>
-          <h3 style="font-size: 1.35rem; font-weight: 600; color: var(--txt-primary); margin-bottom: 0.75rem;">Agentes Autônomos</h3>
-          <p style="color: var(--txt-secondary); line-height: 1.6;">Atendimento 24/7 de alta precisão. IA configurada com os dados do seu negócio para fechar vendas.</p>
-        </div>
-      </article>
-
-      <article class="bento-card" style="grid-column: span 5; min-height: 320px;">
-        <div class="bento-content">
-          <div class="bento-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="3" x2="21" y1="9" y2="9"/><line x1="9" x2="9" y1="21" y2="9"/></svg>
-          </div>
-          <h3 style="font-size: 1.35rem; font-weight: 600; color: var(--txt-primary); margin-bottom: 0.75rem;">Landing Pages Premium</h3>
-          <p style="color: var(--txt-secondary); line-height: 1.6;">Design focado em conversão. Estruturas imersivas (como esta) que posicionam sua marca como líder do segmento.</p>
-        </div>
-      </article>
-
-      <article class="bento-card" style="grid-column: span 7; min-height: 320px;">
-        <div class="bento-content">
-          <div class="bento-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          </div>
-          <h3 style="font-size: 1.75rem; font-weight: 600; color: var(--neon-400); margin-bottom: 0.75rem;">Arquitetura Digital</h3>
-          <p style="color: var(--txt-secondary); line-height: 1.6; max-width: 400px;">Do desenho da infraestrutura em nuvem até a implantação de LLMs personalizados. Nós desenhamos o futuro da sua operação.</p>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<hr class="ds-divider"/>
-
-<div class="marquee-wrap" aria-hidden="true">
-  <div class="marquee-content">
-    <span class="marquee-item">✶ CLÍNICAS MÉDICAS</span>
-    <span class="marquee-item">✶ ODONTOLOGIA</span>
-    <span class="marquee-item">✶ ESTÉTICA AVANÇADA</span>
-    <span class="marquee-item">✶ RESTAURANTES</span>
-    <span class="marquee-item">✶ FUNERÁRIAS</span>
-    <span class="marquee-item">✶ PORTFÓLIOS</span>
-    <span class="marquee-item">✶ E-COMMERCE DE LUXO</span>
-    <span class="marquee-item">✶ ESCRITÓRIOS DE ARQUITETURA</span>
-    <span class="marquee-item">✶ STARTUPS DE GAMING</span>
-    <span class="marquee-item">✶ BOUTIQUES JURÍDICAS</span>
-    <span class="marquee-item">✶ REDE IMOBILIÁRIA</span>
-    <span class="marquee-item">✶ CLÍNICAS MÉDICAS</span>
-    <span class="marquee-item">✶ ODONTOLOGIA</span>
-    <span class="marquee-item">✶ ESTÉTICA AVANÇADA</span>
-    <span class="marquee-item">✶ RESTAURANTES</span>
-    <span class="marquee-item">✶ FUNERÁRIAS</span>
-    <span class="marquee-item">✶ PORTFÓLIOS</span>
-    <span class="marquee-item">✶ E-COMMERCE DE LUXO</span>
-    <span class="marquee-item">✶ ESCRITÓRIOS DE ARQUITETURA</span>
-    <span class="marquee-item">✶ STARTUPS DE GAMING</span>
-    <span class="marquee-item">✶ BOUTIQUES JURÍDICAS</span>
-    <span class="marquee-item">✶ REDE IMOBILIÁRIA</span>
-  </div>
-</div>
-
-<section id="portfolio" class="ds-section" style="max-width: 1280px; margin: 0 auto; padding-top: 8rem;">
-  <span class="section-label gold reveal-section"><span class="dot"></span>Ecossistemas & Portfólio</span>
-  <h2 class="section-heading reveal-section">Engenharia que <span class="aura-text-fx">converte.</span></h2>
-  
-  <div class="portfolio-grid-main reveal-section">
-    <div onclick="openPortfolioModal('funerario')" class="card-premium">
-      <div class="visual-slot"><div class="neon-emoji" style="color: #d4af37;">⚰️</div></div>
-      <div class="body-premium">
-        <span class="badge" style="color:#d4af37; border-color:rgba(212,175,55,0.2); margin-bottom: 1rem;">Case Real</span>
-        <h3 class="title-premium">Ecossistema Digital Funerário</h3>
-        <p class="desc-premium">Digitalização assistencial com foco em acolhimento e gestão operacional de alta precisão.</p>
-        <div style="margin-top:auto;"><span class="badge badge-surface">Acessar Ecossistema</span></div>
-      </div>
-    </div>
-
-    <div onclick="openPortfolioModal('ia')" class="card-premium">
-      <div class="visual-slot"><div class="neon-emoji" style="color: #a855f7;">🤖</div></div>
-      <div class="body-premium">
-        <span class="badge" style="color:#a855f7; border-color:rgba(168,85,247,0.2); margin-bottom: 1rem;">Aura Blueprint</span>
-        <h3 class="title-premium">Sistemas de Automação I.A.</h3>
-        <p class="desc-premium">Agentes autônomos para triagem de leads e fluxos de trabalho inteligentes 24/7.</p>
-        <div style="margin-top:auto;"><span class="badge badge-surface">Acessar Blueprint</span></div>
-      </div>
-    </div>
-
-    <div onclick="openPortfolioModal('saude')" class="card-premium">
-      <div class="visual-slot"><div class="neon-emoji" style="color: #ff00e5;">🩺</div></div>
-      <div class="body-premium">
-        <span class="badge" style="color:#ff00e5; border-color:rgba(255,0,229,0.2); margin-bottom: 1rem;">Aura Blueprint</span>
-        <h3 class="title-premium">Clínicas & Centros de Saúde Premium</h3>
-        <p class="desc-premium">Plataformas de agendamento e experiência do paciente focadas em conversão e luxo.</p>
-        <div style="margin-top:auto;"><span class="badge badge-surface">Acessar Blueprint</span></div>
-      </div>
-    </div>
-
-    <div onclick="openPortfolioModal('arquitetura')" class="card-premium">
-      <div class="visual-slot"><div class="neon-emoji" style="color: #38bdf8;">📐</div></div>
-      <div class="body-premium">
-        <span class="badge" style="color:#38bdf8; border-color:rgba(56,189,248,0.2); margin-bottom: 1rem;">Aura Blueprint</span>
-        <h3 class="title-premium">Arquitetura & Design</h3>
-        <p class="desc-premium">Vitrines digitais imersivas para exibição de projetos em alta definição e captação.</p>
-        <div style="margin-top:auto;"><span class="badge badge-surface">Acessar Blueprint</span></div>
-      </div>
-    </div>
-
-    <div onclick="openPortfolioModal('autoridade')" class="card-premium">
-      <div class="visual-slot">
-        <div class="king-stack neon-emoji" style="color: #34d399;">
-          <span class="crown">👑</span><span>👤</span>
-        </div>
-      </div>
-      <div class="body-premium">
-        <span class="badge" style="color:#34d399; border-color:rgba(52,211,153,0.2); margin-bottom: 1rem;">Aura Blueprint</span>
-        <h3 class="title-premium">Portfólios de Autoridade</h3>
-        <p class="desc-premium">Interfaces premium para profissionais liberais consolidarem seu nome como referência.</p>
-        <div style="margin-top:auto;"><span class="badge badge-surface">Acessar Blueprint</span></div>
-      </div>
-    </div>
-
-    <div class="card-premium" style="cursor: default;">
-      <div class="visual-slot"><div class="neon-emoji" style="color: #f59e0b;">🚧</div></div>
-      <div class="body-premium">
-        <span class="badge" style="color:#f59e0b; border-color:rgba(245,158,11,0.2); margin-bottom: 1rem;">Aura Labs</span>
-        <h3 class="title-premium">Projetos Sob Demanda</h3>
-        <p class="desc-premium">Engenharia personalizada para novos nichos. Seu próximo ecossistema começa aqui.</p>
-        <div style="margin-top:auto;"><span class="badge badge-surface" style="opacity: 0.5;">Em Desenvolvimento</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="ds-divider"/>
-
-<section id="sobre" aria-labelledby="sobre-heading" class="relative z-10">
-  <div class="ds-section reveal-section">
-    
-    <span class="section-label gold"><span class="dot" aria-hidden="true"></span>Manifesto</span>
-    <h2 class="section-heading" id="sobre-heading">
-      A Força <span class="accent">Motriz.</span>
-    </h2>
-    
-    <div class="manifesto-grid mt-6">
-      <div>
-        <p class="manifesto-text">
-          Acreditamos que a estética sem performance é vazia. A <strong>AURA</strong> nasceu para ser a ponte definitiva entre o design de luxo e a engenharia de dados. Não entregamos apenas sites; <strong>arquitetamos ecossistemas digitais de alta conversão.</strong><br><br>
-          Nossa raiz está na compreensão profunda de negócios reais, e nossa tecnologia transforma operações complexas em experiências de usuário fluídas, automatizadas e implacáveis.
-        </p>
-      </div>
-      <div class="manifesto-visual hidden lg:flex">
-        <div class="manifesto-sphere">
-          <img src="assets/img/favicon.png" alt="AURA Símbolo" style="width: 80px; opacity: 0.9; filter: drop-shadow(0 0 20px rgba(255,255,255,0.3));">
-        </div>
-      </div>
-    </div>
-
-    <div class="micro-cards-grid">
-      <div class="micro-card">
-        <div class="micro-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-        </div>
-        <h4 class="micro-title">Engenharia Proprietary</h4>
-        <p class="micro-desc">Código limpo, arquitetura escalável e sistemas sob medida que não dependem de templates engessados.</p>
-      </div>
-      <div class="micro-card">
-        <div class="micro-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-        </div>
-        <h4 class="micro-title">I.A. Aplicada</h4>
-        <p class="micro-desc">Automações neurais e agentes inteligentes que trabalham pelo seu negócio 24 horas por dia.</p>
-      </div>
-      <div class="micro-card">
-        <div class="micro-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1-1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path></svg>
-        </div>
-        <h4 class="micro-title">Design System Elite</h4>
-        <p class="micro-desc">Interfaces cinematográficas e dark mode nativo, projetadas para elevar a percepção de valor imediata.</p>
-      </div>
-    </div>
-    
-    <div style="margin-top: 5rem; padding-top: 3rem; border-top: 1px solid rgba(255,255,255,0.05);">
-      <span class="section-label gold"><span class="dot" aria-hidden="true"></span>Processo</span>
-      <h3 style="font-size: 2rem; font-weight: 700; color: #fff; margin-bottom: 2rem; letter-spacing: -0.02em;">Como nós <span style="color: var(--neon-400);">operamos.</span></h3>
-      
-      <div class="timeline-wrap" style="margin-top: 0;">
-        <div class="timeline-item" style="animation-delay: 0.1s;">
-          <div class="timeline-node"></div>
-          <div class="timeline-content">
-            <span class="timeline-step">Fase 01</span>
-            <h3 class="timeline-title">Mapeamento &amp; Diagnóstico</h3>
-            <p class="timeline-desc">Mergulhamos na operação da sua empresa. Identificamos gargalos, processos manuais e onde a inteligência artificial pode gerar o maior retorno sobre investimento (ROI) imediato.</p>
-          </div>
-        </div>
-        <div class="timeline-item" style="animation-delay: 0.3s;">
-          <div class="timeline-node" style="border-color: var(--cyber-pink); box-shadow: 0 0 12px var(--cyber-pink);"></div>
-          <div class="timeline-content">
-            <span class="timeline-step" style="color: var(--cyber-pink);">Fase 02</span>
-            <h3 class="timeline-title">Arquitetura da Solução</h3>
-            <p class="timeline-desc">Desenhamos a infraestrutura do sistema. Seja um agente de IA para WhatsApp, integrações via n8n, ou o desenvolvimento de um painel web exclusivo para controle operacional.</p>
-          </div>
-        </div>
-        <div class="timeline-item" style="animation-delay: 0.5s;">
-          <div class="timeline-node"></div>
-          <div class="timeline-content">
-            <span class="timeline-step">Fase 03</span>
-            <h3 class="timeline-title">Deploy &amp; Integração</h3>
-            <p class="timeline-desc">Implementamos a automação no seu ambiente. Conectamos os sistemas (CRM, ERP, Redes Sociais) garantindo que a transição seja suave, segura e sem interrupções no seu fluxo de caixa.</p>
-          </div>
-        </div>
-        <div class="timeline-item" style="animation-delay: 0.7s;">
-          <div class="timeline-node" style="border-color: var(--txt-primary); box-shadow: 0 0 12px rgba(255,255,255,0.3);"></div>
-          <div class="timeline-content">
-            <span class="timeline-step" style="color: var(--txt-primary);">Fase 04</span>
-            <h3 class="timeline-title">Escala Contínua</h3>
-            <p class="timeline-desc">A tecnologia evolui rápido, e nós também. Monitoramos os agentes, ajustamos os prompts dos LLMs e refinamos as automações para garantir que o sistema escale junto com o seu faturamento.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<section id="cta-final" class="ds-section text-center" style="padding-top: 8rem; padding-bottom: 8rem; position: relative; z-index: 10;">
-  <div style="max-width: 800px; margin: 0 auto; background: rgba(12, 8, 20, 0.5); border: 1px solid rgba(168, 85, 247, 0.2); border-radius: 32px; padding: 5rem 2rem; backdrop-filter: blur(16px); box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 0 40px rgba(168,85,247,0.05); transition: border-color 0.4s ease;" onmouseover="this.style.borderColor='rgba(255,0,229,0.4)'" onmouseout="this.style.borderColor='rgba(168,85,247,0.2)'">
-    
-    <h2 style="font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 700; color: var(--txt-primary); margin-bottom: 1.5rem; line-height: 1.1;">Pronto para <span class="aura-text-fx">escalar?</span></h2>
-    <p style="font-size: 1.15rem; color: var(--txt-secondary); max-width: 550px; margin: 0 auto 3rem; line-height: 1.6;">A diferença entre os líderes de mercado e a concorrência é a velocidade de execução. Deixe a IA assumir o trabalho pesado da sua operação.</p>
-    
-    <a href="https://wa.me/5577998252595?text=Olá! Gostaria de agendar um diagnóstico de I.A. para minha empresa." target="_blank" class="nav-cta" style="font-size: 1.1rem; padding: 1.2rem 2.5rem; display: inline-flex; justify-content: center; box-shadow: 0 0 20px rgba(168,85,247,0.4); color: #ffffff;">
-      Agendar Diagnóstico Gratuito
-      <svg style="margin-left: 0.5rem;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-    </a>
-  </div>
-</section>
-
-<!-- ================================================================
-     FOOTER
-================================================================ -->
-<div id="case-modal" class="modal-overlay">
-  <div class="case-glass-box">
-    <button class="case-close" id="btn-close-case" aria-label="Fechar modal">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-    </button>
-    <span class="badge badge-neon" style="margin-bottom: 1.5rem;">Case de Sucesso</span>
-    <h3 style="font-size: 2.2rem; font-weight: 700; color: var(--txt-primary); margin-bottom: 1rem; line-height: 1.1;">Ecossistema Funerário Web</h3>
-
-    <div style="margin-bottom: 2rem;">
-      <h4 style="font-size: 1rem; color: var(--neon-400); margin-bottom: 0.5rem; font-weight: 600;">O Desafio</h4>
-      <p style="color: var(--txt-secondary); font-size: 0.95rem; line-height: 1.6;">O cliente enfrentava processos manuais lentos na gestão de atendimento e captura de leads durante momentos delicados. A presença digital não transmitia o acolhimento e a seriedade necessários.</p>
-    </div>
-    <div style="margin-bottom: 2.5rem;">
-      <h4 style="font-size: 1rem; color: var(--cyber-pink); margin-bottom: 0.5rem; font-weight: 600;">A Solução Aura</h4>
-      <p style="color: var(--txt-secondary); font-size: 0.95rem; line-height: 1.6;">Arquitetamos uma plataforma web imersiva (Next.js) integrada com agentes autônomos. Agora, o sistema automatiza a triagem inicial via web e organiza fluxos logísticos no painel administrativo de forma invisível para o cliente final.</p>
-    </div>
-
-    <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem;">
-      <span class="badge badge-neon">UI/UX Premium</span>
-      <span class="badge badge-blue">Next.js Framework</span>
-      <span class="badge badge-green">Integração de APIs</span>
-    </div>
-  </div>
-</div>
-
-<div id="modal-ia" class="modal-overlay">
-  <div class="case-glass-box">
-    <button class="case-close" aria-label="Fechar modal">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-    </button>
-    <span class="badge badge-neon" style="margin-bottom: 1.5rem; color: var(--cyber-pink); border-color: rgba(255,0,229,0.3); background: rgba(255,0,229,0.1);">Automação de Alta Escala</span>
-    <h3 style="font-size: 2.2rem; font-weight: 700; color: var(--txt-primary); margin-bottom: 1rem; line-height: 1.1;">Agentes Autônomos de Triagem</h3>
-    
-    <div style="margin-bottom: 2rem;">
-      <h4 style="font-size: 1rem; color: var(--neon-400); margin-bottom: 0.5rem; font-weight: 600;">O Desafio Operacional</h4>
-      <p style="color: var(--txt-secondary); font-size: 0.95rem; line-height: 1.6;">O tempo de resposta é o maior assassino de vendas. A equipe de atendimento estava sobrecarregada com dúvidas repetitivas, perdendo leads quentes que exigiam atendimento imediato fora do horário comercial.</p>
-    </div>
-    <div style="margin-bottom: 2.5rem;">
-      <h4 style="font-size: 1rem; color: var(--cyber-pink); margin-bottom: 0.5rem; font-weight: 600;">A Arquitetura Aura</h4>
-      <p style="color: var(--txt-secondary); font-size: 0.95rem; line-height: 1.6;">Desenvolvemos fluxos de orquestração de dados interligando LLMs avançados ao WhatsApp corporativo. O agente qualifica o lead, responde dúvidas técnicas com base no conhecimento da empresa e agenda reuniões diretamente no calendário dos vendedores — 24 horas por dia.</p>
-    </div>
-    
-    <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem;">
-      <span class="badge badge-neon">Orquestração de Dados</span>
-      <span class="badge badge-blue" style="background: rgba(168, 85, 247, 0.1); color: #a855f7; border-color: rgba(168, 85, 247, 0.3);">Modelos LLM Customizados</span>
-      <span class="badge badge-green" style="background: rgba(56, 189, 248, 0.1); color: #38bdf8; border-color: rgba(56, 189, 248, 0.3);">Webhooks & APIs</span>
-    </div>
-  </div>
-</div>
-
-<!-- ================================================================
-     MODAL DINÂMICO (PORTFÓLIO AURA)
-================================================================ -->
-<div id="portfolio-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-md transition-opacity duration-500 opacity-0 pointer-events-none" onclick="if(event.target === this) closePortfolioModal();">
-  <div id="portfolio-modal-content" class="relative p-8 md:p-12 rounded-[32px] max-w-xl w-[90%] transform scale-95 opacity-0 transition-all duration-500">
-    <div id="dynamic-glow" class="modal-glow-dynamic"></div>
-    
-    <div class="relative z-10">
-      <h3 id="p-modal-title" class="text-3xl font-bold text-white mb-2 tracking-tight"></h3>
-      <p id="p-modal-desc" class="text-white/40 text-lg mb-8 leading-relaxed"></p>
-      
-      <div id="p-modal-list" class="flex flex-col gap-3 mb-10">
-      </div>
-      
-      <button onclick="closePortfolioModal()" class="btn-modal-close">
-        Finalizar Leitura
+      <!-- Mobile toggle -->
+      <button class="nav-mobile-btn" id="mobile-toggle" aria-label="Abrir menu" aria-expanded="false"
+        aria-controls="mobile-menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="4" x2="20" y1="6" y2="6" />
+          <line x1="4" x2="20" y1="12" y2="12" />
+          <line x1="4" x2="20" y1="18" y2="18" />
+        </svg>
       </button>
     </div>
-  </div>
-</div>
+  </header>
 
-<footer class="aura-footer" role="contentinfo">
-  <div style="max-width: 1280px; margin: 0 auto; width: 100%;">
-    
-    <div style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 3rem; margin-bottom: 3rem; flex-wrap: wrap; gap: 3rem;">
-      <div>
-        <a href="#hero" style="display: flex; align-items: center; margin-bottom: 1.5rem; text-decoration: none;">
-          <img src="assets/img/logo.png" alt="AURA Inteligência Artificial" style="height: 56px; width: auto; object-fit: contain; filter: drop-shadow(0 0 15px rgba(255,255,255,0.1));">
-        </a>
-        <p style="color: var(--txt-secondary); font-size: 0.95rem; max-width: 320px; line-height: 1.6;">Engenharia de software e inteligência artificial para marcas que definem o futuro.</p>
-      </div>
-      
-      <div style="display: flex; gap: 4rem; flex-wrap: wrap;">
-        <div style="display: flex; flex-direction: column; gap: 1rem;">
-          <span style="font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--neon-400); letter-spacing: 0.1em; text-transform: uppercase;">Contato</span>
-          <a href="https://wa.me/5577998252595?text=Olá! Gostaria de agendar um diagnóstico de I.A. para minha empresa." target="_blank" class="footer-link">WhatsApp Direto</a>
-          <a href="mailto:aura.xyz.br@gmail.com" class="footer-link">aura.xyz.br@gmail.com</a>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 1rem;">
-          <span style="font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--neon-400); letter-spacing: 0.1em; text-transform: uppercase;">Social</span>
-          <a href="https://instagram.com/aura.xyz.br" target="_blank" class="footer-link">Instagram</a>
-        </div>
-      </div>
+  <!-- Mobile menu -->
+  <nav id="mobile-menu" aria-label="Menu mobile">
+    <a href="#hero">Início</a>
+    <a href="#servicos">Expertise</a>
+    <a href="#portfolio">Trabalhos</a>
+    <a href="#sobre">Metodologia</a>
+    <a class="mobile-cta" href="#servicos">Ver Serviços →</a>
+  </nav>
+
+  <!-- ================================================================
+     HERO — PRIMEIRA DOBRA
+================================================================ -->
+  <main id="hero" role="main" aria-label="Seção principal">
+
+    <!-- Animated background -->
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-bg-grid"></div>
+      <div class="hero-bg-radial"></div>
+      <div class="scan-line"></div>
     </div>
 
-    <div style="display: flex; justify-content: center; margin-bottom: 3rem;">
-      <a href="https://aura.xyz.br" target="_blank" class="signature-wrapper">
-        Code & Design by <span style="margin: 0 4px; color: var(--neon-500); animation: neon-pulse 2s infinite;">•</span>
-        <span class="signature-text">
-          Aura
-          <span class="signature-overlay" aria-hidden="true">Aura</span>
+    <!-- Content -->
+    <div style="position:relative; z-index:1; max-width:860px; width:100%;">
+
+      <!-- Badge -->
+      <div class="hero-badge" role="status" aria-live="polite">
+        <span class="badge-dot" aria-hidden="true"></span>
+        Agência de Inteligência Artificial
+      </div>
+
+      <!-- Headline -->
+      <h1 class="hero-headline" style="perspective: 1200px;">
+        <span class="reveal-line" style="--delay: 0.2s; opacity: 0;">Automatize.</span>
+        <span class="reveal-line line-neon" style="--delay: 1.0s; opacity: 0;">Escale.</span>
+        <span class="reveal-line" style="--delay: 1.8s; opacity: 0; color: rgba(245,243,255,0.9);">
+          Lidere com a<br>
+          <span class="aura-text-fx">AURA.</span>
         </span>
-      </a>
-    </div>
+      </h1>
 
-    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-      <p style="font-size: 0.75rem; color: var(--txt-muted);">© 2026 Aura Intelligence. Todos os direitos reservados.</p>
-      <p style="font-size: 0.75rem; color: var(--txt-muted); font-family: 'Space Mono', monospace; letter-spacing: 0.05em; display: flex; align-items: center; gap: 0.5rem;">
-        VITÓRIA DA CONQUISTA, BA
+      <!-- Subtitle -->
+      <p class="hero-subtitle" style="opacity: 0; animation: fadeSlideIn 1.2s ease 2.8s forwards; margin-top: 2rem;">
+        Transformamos negócios com automações inteligentes, modelos de linguagem e IA generativa — do conceito à
+        produção.
+      </p>
+
+      <!-- CTA buttons -->
+      <div class="hero-cta-group">
+        <!-- Primary -->
+        <a class="btn-primary" href="#portfolio" id="hero-cta-primary" aria-label="Explorar Soluções">
+          <span>Explorar Soluções</span>
+          <svg class="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14" />
+            <path d="m12 5 7 7-7 7" />
+          </svg>
+        </a>
+
+        <!-- Secondary -->
+        <div class="btn-secondary-wrap">
+          <a class="btn-secondary border-gradient"
+            href="https://wa.me/5577998252595?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20AURA%20e%20gostaria%20de%20falar%20com%20um%20consultor."
+            target="_blank" id="hero-cta-secondary" aria-label="Falar com Consultor">
+            Falar com Consultor
+          </a>
+          <span class="btn-glow" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <!-- Stats row -->
+      <div class="hero-stats" role="list" aria-label="Estatísticas da empresa">
+        <span role="listitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" aria-hidden="true">
+            <rect x="4" y="4" width="16" height="16" rx="2" ry="2" />
+            <rect x="9" y="9" width="6" height="6" />
+            <line x1="9" y1="1" x2="9" y2="4" />
+            <line x1="15" y1="1" x2="15" y2="4" />
+            <line x1="9" y1="20" x2="9" y2="23" />
+            <line x1="15" y1="20" x2="15" y2="23" />
+            <line x1="20" y1="9" x2="23" y2="9" />
+            <line x1="20" y1="14" x2="23" y2="14" />
+            <line x1="1" y1="9" x2="4" y2="9" />
+            <line x1="1" y1="14" x2="4" y2="14" />
+          </svg>
+          Sistemas: I.A. de Alta Performance
+        </span>
+        <span role="listitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" aria-hidden="true">
+            <path
+              d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" />
+          </svg>
+          Foco: Automação Inteligente
+        </span>
+        <span role="listitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 20h9" />
+            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+          </svg>
+          Design: UI/UX Minimalista
+        </span>
+        <span role="listitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" aria-hidden="true">
+            <path
+              d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z" />
+            <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65" />
+            <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65" />
+          </svg>
+          Infra: Deploy Escalável
+        </span>
+      </div>
+    </div>
+  </main>
+
+  <section id="status-quo" aria-labelledby="status-heading" class="relative z-10">
+    <div class="ds-section text-center" style="padding-top: 8rem; padding-bottom: 8rem;">
+      <span class="section-label gold reveal-section" style="transition-delay: 0.1s"><span class="dot"
+          aria-hidden="true"></span>O Cenário</span>
+      <h2 class="section-heading mx-auto reveal-section" id="status-heading"
+        style="max-width: 850px; font-size: clamp(2.5rem, 5.5vw, 4.2rem); transition-delay: 0.2s;">
+        Empresas que não adotam I.A. hoje, serão <span class="accent">substituídas</span> por aquelas que adotam amanhã.
+      </h2>
+      <p class="reveal-section"
+        style="font-size:1.15rem; color:var(--txt-secondary); max-width:680px; margin: 1.5rem auto 0; line-height:1.7; transition-delay: 0.4s;">
+        Não se trata de inovação pelo hype. Trata-se de sobrevivência, redução brutal de custos operacionais e escala
+        sem limites.
       </p>
     </div>
-    
-  </div>
-</footer>
+  </section>
 
-<!-- ================================================================
+  <hr class="ds-divider" />
+
+  <section id="servicos" aria-labelledby="servicos-heading" class="relative z-10">
+    <div class="ds-section reveal-section">
+      <span class="section-label gold"><span class="dot" aria-hidden="true"></span>Expertise</span>
+      <h2 class="section-heading" id="servicos-heading">
+        Soluções de <span class="accent">Alto Impacto</span>
+      </h2>
+
+      <div class="bento-grid">
+        <article class="bento-card" style="grid-column: span 8; min-height: 340px;">
+          <div class="bento-content">
+            <div class="bento-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v20" />
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+              </svg>
+            </div>
+            <h3 style="font-size: 1.75rem; font-weight: 600; color: var(--txt-primary); margin-bottom: 0.75rem;">
+              Automações Inteligentes</h3>
+            <p style="color: var(--txt-secondary); line-height: 1.6; max-width: 480px;">Conectamos seus sistemas e
+              eliminamos tarefas repetitivas. Desenvolvemos fluxos complexos de integração e orquestração de dados para
+              que sua equipe foque no que realmente importa.</p>
+          </div>
+        </article>
+
+        <article class="bento-card" style="grid-column: span 4; min-height: 340px;">
+          <div class="bento-content">
+            <div class="bento-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 8V4H8" />
+                <rect width="16" height="12" x="4" y="8" rx="2" />
+                <path d="M2 14h2" />
+                <path d="M20 14h2" />
+                <path d="M15 13v2" />
+                <path d="M9 13v2" />
+              </svg>
+            </div>
+            <h3 style="font-size: 1.35rem; font-weight: 600; color: var(--txt-primary); margin-bottom: 0.75rem;">Agentes
+              Autônomos</h3>
+            <p style="color: var(--txt-secondary); line-height: 1.6;">Atendimento 24/7 de alta precisão. IA configurada
+              com os dados do seu negócio para fechar vendas.</p>
+          </div>
+        </article>
+
+        <article class="bento-card" style="grid-column: span 5; min-height: 320px;">
+          <div class="bento-content">
+            <div class="bento-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
+                <line x1="3" x2="21" y1="9" y2="9" />
+                <line x1="9" x2="9" y1="21" y2="9" />
+              </svg>
+            </div>
+            <h3 style="font-size: 1.35rem; font-weight: 600; color: var(--txt-primary); margin-bottom: 0.75rem;">Landing
+              Pages Premium</h3>
+            <p style="color: var(--txt-secondary); line-height: 1.6;">Design focado em conversão. Estruturas imersivas
+              (como esta) que posicionam sua marca como líder do segmento.</p>
+          </div>
+        </article>
+
+        <article class="bento-card" style="grid-column: span 7; min-height: 320px;">
+          <div class="bento-content">
+            <div class="bento-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                <polyline points="9 22 9 12 15 12 15 22" />
+              </svg>
+            </div>
+            <h3 style="font-size: 1.75rem; font-weight: 600; color: var(--neon-400); margin-bottom: 0.75rem;">
+              Arquitetura Digital</h3>
+            <p style="color: var(--txt-secondary); line-height: 1.6; max-width: 400px;">Do desenho da infraestrutura em
+              nuvem até a implantação de LLMs personalizados. Nós desenhamos o futuro da sua operação.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <hr class="ds-divider" />
+
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-content">
+      <span class="marquee-item">✶ CLÍNICAS MÉDICAS</span>
+      <span class="marquee-item">✶ ODONTOLOGIA</span>
+      <span class="marquee-item">✶ ESTÉTICA AVANÇADA</span>
+      <span class="marquee-item">✶ RESTAURANTES</span>
+      <span class="marquee-item">✶ FUNERÁRIAS</span>
+      <span class="marquee-item">✶ PORTFÓLIOS</span>
+      <span class="marquee-item">✶ E-COMMERCE DE LUXO</span>
+      <span class="marquee-item">✶ ESCRITÓRIOS DE ARQUITETURA</span>
+      <span class="marquee-item">✶ STARTUPS DE GAMING</span>
+      <span class="marquee-item">✶ BOUTIQUES JURÍDICAS</span>
+      <span class="marquee-item">✶ REDE IMOBILIÁRIA</span>
+      <span class="marquee-item">✶ CLÍNICAS MÉDICAS</span>
+      <span class="marquee-item">✶ ODONTOLOGIA</span>
+      <span class="marquee-item">✶ ESTÉTICA AVANÇADA</span>
+      <span class="marquee-item">✶ RESTAURANTES</span>
+      <span class="marquee-item">✶ FUNERÁRIAS</span>
+      <span class="marquee-item">✶ PORTFÓLIOS</span>
+      <span class="marquee-item">✶ E-COMMERCE DE LUXO</span>
+      <span class="marquee-item">✶ ESCRITÓRIOS DE ARQUITETURA</span>
+      <span class="marquee-item">✶ STARTUPS DE GAMING</span>
+      <span class="marquee-item">✶ BOUTIQUES JURÍDICAS</span>
+      <span class="marquee-item">✶ REDE IMOBILIÁRIA</span>
+    </div>
+  </div>
+
+  <section id="portfolio" class="ds-section" style="max-width: 1280px; margin: 0 auto; padding-top: 8rem;">
+    <span class="section-label gold reveal-section"><span class="dot"></span>Ecossistemas & Portfólio</span>
+    <h2 class="section-heading reveal-section">Engenharia que <span class="aura-text-fx">converte.</span></h2>
+
+    <div class="portfolio-grid-main reveal-section">
+      <div onclick="openPortfolioModal('funerario')" class="card-premium">
+        <div class="visual-slot">
+          <div class="neon-emoji" style="color: #d4af37;">⚰️</div>
+        </div>
+        <div class="body-premium">
+          <span class="badge" style="color:#d4af37; border-color:rgba(212,175,55,0.2); margin-bottom: 1rem;">Case
+            Real</span>
+          <h3 class="title-premium">Ecossistema Digital Funerário</h3>
+          <p class="desc-premium">Digitalização assistencial com foco em acolhimento e gestão operacional de alta
+            precisão.</p>
+          <div style="margin-top:auto;"><span class="badge badge-surface">Acessar Ecossistema</span></div>
+        </div>
+      </div>
+
+      <div onclick="openPortfolioModal('ia')" class="card-premium">
+        <div class="visual-slot">
+          <div class="neon-emoji" style="color: #a855f7;">🤖</div>
+        </div>
+        <div class="body-premium">
+          <span class="badge" style="color:#a855f7; border-color:rgba(168,85,247,0.2); margin-bottom: 1rem;">Aura
+            Blueprint</span>
+          <h3 class="title-premium">Sistemas de Automação I.A.</h3>
+          <p class="desc-premium">Agentes autônomos para triagem de leads e fluxos de trabalho inteligentes 24/7.</p>
+          <div style="margin-top:auto;"><span class="badge badge-surface">Acessar Blueprint</span></div>
+        </div>
+      </div>
+
+      <div onclick="openPortfolioModal('saude')" class="card-premium">
+        <div class="visual-slot">
+          <div class="neon-emoji" style="color: #ff00e5;">🩺</div>
+        </div>
+        <div class="body-premium">
+          <span class="badge" style="color:#ff00e5; border-color:rgba(255,0,229,0.2); margin-bottom: 1rem;">Aura
+            Blueprint</span>
+          <h3 class="title-premium">Clínicas & Centros de Saúde Premium</h3>
+          <p class="desc-premium">Plataformas de agendamento e experiência do paciente focadas em conversão e luxo.</p>
+          <div style="margin-top:auto;"><span class="badge badge-surface">Acessar Blueprint</span></div>
+        </div>
+      </div>
+
+      <div onclick="openPortfolioModal('arquitetura')" class="card-premium">
+        <div class="visual-slot">
+          <div class="neon-emoji" style="color: #38bdf8;">📐</div>
+        </div>
+        <div class="body-premium">
+          <span class="badge" style="color:#38bdf8; border-color:rgba(56,189,248,0.2); margin-bottom: 1rem;">Aura
+            Blueprint</span>
+          <h3 class="title-premium">Arquitetura & Design</h3>
+          <p class="desc-premium">Vitrines digitais imersivas para exibição de projetos em alta definição e captação.
+          </p>
+          <div style="margin-top:auto;"><span class="badge badge-surface">Acessar Blueprint</span></div>
+        </div>
+      </div>
+
+      <div onclick="openPortfolioModal('autoridade')" class="card-premium">
+        <div class="visual-slot">
+          <div class="king-stack neon-emoji" style="color: #34d399;">
+            <span class="crown">👑</span><span>👤</span>
+          </div>
+        </div>
+        <div class="body-premium">
+          <span class="badge" style="color:#34d399; border-color:rgba(52,211,153,0.2); margin-bottom: 1rem;">Aura
+            Blueprint</span>
+          <h3 class="title-premium">Portfólios de Autoridade</h3>
+          <p class="desc-premium">Interfaces premium para profissionais liberais consolidarem seu nome como referência.
+          </p>
+          <div style="margin-top:auto;"><span class="badge badge-surface">Acessar Blueprint</span></div>
+        </div>
+      </div>
+
+      <div class="card-premium" style="cursor: default;">
+        <div class="visual-slot">
+          <div class="neon-emoji" style="color: #f59e0b;">🚧</div>
+        </div>
+        <div class="body-premium">
+          <span class="badge" style="color:#f59e0b; border-color:rgba(245,158,11,0.2); margin-bottom: 1rem;">Aura
+            Labs</span>
+          <h3 class="title-premium">Projetos Sob Demanda</h3>
+          <p class="desc-premium">Engenharia personalizada para novos nichos. Seu próximo ecossistema começa aqui.</p>
+          <div style="margin-top:auto;"><span class="badge badge-surface" style="opacity: 0.5;">Em
+              Desenvolvimento</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="ds-divider" />
+
+  <section id="sobre" aria-labelledby="sobre-heading" class="relative z-10">
+    <div class="ds-section reveal-section">
+
+      <span class="section-label gold"><span class="dot" aria-hidden="true"></span>Manifesto</span>
+      <h2 class="section-heading" id="sobre-heading">
+        A Força <span class="accent">Motriz.</span>
+      </h2>
+
+      <div class="manifesto-grid mt-6">
+        <div>
+          <p class="manifesto-text">
+            Acreditamos que a estética sem performance é vazia. A <strong>AURA</strong> nasceu para ser a ponte
+            definitiva entre o design de luxo e a engenharia de dados. Não entregamos apenas sites; <strong>arquitetamos
+              ecossistemas digitais de alta conversão.</strong><br><br>
+            Nossa raiz está na compreensão profunda de negócios reais, e nossa tecnologia transforma operações complexas
+            em experiências de usuário fluídas, automatizadas e implacáveis.
+          </p>
+        </div>
+        <div class="manifesto-visual hidden lg:flex">
+          <div class="manifesto-sphere">
+            <img src="assets/img/favicon.png" alt="AURA Símbolo"
+              style="width: 80px; opacity: 0.9; filter: drop-shadow(0 0 20px rgba(255,255,255,0.3));">
+          </div>
+        </div>
+      </div>
+
+      <div class="micro-cards-grid">
+        <div class="micro-card">
+          <div class="micro-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+          </div>
+          <h4 class="micro-title">Engenharia Proprietary</h4>
+          <p class="micro-desc">Código limpo, arquitetura escalável e sistemas sob medida que não dependem de templates
+            engessados.</p>
+        </div>
+        <div class="micro-card">
+          <div class="micro-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+          </div>
+          <h4 class="micro-title">I.A. Aplicada</h4>
+          <p class="micro-desc">Automações neurais e agentes inteligentes que trabalham pelo seu negócio 24 horas por
+            dia.</p>
+        </div>
+        <div class="micro-card">
+          <div class="micro-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1-1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z">
+              </path>
+            </svg>
+          </div>
+          <h4 class="micro-title">Design System Elite</h4>
+          <p class="micro-desc">Interfaces cinematográficas e dark mode nativo, projetadas para elevar a percepção de
+            valor imediata.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 5rem; padding-top: 3rem; border-top: 1px solid rgba(255,255,255,0.05);">
+        <span class="section-label gold"><span class="dot" aria-hidden="true"></span>Processo</span>
+        <h3 style="font-size: 2rem; font-weight: 700; color: #fff; margin-bottom: 2rem; letter-spacing: -0.02em;">Como
+          nós <span style="color: var(--neon-400);">operamos.</span></h3>
+
+        <div class="timeline-wrap" style="margin-top: 0;">
+          <div class="timeline-item" style="animation-delay: 0.1s;">
+            <div class="timeline-node"></div>
+            <div class="timeline-content">
+              <span class="timeline-step">Fase 01</span>
+              <h3 class="timeline-title">Mapeamento &amp; Diagnóstico</h3>
+              <p class="timeline-desc">Mergulhamos na operação da sua empresa. Identificamos gargalos, processos manuais
+                e onde a inteligência artificial pode gerar o maior retorno sobre investimento (ROI) imediato.</p>
+            </div>
+          </div>
+          <div class="timeline-item" style="animation-delay: 0.3s;">
+            <div class="timeline-node" style="border-color: var(--cyber-pink); box-shadow: 0 0 12px var(--cyber-pink);">
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-step" style="color: var(--cyber-pink);">Fase 02</span>
+              <h3 class="timeline-title">Arquitetura da Solução</h3>
+              <p class="timeline-desc">Desenhamos a infraestrutura do sistema. Seja um agente de IA para WhatsApp,
+                integrações via n8n, ou o desenvolvimento de um painel web exclusivo para controle operacional.</p>
+            </div>
+          </div>
+          <div class="timeline-item" style="animation-delay: 0.5s;">
+            <div class="timeline-node"></div>
+            <div class="timeline-content">
+              <span class="timeline-step">Fase 03</span>
+              <h3 class="timeline-title">Deploy &amp; Integração</h3>
+              <p class="timeline-desc">Implementamos a automação no seu ambiente. Conectamos os sistemas (CRM, ERP,
+                Redes Sociais) garantindo que a transição seja suave, segura e sem interrupções no seu fluxo de caixa.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item" style="animation-delay: 0.7s;">
+            <div class="timeline-node"
+              style="border-color: var(--txt-primary); box-shadow: 0 0 12px rgba(255,255,255,0.3);"></div>
+            <div class="timeline-content">
+              <span class="timeline-step" style="color: var(--txt-primary);">Fase 04</span>
+              <h3 class="timeline-title">Escala Contínua</h3>
+              <p class="timeline-desc">A tecnologia evolui rápido, e nós também. Monitoramos os agentes, ajustamos os
+                prompts dos LLMs e refinamos as automações para garantir que o sistema escale junto com o seu
+                faturamento.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="cta-final" class="ds-section text-center"
+    style="padding-top: 8rem; padding-bottom: 8rem; position: relative; z-index: 10;">
+    <div
+      style="max-width: 800px; margin: 0 auto; background: rgba(12, 8, 20, 0.5); border: 1px solid rgba(168, 85, 247, 0.2); border-radius: 32px; padding: 5rem 2rem; backdrop-filter: blur(16px); box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 0 40px rgba(168,85,247,0.05); transition: border-color 0.4s ease;"
+      onmouseover="this.style.borderColor='rgba(255,0,229,0.4)'"
+      onmouseout="this.style.borderColor='rgba(168,85,247,0.2)'">
+
+      <h2
+        style="font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 700; color: var(--txt-primary); margin-bottom: 1.5rem; line-height: 1.1;">
+        Pronto para <span class="aura-text-fx">escalar?</span></h2>
+      <p
+        style="font-size: 1.15rem; color: var(--txt-secondary); max-width: 550px; margin: 0 auto 3rem; line-height: 1.6;">
+        A diferença entre os líderes de mercado e a concorrência é a velocidade de execução. Deixe a IA assumir o
+        trabalho pesado da sua operação.</p>
+
+      <a href="https://wa.me/5577998252595?text=Olá! Gostaria de agendar um diagnóstico de I.A. para minha empresa."
+        target="_blank" class="nav-cta"
+        style="font-size: 1.1rem; padding: 1.2rem 2.5rem; display: inline-flex; justify-content: center; box-shadow: 0 0 20px rgba(168,85,247,0.4); color: #ffffff;">
+        Agendar Diagnóstico Gratuito
+        <svg style="margin-left: 0.5rem;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ================================================================
+     FOOTER
+================================================================ -->
+  <div id="case-modal" class="modal-overlay">
+    <div class="case-glass-box">
+      <button class="case-close" id="btn-close-case" aria-label="Fechar modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <span class="badge badge-neon" style="margin-bottom: 1.5rem;">Case de Sucesso</span>
+      <h3
+        style="font-size: 2.2rem; font-weight: 700; color: var(--txt-primary); margin-bottom: 1rem; line-height: 1.1;">
+        Ecossistema Funerário Web</h3>
+
+      <div style="margin-bottom: 2rem;">
+        <h4 style="font-size: 1rem; color: var(--neon-400); margin-bottom: 0.5rem; font-weight: 600;">O Desafio</h4>
+        <p style="color: var(--txt-secondary); font-size: 0.95rem; line-height: 1.6;">O cliente enfrentava processos
+          manuais lentos na gestão de atendimento e captura de leads durante momentos delicados. A presença digital não
+          transmitia o acolhimento e a seriedade necessários.</p>
+      </div>
+      <div style="margin-bottom: 2.5rem;">
+        <h4 style="font-size: 1rem; color: var(--cyber-pink); margin-bottom: 0.5rem; font-weight: 600;">A Solução Aura
+        </h4>
+        <p style="color: var(--txt-secondary); font-size: 0.95rem; line-height: 1.6;">Arquitetamos uma plataforma web
+          imersiva (Next.js) integrada com agentes autônomos. Agora, o sistema automatiza a triagem inicial via web e
+          organiza fluxos logísticos no painel administrativo de forma invisível para o cliente final.</p>
+      </div>
+
+      <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem;">
+        <span class="badge badge-neon">UI/UX Premium</span>
+        <span class="badge badge-blue">Next.js Framework</span>
+        <span class="badge badge-green">Integração de APIs</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-ia" class="modal-overlay">
+    <div class="case-glass-box">
+      <button class="case-close" aria-label="Fechar modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <span class="badge badge-neon"
+        style="margin-bottom: 1.5rem; color: var(--cyber-pink); border-color: rgba(255,0,229,0.3); background: rgba(255,0,229,0.1);">Automação
+        de Alta Escala</span>
+      <h3
+        style="font-size: 2.2rem; font-weight: 700; color: var(--txt-primary); margin-bottom: 1rem; line-height: 1.1;">
+        Agentes Autônomos de Triagem</h3>
+
+      <div style="margin-bottom: 2rem;">
+        <h4 style="font-size: 1rem; color: var(--neon-400); margin-bottom: 0.5rem; font-weight: 600;">O Desafio
+          Operacional</h4>
+        <p style="color: var(--txt-secondary); font-size: 0.95rem; line-height: 1.6;">O tempo de resposta é o maior
+          assassino de vendas. A equipe de atendimento estava sobrecarregada com dúvidas repetitivas, perdendo leads
+          quentes que exigiam atendimento imediato fora do horário comercial.</p>
+      </div>
+      <div style="margin-bottom: 2.5rem;">
+        <h4 style="font-size: 1rem; color: var(--cyber-pink); margin-bottom: 0.5rem; font-weight: 600;">A Arquitetura
+          Aura</h4>
+        <p style="color: var(--txt-secondary); font-size: 0.95rem; line-height: 1.6;">Desenvolvemos fluxos de
+          orquestração de dados interligando LLMs avançados ao WhatsApp corporativo. O agente qualifica o lead, responde
+          dúvidas técnicas com base no conhecimento da empresa e agenda reuniões diretamente no calendário dos
+          vendedores — 24 horas por dia.</p>
+      </div>
+
+      <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem;">
+        <span class="badge badge-neon">Orquestração de Dados</span>
+        <span class="badge badge-blue"
+          style="background: rgba(168, 85, 247, 0.1); color: #a855f7; border-color: rgba(168, 85, 247, 0.3);">Modelos
+          LLM Customizados</span>
+        <span class="badge badge-green"
+          style="background: rgba(56, 189, 248, 0.1); color: #38bdf8; border-color: rgba(56, 189, 248, 0.3);">Webhooks &
+          APIs</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================
+     MODAL DINÂMICO (PORTFÓLIO AURA)
+================================================================ -->
+  <div id="portfolio-modal"
+    class="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-md transition-opacity duration-500 opacity-0 pointer-events-none"
+    onclick="if(event.target === this) closePortfolioModal();">
+    <div id="portfolio-modal-content"
+      class="relative p-8 md:p-12 rounded-[32px] max-w-xl w-[90%] transform scale-95 opacity-0 transition-all duration-500">
+      <div id="dynamic-glow" class="modal-glow-dynamic"></div>
+
+      <div class="relative z-10">
+        <h3 id="p-modal-title" class="text-3xl font-bold text-white mb-2 tracking-tight"></h3>
+        <p id="p-modal-desc" class="text-white/40 text-lg mb-8 leading-relaxed"></p>
+
+        <div id="p-modal-list" class="flex flex-col gap-3 mb-10">
+        </div>
+
+        <button onclick="closePortfolioModal()" class="btn-modal-close">
+          Finalizar Leitura
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="aura-footer" role="contentinfo">
+    <div style="max-width: 1280px; margin: 0 auto; width: 100%;">
+
+      <div
+        style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 3rem; margin-bottom: 3rem; flex-wrap: wrap; gap: 3rem;">
+        <div>
+          <a href="#hero" style="display: flex; align-items: center; margin-bottom: 1.5rem; text-decoration: none;">
+            <img src="assets/img/logo.png" alt="AURA Inteligência Artificial"
+              style="height: 56px; width: auto; object-fit: contain; filter: drop-shadow(0 0 15px rgba(255,255,255,0.1));">
+          </a>
+          <p style="color: var(--txt-secondary); font-size: 0.95rem; max-width: 320px; line-height: 1.6;">Engenharia de
+            software e inteligência artificial para marcas que definem o futuro.</p>
+        </div>
+
+        <div style="display: flex; gap: 4rem; flex-wrap: wrap;">
+          <div style="display: flex; flex-direction: column; gap: 1rem;">
+            <span
+              style="font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--neon-400); letter-spacing: 0.1em; text-transform: uppercase;">Contato</span>
+            <a href="https://wa.me/5577998252595?text=Olá! Gostaria de agendar um diagnóstico de I.A. para minha empresa."
+              target="_blank" class="footer-link">WhatsApp Direto</a>
+            <a href="mailto:aura.xyz.br@gmail.com" class="footer-link">aura.xyz.br@gmail.com</a>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 1rem;">
+            <span
+              style="font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--neon-400); letter-spacing: 0.1em; text-transform: uppercase;">Social</span>
+            <a href="https://instagram.com/aura.xyz.br" target="_blank" class="footer-link">Instagram</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: center; margin-bottom: 3rem;">
+        <a href="https://aura.xyz.br" target="_blank" class="signature-wrapper">
+          Code & Design by <span
+            style="margin: 0 4px; color: var(--neon-500); animation: neon-pulse 2s infinite;">•</span>
+          <span class="signature-text">
+            Aura
+            <span class="signature-overlay" aria-hidden="true">Aura</span>
+          </span>
+        </a>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <p style="font-size: 0.75rem; color: var(--txt-muted);">© 2026 Aura Intelligence. Todos os direitos reservados.
+        </p>
+        <p
+          style="font-size: 0.75rem; color: var(--txt-muted); font-family: 'Space Mono', monospace; letter-spacing: 0.05em; display: flex; align-items: center; gap: 0.5rem;">
+          VITÓRIA DA CONQUISTA, BA
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ================================================================
      JAVASCRIPT
 ================================================================ -->
-<script>
-(function() {
-  'use strict';
+  <script>
+      (function () {
+        'use strict';
 
-  /* ── Mobile menu ── */
-  const mobileToggle = document.getElementById('mobile-toggle');
-  const mobileMenu   = document.getElementById('mobile-menu');
-  if (mobileToggle && mobileMenu) {
-    mobileToggle.addEventListener('click', function() {
-      const isOpen = mobileMenu.classList.toggle('open');
-      mobileToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    });
-    // Close on link click
-    mobileMenu.querySelectorAll('a').forEach(function(a) {
-      a.addEventListener('click', function() {
-        mobileMenu.classList.remove('open');
-        mobileToggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
-
-  /* ── Multi-Modal Manager ── */
-  const setupModal = (btnId, modalId) => {
-    const btn = document.getElementById(btnId);
-    const modal = document.getElementById(modalId);
-    if (btn && modal) {
-      const closeBtn = modal.querySelector('.case-close');
-      const openModal = () => { modal.classList.add('open'); document.body.style.overflow = 'hidden'; };
-      const closeModal = () => { modal.classList.remove('open'); document.body.style.overflow = ''; };
-      
-      btn.addEventListener('click', openModal);
-      if (closeBtn) closeBtn.addEventListener('click', closeModal);
-      modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-    }
-  };
-  
-  setupModal('btn-open-case', 'case-modal'); // Modal Funerária
-  setupModal('btn-open-ia', 'modal-ia');     // Modal Automação IA
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
-      document.body.style.overflow = '';
-    }
-  });
-
-  /* ── Neural Constellation ── */
-  const canvas = document.getElementById('neural-canvas');
-  if (canvas) {
-    const ctx = canvas.getContext('2d');
-    let width, height, particles = [];
-    const mouse = { x: null, y: null, radius: 150 };
-
-    function resize() {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resize);
-    resize();
-
-    window.addEventListener('mousemove', function(e) { mouse.x = e.clientX; mouse.y = e.clientY; });
-    window.addEventListener('mouseout', function() { mouse.x = null; mouse.y = null; });
-
-    function Particle() {
-      this.x = Math.random() * width;
-      this.y = Math.random() * height;
-      this.vx = (Math.random() - 0.5) * 0.8;
-      this.vy = (Math.random() - 0.5) * 0.8;
-    }
-    Particle.prototype.update = function() {
-      this.x += this.vx; this.y += this.vy;
-      if (this.x > width || this.x < 0) this.vx *= -1;
-      if (this.y > height || this.y < 0) this.vy *= -1;
-    };
-
-    function init() {
-      particles = [];
-      for (var i = 0; i < 100; i++) particles.push(new Particle());
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, width, height);
-      for (var i = 0; i < particles.length; i++) {
-        var p = particles[i];
-        p.update();
-        ctx.fillStyle = 'rgba(168, 85, 247, 0.5)';
-        ctx.beginPath(); ctx.arc(p.x, p.y, 1, 0, Math.PI * 2); ctx.fill();
-
-        for (var j = i + 1; j < particles.length; j++) {
-          var dx = p.x - particles[j].x, dy = p.y - particles[j].y;
-          var dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
-            ctx.strokeStyle = 'rgba(168, 85, 247, ' + (1 - dist / 120) + ')';
-            ctx.lineWidth = 0.5;
-            ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(particles[j].x, particles[j].y); ctx.stroke();
-          }
-        }
-        if (mouse.x !== null) {
-          var mdx = p.x - mouse.x, mdy = p.y - mouse.y;
-          var mdist = Math.sqrt(mdx * mdx + mdy * mdy);
-          if (mdist < mouse.radius) {
-            ctx.strokeStyle = 'rgba(255, 0, 229, ' + (0.8 - mdist / mouse.radius) + ')';
-            ctx.lineWidth = 1;
-            ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
-          }
-        }
-      }
-      requestAnimationFrame(animate);
-    }
-    init(); animate();
-  }
-
-  /* ── Neon Spotlight Tracking (Bento Cards) ── */
-  const bentoCards = document.querySelectorAll('.bento-card');
-  bentoCards.forEach(function(card) {
-    card.addEventListener('mousemove', function(e) {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      card.style.setProperty('--mouse-x', x + 'px');
-      card.style.setProperty('--mouse-y', y + 'px');
-    });
-  });
-
-  /* ── Scroll reveal for sections ── */
-  const revealEls = document.querySelectorAll('.reveal-section');
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -120px 0px' });
-    revealEls.forEach(function(el) { io.observe(el); });
-  } else {
-    revealEls.forEach(function(el) { el.classList.add('visible'); });
-  }
-
-  /* ── DS nav active highlight on scroll ── */
-  const sections = document.querySelectorAll('section[id], main[id]');
-  const dsNavLinks = document.querySelectorAll('.ds-nav-link');
-  if (sections.length && dsNavLinks.length) {
-    const sectionObs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          dsNavLinks.forEach(function(lk) {
-            lk.classList.toggle('active', lk.getAttribute('href') === '#' + entry.target.id);
+        /* ── Mobile menu ── */
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileToggle && mobileMenu) {
+          mobileToggle.addEventListener('click', function () {
+            const isOpen = mobileMenu.classList.toggle('open');
+            mobileToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          });
+          // Close on link click
+          mobileMenu.querySelectorAll('a').forEach(function (a) {
+            a.addEventListener('click', function () {
+              mobileMenu.classList.remove('open');
+              mobileToggle.setAttribute('aria-expanded', 'false');
+            });
           });
         }
-      });
-    }, { threshold: 0.3 });
-    sections.forEach(function(s) { sectionObs.observe(s); });
-  }
 
-  /* ── type-words trigger on scroll ── */
-  const typeWordsSections = document.querySelectorAll('.type-words:not(.visible)');
-  if (typeWordsSections.length) {
-    const twObs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          twObs.unobserve(entry.target);
+        /* ── Multi-Modal Manager ── */
+        const setupModal = (btnId, modalId) => {
+          const btn = document.getElementById(btnId);
+          const modal = document.getElementById(modalId);
+          if (btn && modal) {
+            const closeBtn = modal.querySelector('.case-close');
+            const openModal = () => { modal.classList.add('open'); document.body.style.overflow = 'hidden'; };
+            const closeModal = () => { modal.classList.remove('open'); document.body.style.overflow = ''; };
+
+            btn.addEventListener('click', openModal);
+            if (closeBtn) closeBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+          }
+        };
+
+        setupModal('btn-open-case', 'case-modal'); // Modal Funerária
+        setupModal('btn-open-ia', 'modal-ia');     // Modal Automação IA
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
+            document.body.style.overflow = '';
+          }
+        });
+
+        /* ── Neural Constellation ── */
+        const canvas = document.getElementById('neural-canvas');
+        if (canvas) {
+          const ctx = canvas.getContext('2d');
+          let width, height, particles = [];
+          const mouse = { x: null, y: null, radius: 150 };
+
+          function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+          }
+          window.addEventListener('resize', resize);
+          resize();
+
+          window.addEventListener('mousemove', function (e) { mouse.x = e.clientX; mouse.y = e.clientY; });
+          window.addEventListener('mouseout', function () { mouse.x = null; mouse.y = null; });
+
+          function Particle() {
+            this.x = Math.random() * width;
+            this.y = Math.random() * height;
+            this.vx = (Math.random() - 0.5) * 0.8;
+            this.vy = (Math.random() - 0.5) * 0.8;
+          }
+          Particle.prototype.update = function () {
+            this.x += this.vx; this.y += this.vy;
+            if (this.x > width || this.x < 0) this.vx *= -1;
+            if (this.y > height || this.y < 0) this.vy *= -1;
+          };
+
+          function init() {
+            particles = [];
+            for (var i = 0; i < 100; i++) particles.push(new Particle());
+          }
+
+          function animate() {
+            ctx.clearRect(0, 0, width, height);
+            for (var i = 0; i < particles.length; i++) {
+              var p = particles[i];
+              p.update();
+              ctx.fillStyle = 'rgba(168, 85, 247, 0.5)';
+              ctx.beginPath(); ctx.arc(p.x, p.y, 1, 0, Math.PI * 2); ctx.fill();
+
+              for (var j = i + 1; j < particles.length; j++) {
+                var dx = p.x - particles[j].x, dy = p.y - particles[j].y;
+                var dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 120) {
+                  ctx.strokeStyle = 'rgba(168, 85, 247, ' + (1 - dist / 120) + ')';
+                  ctx.lineWidth = 0.5;
+                  ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(particles[j].x, particles[j].y); ctx.stroke();
+                }
+              }
+              if (mouse.x !== null) {
+                var mdx = p.x - mouse.x, mdy = p.y - mouse.y;
+                var mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+                if (mdist < mouse.radius) {
+                  ctx.strokeStyle = 'rgba(255, 0, 229, ' + (0.8 - mdist / mouse.radius) + ')';
+                  ctx.lineWidth = 1;
+                  ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
+                }
+              }
+            }
+            requestAnimationFrame(animate);
+          }
+          init(); animate();
         }
-      });
-    }, { threshold: 0.5 });
-    typeWordsSections.forEach(function(el) { twObs.observe(el); });
-  }
 
-  /* ── Premium Smooth Scroll (EaseOutExpo) ── */
-  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-    anchor.addEventListener('click', function (e) {
-      var targetId = this.getAttribute('href');
-      if (targetId === '#') return;
+        /* ── Neon Spotlight Tracking (Bento Cards) ── */
+        const bentoCards = document.querySelectorAll('.bento-card');
+        bentoCards.forEach(function (card) {
+          card.addEventListener('mousemove', function (e) {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', x + 'px');
+            card.style.setProperty('--mouse-y', y + 'px');
+          });
+        });
 
-      var targetElement = document.querySelector(targetId);
-      if (!targetElement) return;
+        /* ── Scroll reveal for sections (Mobile Optimized) ── */
+        const revealEls = document.querySelectorAll('.reveal-section');
+        if ('IntersectionObserver' in window) {
 
-      e.preventDefault();
+          // Trava de segurança: Detecta se a tela é de celular (menor que 768px)
+          const isMobile = window.innerWidth <= 768;
 
-      var headerOffset = 70;
-      var elementPosition = targetElement.getBoundingClientRect().top;
-      var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          // Configuração Dinâmica:
+          // Mobile: Exige apenas 2% de visibilidade e corta só 20px (revela quase imediatamente)
+          // Desktop: Mantém o efeito majestoso intacto (15% e corte de 120px)
+          const observerOptions = {
+            threshold: isMobile ? 0.02 : 0.15,
+            rootMargin: isMobile ? '0px 0px -20px 0px' : '0px 0px -120px 0px'
+          };
 
-      var startPosition = window.pageYOffset;
-      var distance = offsetPosition - startPosition;
-      var startTime = null;
-      var duration = 1200;
+          const io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                io.unobserve(entry.target);
+              }
+            });
+          }, observerOptions);
 
-      var easeOutExpo = function(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); };
-
-      function animateScroll(currentTime) {
-        if (startTime === null) startTime = currentTime;
-        var timeElapsed = currentTime - startTime;
-        var progress = Math.min(timeElapsed / duration, 1);
-        var ease = easeOutExpo(progress);
-
-        window.scrollTo(0, startPosition + distance * ease);
-
-        if (timeElapsed < duration) {
-          requestAnimationFrame(animateScroll);
+          revealEls.forEach(function (el) { io.observe(el); });
         } else {
-          window.history.pushState(null, null, targetId);
+          revealEls.forEach(function (el) { el.classList.add('visible'); });
         }
-      }
-      requestAnimationFrame(animateScroll);
-    });
-  });
 
-})();
+        /* ── DS nav active highlight on scroll ── */
+        const sections = document.querySelectorAll('section[id], main[id]');
+        const dsNavLinks = document.querySelectorAll('.ds-nav-link');
+        if (sections.length && dsNavLinks.length) {
+          const sectionObs = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                dsNavLinks.forEach(function (lk) {
+                  lk.classList.toggle('active', lk.getAttribute('href') === '#' + entry.target.id);
+                });
+              }
+            });
+          }, { threshold: 0.3 });
+          sections.forEach(function (s) { sectionObs.observe(s); });
+        }
 
-/* ── Lógica de Ativação do Portfólio ── */
+        /* ── type-words trigger on scroll ── */
+        const typeWordsSections = document.querySelectorAll('.type-words:not(.visible)');
+        if (typeWordsSections.length) {
+          const twObs = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                twObs.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.5 });
+          typeWordsSections.forEach(function (el) { twObs.observe(el); });
+        }
+
+        /* ── Premium Smooth Scroll (EaseOutExpo) ── */
+        document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+          anchor.addEventListener('click', function (e) {
+            var targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+
+            var targetElement = document.querySelector(targetId);
+            if (!targetElement) return;
+
+            e.preventDefault();
+
+            var headerOffset = 70;
+            var elementPosition = targetElement.getBoundingClientRect().top;
+            var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            var startPosition = window.pageYOffset;
+            var distance = offsetPosition - startPosition;
+            var startTime = null;
+            var duration = 1200;
+
+            var easeOutExpo = function (t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); };
+
+            function animateScroll(currentTime) {
+              if (startTime === null) startTime = currentTime;
+              var timeElapsed = currentTime - startTime;
+              var progress = Math.min(timeElapsed / duration, 1);
+              var ease = easeOutExpo(progress);
+
+              window.scrollTo(0, startPosition + distance * ease);
+
+              if (timeElapsed < duration) {
+                requestAnimationFrame(animateScroll);
+              } else {
+                window.history.pushState(null, null, targetId);
+              }
+            }
+            requestAnimationFrame(animateScroll);
+          });
+        });
+
+      })();
+
+    /* ── Lógica de Ativação do Portfólio ── */
     const portfolioData = {
       'funerario': { title: "Ecossistema Digital Funerário", sub: "Acolhimento e gestão operacional.", color: "#d4af37", items: ["Interface Humanizada", "Gestão de Planos", "Atendimento 24h", "Memorial Digital"] },
       'ia': { title: "Sistemas de Automação I.A.", sub: "Eficiência operacional levada ao limite.", color: "#a855f7", items: ["Agentes Autônomos", "Qualificação de Leads", "Automação de WhatsApp", "Análise de Dados"] },
@@ -1955,12 +3019,12 @@
 
     function openPortfolioModal(key) {
       const data = portfolioData[key];
-      if(!data) return;
+      if (!data) return;
 
       document.getElementById('p-modal-title').innerText = data.title;
       document.getElementById('p-modal-desc').innerText = data.sub;
       document.getElementById('dynamic-glow').style.background = `radial-gradient(circle, ${data.color} 0%, transparent 70%)`;
-      
+
       const list = document.getElementById('p-modal-list');
       list.innerHTML = data.items.map(i => `
         <div class="modal-item-v3">
@@ -1970,10 +3034,10 @@
           <span class="text-white/90 font-medium">${i}</span>
         </div>
       `).join('');
-      
+
       const modal = document.getElementById('portfolio-modal');
       const box = document.getElementById('portfolio-modal-content');
-      
+
       modal.classList.remove('opacity-0', 'pointer-events-none');
       setTimeout(() => {
         box.classList.remove('scale-95', 'opacity-0');
@@ -1988,10 +3052,10 @@
       const modal = document.getElementById('portfolio-modal');
       const box = document.getElementById('portfolio-modal-content');
       const items = document.querySelectorAll('.modal-item-v3');
-      
+
       items.forEach(item => item.classList.remove('show'));
       box.classList.add('scale-95', 'opacity-0');
-      
+
       setTimeout(() => {
         modal.classList.add('opacity-0', 'pointer-events-none');
         document.body.style.overflow = '';
@@ -2013,7 +3077,8 @@
       if (e.target.id === 'portfolio-modal') closePortfolioModal();
     });
 
-</script>
+  </script>
 
 </body>
+
 </html>

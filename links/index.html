@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>AURA | Links</title>
-    
+
     <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet" />
 
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
@@ -43,34 +46,52 @@
             font-display: swap;
         }
 
-        body { 
-            background-color: #020204; 
+        body {
+            background-color: #020204;
             color: #f5f3ff;
-            opacity: 0; 
-            overflow-x: hidden; 
+            opacity: 0;
+            overflow-x: hidden;
         }
 
         /* --- BACKGROUND EFFECTS --- */
         .hero-bg-grid {
-            position: fixed; inset: 0; z-index: -2;
+            position: fixed;
+            inset: 0;
+            z-index: -2;
             background-image:
-                linear-gradient(rgba(168,85,247,0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(168,85,247,0.05) 1px, transparent 1px);
+                linear-gradient(rgba(168, 85, 247, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(168, 85, 247, 0.05) 1px, transparent 1px);
             background-size: 40px 40px;
         }
+
         .hero-bg-radial {
-            position: fixed; inset: 0; z-index: -1;
-            background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(168,85,247,0.2) 0%, rgba(255,0,229,0.05) 40%, transparent 80%);
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(168, 85, 247, 0.2) 0%, rgba(255, 0, 229, 0.05) 40%, transparent 80%);
         }
+
         .scan-line {
-            position: fixed; left: 0; right: 0; height: 2px; z-index: 0;
-            background: linear-gradient(90deg, transparent 0%, rgba(168,85,247,0.3) 50%, transparent 100%);
+            position: fixed;
+            left: 0;
+            right: 0;
+            height: 2px;
+            z-index: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(168, 85, 247, 0.3) 50%, transparent 100%);
             animation: scan-line 6s linear infinite;
             pointer-events: none;
         }
+
         @keyframes scan-line {
-            0%   { transform: translateY(-100px); opacity: 0.8; }
-            100% { transform: translateY(100vh);  opacity: 0; }
+            0% {
+                transform: translateY(-100px);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
         }
 
         /* --- TEXT FX --- */
@@ -85,79 +106,131 @@
             background-size: 200% auto;
             animation: shine-bg 3s linear infinite;
         }
-        @keyframes shine-bg { to { background-position: 200% center; } }
-        
-        .badge-pulse {
-            display: inline-flex; align-items: center; gap: 0.4rem;
-            padding: 0.3rem 0.8rem; border-radius: 999px;
-            background: rgba(168,85,247,0.08);
-            border: 1px solid rgba(168,85,247,0.3);
-            font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em;
-            text-transform: uppercase; color: #c084fc;
+
+        @keyframes shine-bg {
+            to {
+                background-position: 200% center;
+            }
         }
+
+        .badge-pulse {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 999px;
+            background: rgba(168, 85, 247, 0.08);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #c084fc;
+        }
+
         .badge-dot {
-            width: 6px; height: 6px; border-radius: 50%;
-            background: #c084fc; box-shadow: 0 0 8px rgba(168,85,247,0.8);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #c084fc;
+            box-shadow: 0 0 8px rgba(168, 85, 247, 0.8);
             animation: neon-pulse 1.8s ease-in-out infinite;
         }
+
         @keyframes neon-pulse {
-            0%, 100% { box-shadow: 0 0 4px rgba(168,85,247,0.4); opacity: 0.8; }
-            50% { box-shadow: 0 0 12px rgba(168,85,247,1); opacity: 1; }
+
+            0%,
+            100% {
+                box-shadow: 0 0 4px rgba(168, 85, 247, 0.4);
+                opacity: 0.8;
+            }
+
+            50% {
+                box-shadow: 0 0 12px rgba(168, 85, 247, 1);
+                opacity: 1;
+            }
         }
 
         /* --- BOTÕES PREMIUM GLASSMORPHISM --- */
         .link-card {
-            position: relative; display: flex; align-items: center; justify-content: space-between;
-            padding: 1.25rem 1.5rem; border-radius: 16px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem 1.5rem;
+            border-radius: 16px;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-            color: #ffffff !important; overflow: hidden;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            color: #ffffff !important;
+            overflow: hidden;
             transition: background-color 0.4s ease, border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
-            will-change: transform, opacity; transform: translateZ(0);
+            will-change: transform, opacity;
+            transform: translateZ(0);
         }
-        
+
         /* O feixe de luz que varre o botão */
         .link-card::after {
-            content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
             background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.06), transparent);
-            transform: skewX(-25deg); transition: left 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: skewX(-25deg);
+            transition: left 0.75s cubic-bezier(0.4, 0, 0.2, 1);
             pointer-events: none;
         }
-        
+
         .link-card:hover {
             background: rgba(168, 85, 247, 0.05);
             border-color: rgba(168, 85, 247, 0.4);
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(168, 85, 247, 0.1);
             transform: translateY(-4px) translateZ(0);
         }
-        .link-card:hover::after { left: 200%; }
+
+        .link-card:hover::after {
+            left: 200%;
+        }
 
         /* Variação Primária (Destaque I.A) */
         .link-primary {
-            background: linear-gradient(135deg, rgba(168,85,247,0.15) 0%, rgba(255,0,229,0.05) 100%);
-            border-color: rgba(168,85,247,0.4);
-            box-shadow: 0 8px 24px rgba(168,85,247,0.15);
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, rgba(255, 0, 229, 0.05) 100%);
+            border-color: rgba(168, 85, 247, 0.4);
+            box-shadow: 0 8px 24px rgba(168, 85, 247, 0.15);
         }
+
         .link-primary:hover {
             border-color: #ff00e5;
-            box-shadow: 0 15px 35px rgba(255,0,229,0.25), inset 0 0 20px rgba(168,85,247,0.2);
+            box-shadow: 0 15px 35px rgba(255, 0, 229, 0.25), inset 0 0 20px rgba(168, 85, 247, 0.2);
         }
 
         /* --- ASSINATURA --- */
         .aura-overlay {
-            position: absolute; left: 0; top: 0; color: #fff;
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #fff;
             clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
             transition: clip-path 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .group:hover .aura-overlay { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+
+        .group:hover .aura-overlay {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
     </style>
 </head>
+
 <body class="antialiased">
 
-    <div id="portal-wrapper" class="fixed inset-0 z-[100] flex items-center justify-center bg-[#020204] pointer-events-none">
-        <img src="../assets/img/logo.png" alt="AURA" class="h-20 w-auto opacity-20 filter grayscale origin-center" id="portal-logo">
-        <div id="portal-counter" class="absolute top-[58%] font-mono text-neon-500 text-sm tracking-widest opacity-80">0%</div>
+    <div id="portal-wrapper"
+        class="fixed inset-0 z-[100] flex items-center justify-center bg-[#020204] pointer-events-none">
+        <img src="../assets/img/logo.png" alt="AURA" class="h-20 w-auto opacity-20 filter grayscale origin-center"
+            id="portal-logo">
+        <div id="portal-counter" class="absolute top-[58%] font-mono text-neon-500 text-sm tracking-widest opacity-80">
+            0%</div>
     </div>
 
     <div class="hero-bg-grid"></div>
@@ -166,66 +239,79 @@
 
     <main class="max-w-md mx-auto px-6 pt-16 pb-12 flex flex-col items-center min-h-screen relative z-10">
 
-    <header class="gsap-item flex flex-col items-center text-center mb-10 w-full relative z-10">
-        <div class="relative mb-5 flex items-center justify-center w-full">
-            <div class="absolute bg-neon-500/20 blur-3xl rounded-full w-24 h-24 scale-150 pointer-events-none"></div>
-            <img src="../assets/img/logo.png" alt="AURA" class="h-16 w-auto relative z-10 object-contain drop-shadow-[0_0_15px_rgba(168,85,247,0.4)] mx-auto block">
-        </div>
-        
-        <h1 class="text-3xl font-bold tracking-tight mb-3 text-center w-full">
-            Reescrevendo a <br><span class="aura-text-fx">Realidade.</span>
-        </h1>
-        
-        <div class="badge-pulse mx-auto">
-            <span class="badge-dot"></span> I.A. De Alta Performance
-        </div>
-    </header>
+        <header class="gsap-item flex flex-col items-center text-center mb-10 w-full relative z-10">
+            <div class="relative mb-5 flex items-center justify-center w-full">
+                <div class="absolute bg-neon-500/20 blur-3xl rounded-full w-24 h-24 scale-150 pointer-events-none">
+                </div>
+                <img src="../assets/img/logo.png" alt="AURA"
+                    class="h-16 w-auto relative z-10 object-contain drop-shadow-[0_0_15px_rgba(168,85,247,0.4)] mx-auto block">
+            </div>
+
+            <h1 class="text-3xl font-bold tracking-tight mb-3 text-center w-full">
+                Reescrevendo a <br><span class="aura-text-fx">Realidade.</span>
+            </h1>
+
+            <div class="badge-pulse mx-auto">
+                <span class="badge-dot"></span> I.A. De Alta Performance
+            </div>
+        </header>
 
         <nav class="w-full space-y-4 mb-10">
-            
-            <a href="https://wa.me/5577998252595?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20diagn%C3%A3stico%20de%20I.A.%20para%20minha%20empresa." target="_blank" class="gsap-item link-card link-primary group">
+
+            <a href="https://wa.me/5577998252595?text=Olá!%20Gostaria%20de%20agendar%20um%20diagnóstico%20de%20I.A.%20para%20minha%20empresa."
+                target="_blank" class="gsap-item link-card link-primary group">
                 <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 rounded-xl bg-neon-500/20 flex items-center justify-center border border-neon-500/30 group-hover:bg-neon-500/40 transition-colors">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-neon-500/20 flex items-center justify-center border border-neon-500/30 group-hover:bg-neon-500/40 transition-colors">
                         <i class="ph-bold ph-robot text-xl text-neon-500 group-hover:text-white"></i>
                     </div>
                     <div class="flex flex-col items-start">
-                        <span class="text-[0.7rem] uppercase tracking-widest text-neon-500 font-mono mb-0.5">Start</span>
+                        <span
+                            class="text-[0.7rem] uppercase tracking-widest text-neon-500 font-mono mb-0.5">Start</span>
                         <span class="text-sm font-semibold tracking-wide">Agendar Diagnóstico</span>
                     </div>
                 </div>
-                <i class="ph-bold ph-arrow-right opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all text-neon-500"></i>
+                <i
+                    class="ph-bold ph-arrow-right opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all text-neon-500"></i>
             </a>
 
             <a href="../index.html" class="gsap-item link-card group">
                 <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-white/10 transition-colors">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-white/10 transition-colors">
                         <i class="ph-light ph-globe-hemisphere-west text-xl text-gray-300 group-hover:text-white"></i>
                     </div>
                     <div class="flex flex-col items-start">
-                        <span class="text-[0.65rem] uppercase tracking-widest text-gray-400 font-mono mb-0.5">Ecossistema</span>
+                        <span
+                            class="text-[0.65rem] uppercase tracking-widest text-gray-400 font-mono mb-0.5">Ecossistema</span>
                         <span class="text-sm font-medium tracking-wide">Visitar Site Oficial</span>
                     </div>
                 </div>
-                <i class="ph-bold ph-arrow-right opacity-30 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+                <i
+                    class="ph-bold ph-arrow-right opacity-30 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
             </a>
 
             <a href="../index.html#portfolio" class="gsap-item link-card group">
                 <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-white/10 transition-colors">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-white/10 transition-colors">
                         <i class="ph-light ph-code block text-xl text-gray-300 group-hover:text-white"></i>
                     </div>
                     <div class="flex flex-col items-start">
-                        <span class="text-[0.65rem] uppercase tracking-widest text-gray-400 font-mono mb-0.5">Projetos</span>
+                        <span
+                            class="text-[0.65rem] uppercase tracking-widest text-gray-400 font-mono mb-0.5">Projetos</span>
                         <span class="text-sm font-medium tracking-wide">Nossa Engenharia</span>
                     </div>
                 </div>
-                <i class="ph-bold ph-arrow-right opacity-30 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+                <i
+                    class="ph-bold ph-arrow-right opacity-30 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
             </a>
 
         </nav>
 
         <footer class="gsap-item mt-auto w-full flex justify-center">
-            <a href="https://aura.xyz.br" target="_blank" class="opacity-50 hover:opacity-100 transition-opacity duration-300 text-gray-400 no-underline group flex flex-col items-center">
+            <a href="https://aura.xyz.br" target="_blank"
+                class="opacity-50 hover:opacity-100 transition-opacity duration-300 text-gray-400 no-underline group flex flex-col items-center">
                 <div class="flex items-center text-[0.6rem] font-mono uppercase tracking-widest mb-1">
                     Code & Design by <span class="animate-pulse text-neon-500 mx-1.5">•</span>
                 </div>
@@ -247,29 +333,30 @@
             const logoEl = document.getElementById("portal-logo");
 
             tl.to("body", { opacity: 1, duration: 0.1 })
-              // 1. Contador de 0 a 100%
-              .to(counterObj, {
-                  val: 100,
-                  duration: 1.2,
-                  ease: "power2.inOut",
-                  onUpdate: () => { counterEl.innerText = Math.round(counterObj.val) + "%"; }
-              })
-              // 2. Acende a logo (Neon) e some com o contador
-              .to(logoEl, { opacity: 1, filter: "grayscale(0) drop-shadow(0 0 20px rgba(168,85,247,0.8))", duration: 0.3 })
-              .to(counterEl, { opacity: 0, duration: 0.2 }, "<")
-              
-              // 3. O Pulo no Portal (ZOOM NO CENTRO EXATO)
-              .to("#portal-logo", {
-                  scale: 60, // A imagem expande a partir do seu próprio centro
-                  opacity: 0,
-                  duration: 1.2,
-                  ease: "power3.in"
-              }, "+=0.2")
-              
-              // 4. Remove o fundo preto e revela a cascata
-              .to("#portal-wrapper", { opacity: 0, duration: 0.4, onComplete: () => document.getElementById('portal-wrapper').remove() }, "-=0.4")
-              .to(".gsap-item", { y: 0, opacity: 1, duration: 1, stagger: 0.15, ease: "power4.out" }, "-=0.6");
+                // 1. Contador de 0 a 100%
+                .to(counterObj, {
+                    val: 100,
+                    duration: 1.2,
+                    ease: "power2.inOut",
+                    onUpdate: () => { counterEl.innerText = Math.round(counterObj.val) + "%"; }
+                })
+                // 2. Acende a logo (Neon) e some com o contador
+                .to(logoEl, { opacity: 1, filter: "grayscale(0) drop-shadow(0 0 20px rgba(168,85,247,0.8))", duration: 0.3 })
+                .to(counterEl, { opacity: 0, duration: 0.2 }, "<")
+
+                // 3. O Pulo no Portal (ZOOM NO CENTRO EXATO)
+                .to("#portal-logo", {
+                    scale: 60, // A imagem expande a partir do seu próprio centro
+                    opacity: 0,
+                    duration: 1.2,
+                    ease: "power3.in"
+                }, "+=0.2")
+
+                // 4. Remove o fundo preto e revela a cascata
+                .to("#portal-wrapper", { opacity: 0, duration: 0.4, onComplete: () => document.getElementById('portal-wrapper').remove() }, "-=0.4")
+                .to(".gsap-item", { y: 0, opacity: 1, duration: 1, stagger: 0.15, ease: "power4.out" }, "-=0.6");
         };
     </script>
 </body>
+
 </html>
